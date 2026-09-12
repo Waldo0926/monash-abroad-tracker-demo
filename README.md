@@ -1,35 +1,62 @@
-# monash-abroad-tracker-demo
-# Monash Exchange Tracker — public demo
+# Monash Exchange Tracker — Public Demo
 
-This is a portfolio-only demo build of [monash-abroad-tracker](https://github.com/Waldo0926/monash-abroad-tracker).
+[**Live demo**](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [Demo dataset](./data/current.json)
 
-The real project scrapes the Monash program-search page daily and tracks changes to
-exchange programs (new/removed partners, Open/Closed flips, cut-off and place changes).
-Its source repository stays private while it is being assessed as university coursework,
-so the "Live viewer" badge there has nowhere public to point.
+A portfolio-safe public demonstration of my **Monash Abroad exchange-program tracker**.
 
-This repo exists to fix that: it ships the same static viewer (`index.html`) reading the
-same JSON shape the real tracker produces, but every university, country and number in
-`data/current.json` is made up. Nothing here comes from Monash or any real exchange
-program.
+The full tracker collects Monash program-search data, normalises program details, compares runs, records field-level changes, and publishes a searchable viewer. The production repository remains private while the project is associated with active university coursework.
 
-## What's real vs fake
+This repository demonstrates the viewer without publishing production data or scraper internals.
 
-| | Real project | This demo |
+> **Demo-data notice:** every institution, country, URL, score, availability value and place count in `data/current.json` is fictional. No real Monash exchange-program record is included in this repository.
+
+## What this demo shows
+
+- Search by university or country
+- Filter by program status, region and exchange availability
+- Sort table columns interactively
+- Display previous-round cut-offs and anticipated places
+- Surface search/detail consistency warnings
+- Load the same canonical JSON structure used by the private tracker
+
+## Public demo vs production project
+
+| Component | Production tracker | This public demo |
 | --- | --- | --- |
-| Scraper / crawler code | private repo | not included |
-| `data/current.json` schema | yes | same shape |
-| `data/current.json` content | live Monash data | 18 fictional universities |
-| `index.html` viewer | yes | same features, rebuilt for this repo |
-| Daily updates | yes, via GitHub Actions | no, static snapshot |
+| Scraper / crawler | Included in private repository | Not included |
+| Program-data schema | Canonical tracker schema | Same structure for demonstrated fields |
+| Dataset | Real collected records | 18 fictional records |
+| Viewer | Production viewer | Portfolio-safe static viewer |
+| Automated collection | Scheduled workflow | Not included |
+| Historical change tracking | Yes | Represented by static demo metadata only |
 
-## Running it locally
+## Repository structure
 
-Any static file server works, e.g.
+```text
+.
+├── index.html          # Static searchable/filterable viewer
+└── data/
+    └── current.json    # Fictional dataset using the tracker schema
+```
+
+## Run locally
+
+Because the page loads JSON with `fetch()`, serve the repository through a local HTTP server rather than opening `index.html` directly:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-then open `http://localhost:8000/`.
-ictional-data public demo of the monash-abroad-tracker viewer (portfolio use, no real Monash data)
+Then open:
+
+```text
+http://localhost:8000/
+```
+
+## Why the production repository is private
+
+The production tracker contains the actual data-collection implementation and real collected exchange-program data. Keeping it private prevents assessment-related source code and production data from being exposed while still allowing the interface and data model to be demonstrated publicly.
+
+## Disclaimer
+
+This is an independent portfolio project and is **not an official Monash University service**. The fictional demo records must not be used for exchange planning, eligibility decisions, or application advice.
