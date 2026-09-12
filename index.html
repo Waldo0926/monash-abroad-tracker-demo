@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monash Exchange Tracker — Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --ink: #1c2430;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --accent: #1e5eff;
+    --green: #1a8f4c;
+    --green-bg: #e7f7ee;
+    --yellow: #a5760a;
+    --yellow-bg: #fdf3d9;
+    --red: #c62b3f;
+    --red-bg: #fbe8ea;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  header {
+    padding: 28px 24px 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header h1 { font-size: 1.5rem; margin: 0 0 6px; }
+  header p { color: var(--muted); margin: 4px 0; font-size: 0.92rem; }
+  .banner {
+    background: #fff7e6;
+    border: 1px solid #f0d38a;
+    color: #6b4c02;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+  main { max-width: 1100px; margin: 0 auto; padding: 0 24px 48px; }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .controls input, .controls select {
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: var(--card);
+  }
+  .controls input { flex: 1 1 220px; }
+  .meta-line { color: var(--muted); font-size: 0.82rem; margin-bottom: 12px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(20, 30, 50, 0.06);
+    font-size: 0.88rem;
+  }
+  th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    cursor: pointer;
+    user-select: none;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+    background: #fbfcfd;
+  }
+  th:hover { color: var(--ink); }
+  tr:last-child td { border-bottom: none; }
+  .pill {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .pill.open { background: var(--green-bg); color: var(--green); }
+  .pill.closed { background: var(--red-bg); color: var(--red); }
+  .dot { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+  .dot::before {
+    content: "";
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block;
+  }
+  .dot.Green::before { background: var(--green); }
+  .dot.Yellow::before { background: var(--yellow); }
+  .dot.Red::before { background: var(--red); }
+  .dot.Closed::before { background: var(--muted); }
+  .warn { color: var(--yellow); margin-left: 4px; cursor: help; }
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--accent); }
+  #empty { padding: 24px; text-align: center; color: var(--muted); display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Monash Exchange Tracker — public demo</h1>
+  <p>Search, filter and sort a fictional dataset shaped exactly like the real tracker's output.</p>
+  <div class="banner">
+    This page runs on made-up universities and made-up numbers. It exists only to show the viewer working end to end,
+    because the repository with real data stays private during active coursework assessment.
+    Source code: <a href="https://github.com/Waldo0926/monash-abroad-tracker-demo">this repo</a>.
+  </div>
+</header>
+<main>
+  <div class="controls">
+    <input id="q" type="text" placeholder="Search university or country…">
+    <select id="fStatus"><option value="">Status: all</option></select>
+    <select id="fRegion"><option value="">Region: all</option></select>
+    <select id="fAvail"><option value="">Availability: all</option></select>
+  </div>
+  <div class="meta-line" id="metaLine"></div>
+  <table id="tbl">
+    <thead>
+      <tr>
+        <th data-key="university">University</th>
+        <th data-key="country">Country</th>
+        <th data-key="region">Region</th>
+        <th data-key="open_closed">Status</th>
+        <th data-key="exchange_availability">Availability</th>
+        <th data-key="previous_round_cutoff">Last cut-off</th>
+        <th data-key="anticipated_places">Places</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div id="empty">Nothing matches these filters. Try relaxing one.</div>
+</main>
+<footer>
+  Data file: <a href="./data/current.json">current.json</a>.
+  Fictional demo build of <a href="https://github.com/Waldo0926/monash-abroad-tracker">monash-abroad-tracker</a>.
+</footer>
+
+<script>
+let programs = [];
+let sortKey = "university";
+let sortDir = 1;
+
+function fill(select, values) {
+  values.forEach(v => {
+    const opt = document.createElement("option");
+    opt.value = v; opt.textContent = v;
+    select.appendChild(opt);
+  });
+}
+
+function render() {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const fStatus = document.getElementById("fStatus").value;
+  const fRegion = document.getElementById("fRegion").value;
+  const fAvail = document.getElementById("fAvail").value;
+
+  let rows = programs.filter(p => {
+    if (q && !(p.university.toLowerCase().includes(q) || p.country.toLowerCase().includes(q))) return false;
+    if (fStatus && p.open_closed !== fStatus) return false;
+    if (fRegion && !(p.region || []).includes(fRegion)) return false;
+    if (fAvail && p.exchange_availability !== fAvail) return false;
+    return true;
+  });
+
+  rows.sort((a, b) => {
+    const av = (a[sortKey] ?? "").toString();
+    const bv = (b[sortKey] ?? "").toString();
+    return av.localeCompare(bv) * sortDir;
+  });
+
+  const tbody = document.getElementById("rows");
+  tbody.innerHTML = "";
+  document.getElementById("empty").style.display = rows.length ? "none" : "block";
+
+  rows.forEach(p => {
+    const tr = document.createElement("tr");
+    const mismatch = (p.search_detail_mismatch || []).length > 0;
+    tr.innerHTML = `
+      <td>${p.university}${mismatch ? '<span class="warn" title="Search page and detail page disagree on: ' + p.search_detail_mismatch.join(", ") + '">⚠</span>' : ""}</td>
+      <td>${p.country}</td>
+      <td>${(p.region || []).join(", ")}</td>
+      <td><span class="pill ${p.open_closed === "Open" ? "open" : "closed"}">${p.open_closed}</span></td>
+      <td><span class="dot ${p.exchange_availability}">${p.exchange_availability}</span></td>
+      <td>${p.previous_round_cutoff || "—"}</td>
+      <td>${p.anticipated_places || "—"}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+fetch("./data/current.json")
+  .then(r => r.json())
+  .then(data => {
+    programs = data.programs || [];
+    const meta = data.meta || {};
+    document.getElementById("metaLine").textContent =
+      `${programs.length} fictional programs · generated ${meta.generated_at || ""} · fake data, for demo purposes only`;
+
+    fill(document.getElementById("fStatus"), [...new Set(programs.map(p => p.open_closed))].sort());
+    fill(document.getElementById("fRegion"), [...new Set(programs.flatMap(p => p.region || []))].sort());
+    fill(document.getElementById("fAvail"), [...new Set(programs.map(p => p.exchange_availability))].sort());
+
+    document.querySelectorAll("th[data-key]").forEach(th => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.key;
+        if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+        render();
+      });
+    });
+    ["q", "fStatus", "fRegion", "fAvail"].forEach(id =>
+      document.getElementById(id).addEventListener("input", render)
+    );
+    render();
+  })
+  .catch(err => {
+    document.getElementById("metaLine").textContent = "Could not load data/current.json: " + err;
+  });
+</script>
+</body>
+</html>
