@@ -2,7 +2,7 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-[**Live demo**](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [Demo dataset](./data/current.json)
+[**Public demo**](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [Demo dataset](./data/current.json)
 
 A portfolio-safe public demonstration of my **Monash Abroad exchange-program tracker**.
 
@@ -15,11 +15,15 @@ This repository demonstrates the viewer without publishing production data or sc
 ## What this demo shows
 
 - Search by university or country
-- Filter by program status, region and exchange availability
-- Sort table columns interactively
-- Display previous-round cut-offs and anticipated places
-- Surface search/detail consistency warnings
-- Load the same canonical JSON structure used by the private tracker
+- Production-style sidebar filtering with checkbox facets for region, program terms, duration, eligible campus, faculties/schools, application status and exchange availability
+- OR matching within a facet and AND matching across different facets
+- Interactive table-column sorting
+- Previous-round cut-offs and anticipated places
+- Search/detail consistency warnings
+- The same canonical JSON field structure used by the private tracker
+- Responsive layout that collapses the two-column viewer cleanly on smaller screens
+
+The page intentionally describes itself as a **static portfolio dataset**, rather than a live production feed.
 
 ## Public demo vs production project
 
@@ -28,7 +32,7 @@ This repository demonstrates the viewer without publishing production data or sc
 | Scraper / crawler | Included in private repository | Not included |
 | Program-data schema | Canonical tracker schema | Same structure for demonstrated fields |
 | Dataset | Real collected records | 18 fictional records |
-| Viewer | Production viewer | Portfolio-safe static viewer |
+| Viewer | Production viewer | Portfolio-safe viewer using the same filtering concepts |
 | Automated collection | Scheduled workflow | Not included |
 | Historical change tracking | Yes | Represented by static demo metadata only |
 
