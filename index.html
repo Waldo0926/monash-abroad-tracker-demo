@@ -293,7 +293,7 @@ function updateFacetCounts(){
 }
 
 function sortValue(p,key){
-  if(key==="change_sort") return changeChips(p).length;
+  if(key==="change_sort") return String(changeChips(p).length);
   const value=p[key];
   return Array.isArray(value)?value.join(" | "):String(value??"");
 }
