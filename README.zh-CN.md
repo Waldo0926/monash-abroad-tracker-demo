@@ -2,7 +2,7 @@
 
 [English](README.md) · **简体中文**
 
-[在线演示](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [演示数据](./data/current.json)
+[公开演示](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [演示数据](./data/current.json)
 
 这是 **Monash Abroad 交换项目变化追踪器** 的公开作品集演示版。
 
@@ -15,11 +15,15 @@
 ## 这个 Demo 展示什么
 
 - 按大学或国家/地区搜索
-- 按项目状态、地区和 Exchange Availability 筛选
-- 点击表头进行排序
+- 使用接近正式版的左侧多维 checkbox 筛选器：地区、学期、时长、可申请校区、可申请学院/学校、申请状态和 Exchange Availability
+- 同一筛选维度内采用 OR，不同筛选维度之间采用 AND
+- 点击表头进行交互式排序
 - 展示上一轮分数线和预计名额
 - 展示搜索页与详情页字段不一致的警告
-- 使用与私有正式项目一致的 canonical JSON 结构来驱动页面
+- 使用与私有正式项目一致的 canonical JSON 字段结构驱动页面
+- 响应式布局：小屏幕下会把左右两栏自然折叠为单栏
+
+页面会明确标注为 **static portfolio dataset（静态作品集数据）**，避免让访问者误以为这是实时生产数据页面。
 
 ## 公开 Demo 与正式项目的区别
 
@@ -28,7 +32,7 @@
 | Scraper / crawler | 位于私有仓库 | 不公开 |
 | 数据结构 | 正式 tracker schema | 演示字段使用同样结构 |
 | 数据 | 实际抓取记录 | 18 条完全虚构记录 |
-| Viewer | 正式查看器 | 作品集安全版静态查看器 |
+| Viewer | 正式查看器 | 使用相同筛选思路的作品集安全版查看器 |
 | 自动抓取 | 定时执行 | 不包含 |
 | 历史变化追踪 | 有 | Demo 只用静态 metadata 表示 |
 
@@ -36,7 +40,7 @@
 
 ```text
 .
-├── index.html          # 静态搜索 / 筛选 / 排序页面
+├── index.html          # 静态搜索 / 多维筛选 / 排序页面
 └── data/
     └── current.json    # 使用 tracker schema 的完全虚构数据
 ```
