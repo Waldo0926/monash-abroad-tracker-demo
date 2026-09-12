@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "fictional_data": true,
+    "baseline_label": "Fictional previous round",
+    "note": "This file contains synthetic previous-round values used only to demonstrate change detection in the public portfolio demo."
+  },
+  "by_university": {
+    "Northholm University": {
+      "open_closed": "Closed",
+      "exchange_availability": "Yellow",
+      "previous_round_cutoff": "85 WAM",
+      "previous_round_cutoff_value": 85,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "2-3 places",
+      "anticipated_places_max": 3
+    },
+    "Fictional Institute of Technology": {
+      "open_closed": "Open",
+      "exchange_availability": "Green",
+      "previous_round_cutoff": "3.0 GPA",
+      "previous_round_cutoff_value": 3.0,
+      "previous_round_cutoff_scale": "GPA",
+      "anticipated_places": "5-6 places",
+      "anticipated_places_max": 6
+    },
+    "Westbridge University": {
+      "open_closed": "Open",
+      "exchange_availability": "Red",
+      "previous_round_cutoff": "80 WAM",
+      "previous_round_cutoff_value": 80,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "1 place",
+      "anticipated_places_max": 1
+    },
+    "Eastmere Technical University": {
+      "open_closed": "Open",
+      "exchange_availability": "Yellow",
+      "previous_round_cutoff": "78 WAM",
+      "previous_round_cutoff_value": 78,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "3-4 places",
+      "anticipated_places_max": 4
+    },
+    "Lakehaven University": {
+      "open_closed": "Open",
+      "exchange_availability": "Red",
+      "previous_round_cutoff": "3.2 GPA",
+      "previous_round_cutoff_value": 3.2,
+      "previous_round_cutoff_scale": "GPA",
+      "anticipated_places": "1-2 places",
+      "anticipated_places_max": 2
+    },
+    "Southern Crossroads University": {
+      "open_closed": "Open",
+      "exchange_availability": "Green",
+      "previous_round_cutoff": "72 WAM",
+      "previous_round_cutoff_value": 72,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "5-6 places",
+      "anticipated_places_max": 6
+    },
+    "Metrovale University": {
+      "open_closed": "Open",
+      "exchange_availability": "Yellow",
+      "previous_round_cutoff": "3.4 GPA",
+      "previous_round_cutoff_value": 3.4,
+      "previous_round_cutoff_scale": "GPA",
+      "anticipated_places": "2-3 places",
+      "anticipated_places_max": 3
+    },
+    "Redwood Metropolitan University": {
+      "open_closed": "Closed",
+      "exchange_availability": "Closed",
+      "previous_round_cutoff": "3.5 GPA",
+      "previous_round_cutoff_value": 3.5,
+      "previous_round_cutoff_scale": "GPA",
+      "anticipated_places": "0 places",
+      "anticipated_places_max": 0
+    },
+    "Harbor City University": {
+      "new": true
+    }
+  }
+}
