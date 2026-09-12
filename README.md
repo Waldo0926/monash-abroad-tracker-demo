@@ -1,5 +1,7 @@
 # Monash Exchange Tracker — Public Demo
 
+**English** · [简体中文](README.zh-CN.md)
+
 [**Live demo**](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [Demo dataset](./data/current.json)
 
 A portfolio-safe public demonstration of my **Monash Abroad exchange-program tracker**.
