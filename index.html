@@ -2,236 +2,240 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Monash Exchange Tracker — Demo</title>
+<title>Monash Exchange Tracker — Public Demo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root {
-    --ink: #1c2430;
-    --muted: #64748b;
-    --line: #e2e8f0;
-    --bg: #f7f8fa;
-    --card: #ffffff;
-    --accent: #1e5eff;
-    --green: #1a8f4c;
-    --green-bg: #e7f7ee;
-    --yellow: #a5760a;
-    --yellow-bg: #fdf3d9;
-    --red: #c62b3f;
-    --red-bg: #fbe8ea;
+    --ink:#1f2937; --muted:#64748b; --line:#e2e8f0; --bg:#f7f8fa; --card:#fff;
+    --accent:#1e5eff; --green:#148a4b; --green-bg:#e8f7ee; --yellow:#ad7900;
+    --yellow-bg:#fff4d6; --red:#c92d43; --red-bg:#fde9ec;
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: var(--ink);
-    background: var(--bg);
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+  a{color:var(--accent)}
+  header{max-width:1440px;margin:0 auto;padding:28px 22px 16px}
+  header h1{font-size:1.55rem;margin:0 0 5px}
+  header p{margin:0;color:var(--muted);font-size:.93rem}
+  .banner{margin-top:13px;padding:10px 13px;border:1px solid #efd188;border-radius:9px;background:#fff8e8;color:#6b4b00;font-size:.84rem}
+  main{max-width:1440px;margin:0 auto;padding:0 22px 44px}
+  .layout{display:grid;grid-template-columns:265px minmax(0,1fr);gap:18px;align-items:start}
+  .sidebar{background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden;position:sticky;top:12px}
+  .side-head{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid var(--line)}
+  .side-head strong{font-size:.98rem}
+  .clear-btn{border:1px solid #cfe0ff;background:#f7faff;color:#1762d6;border-radius:7px;padding:5px 9px;font-size:.78rem;cursor:pointer}
+  .search-wrap{padding:11px 12px;border-bottom:1px solid var(--line)}
+  #q{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:.88rem;background:#fff}
+  details.facet{border-bottom:1px solid var(--line)}
+  details.facet:last-child{border-bottom:0}
+  details.facet summary{cursor:pointer;list-style:none;padding:11px 13px;font-size:.88rem;font-weight:650;display:flex;justify-content:space-between;align-items:center}
+  details.facet summary::-webkit-details-marker{display:none}
+  details.facet summary::after{content:"+";font-weight:500;color:var(--muted)}
+  details.facet[open] summary::after{content:"−"}
+  .facet-options{padding:0 12px 10px;max-height:240px;overflow:auto}
+  .facet-option{display:grid;grid-template-columns:18px 1fr auto;gap:6px;align-items:start;padding:4px 0;font-size:.82rem;line-height:1.28}
+  .facet-option input{margin:2px 0 0}
+  .facet-option .count{color:#94a3b8;font-variant-numeric:tabular-nums}
+  .content{min-width:0}
+  .meta-line{color:var(--muted);font-size:.83rem;margin:3px 0 10px}
+  .table-wrap{overflow:auto;border-radius:10px;box-shadow:0 1px 3px rgba(20,30,50,.06)}
+  table{width:100%;min-width:850px;border-collapse:collapse;background:var(--card);font-size:.87rem}
+  th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{cursor:pointer;user-select:none;color:var(--muted);font-weight:650;white-space:nowrap;background:#fbfcfd;position:sticky;top:0;z-index:1}
+  th:hover{color:var(--ink)}
+  tr:last-child td{border-bottom:0}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.76rem;font-weight:650}
+  .pill.open{background:var(--green-bg);color:var(--green)}
+  .pill.closed{background:var(--red-bg);color:var(--red)}
+  .dot{display:inline-flex;align-items:center;gap:6px;font-weight:650}
+  .dot::before{content:"";width:8px;height:8px;border-radius:50%;display:inline-block}
+  .dot.Green::before{background:var(--green)}
+  .dot.Yellow::before{background:var(--yellow)}
+  .dot.Red::before{background:var(--red)}
+  .dot.Closed::before{background:var(--muted)}
+  .warn{color:var(--yellow);margin-left:4px;cursor:help}
+  #empty{display:none;padding:24px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line);border-top:0}
+  footer{max-width:1440px;margin:0 auto;padding:0 22px 36px;color:var(--muted);font-size:.81rem}
+  @media(max-width:820px){
+    header,main,footer{padding-left:14px;padding-right:14px}
+    .layout{grid-template-columns:1fr}
+    .sidebar{position:static}
+    .facet-options{max-height:180px}
   }
-  header {
-    padding: 28px 24px 18px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  header h1 { font-size: 1.5rem; margin: 0 0 6px; }
-  header p { color: var(--muted); margin: 4px 0; font-size: 0.92rem; }
-  .banner {
-    background: #fff7e6;
-    border: 1px solid #f0d38a;
-    color: #6b4c02;
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 0.85rem;
-    margin-top: 12px;
-  }
-  main { max-width: 1100px; margin: 0 auto; padding: 0 24px 48px; }
-  .controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .controls input, .controls select {
-    padding: 8px 10px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    font-size: 0.9rem;
-    background: var(--card);
-  }
-  .controls input { flex: 1 1 220px; }
-  .meta-line { color: var(--muted); font-size: 0.82rem; margin-bottom: 12px; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--card);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(20, 30, 50, 0.06);
-    font-size: 0.88rem;
-  }
-  th, td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--line);
-    text-align: left;
-    vertical-align: top;
-  }
-  th {
-    cursor: pointer;
-    user-select: none;
-    color: var(--muted);
-    font-weight: 600;
-    white-space: nowrap;
-    background: #fbfcfd;
-  }
-  th:hover { color: var(--ink); }
-  tr:last-child td { border-bottom: none; }
-  .pill {
-    display: inline-block;
-    padding: 2px 9px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 600;
-  }
-  .pill.open { background: var(--green-bg); color: var(--green); }
-  .pill.closed { background: var(--red-bg); color: var(--red); }
-  .dot { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
-  .dot::before {
-    content: "";
-    width: 9px; height: 9px; border-radius: 50%;
-    display: inline-block;
-  }
-  .dot.Green::before { background: var(--green); }
-  .dot.Yellow::before { background: var(--yellow); }
-  .dot.Red::before { background: var(--red); }
-  .dot.Closed::before { background: var(--muted); }
-  .warn { color: var(--yellow); margin-left: 4px; cursor: help; }
-  footer {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px 40px;
-    color: var(--muted);
-    font-size: 0.82rem;
-  }
-  footer a { color: var(--accent); }
-  #empty { padding: 24px; text-align: center; color: var(--muted); display: none; }
 </style>
 </head>
 <body>
 <header>
   <h1>Monash Exchange Tracker — public demo</h1>
-  <p>Search, filter and sort a fictional dataset shaped exactly like the real tracker's output.</p>
+  <p>A portfolio-safe demonstration of the production viewer using the same filtering concepts and a fully fictional dataset.</p>
   <div class="banner">
-    This page runs on made-up universities and made-up numbers. It exists only to show the viewer working end to end,
-    because the repository with real data stays private during active coursework assessment.
-    Source code: <a href="https://github.com/Waldo0926/monash-abroad-tracker-demo">this repo</a>.
+    Every institution, country, URL, score, availability value and place count shown here is made up. No production Monash exchange data is published in this demo.
+    Source: <a href="https://github.com/Waldo0926/monash-abroad-tracker-demo">public demo repository</a>.
   </div>
 </header>
 <main>
-  <div class="controls">
-    <input id="q" type="text" placeholder="Search university or country…">
-    <select id="fStatus"><option value="">Status: all</option></select>
-    <select id="fRegion"><option value="">Region: all</option></select>
-    <select id="fAvail"><option value="">Availability: all</option></select>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-head"><strong>Filters</strong><button id="clearFilters" class="clear-btn">Clear</button></div>
+      <div class="search-wrap"><input id="q" type="search" placeholder="Search university / country…"></div>
+      <div id="facetHost"></div>
+    </aside>
+
+    <section class="content">
+      <div id="metaLine" class="meta-line"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-key="university">University</th>
+              <th data-key="country">Country</th>
+              <th data-key="region">Region</th>
+              <th data-key="open_closed">Status</th>
+              <th data-key="exchange_availability">Availability</th>
+              <th data-key="previous_round_cutoff">Last cut-off</th>
+              <th data-key="anticipated_places">Places</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div id="empty">Nothing matches these filters. Try clearing one or more selections.</div>
+      </div>
+    </section>
   </div>
-  <div class="meta-line" id="metaLine"></div>
-  <table id="tbl">
-    <thead>
-      <tr>
-        <th data-key="university">University</th>
-        <th data-key="country">Country</th>
-        <th data-key="region">Region</th>
-        <th data-key="open_closed">Status</th>
-        <th data-key="exchange_availability">Availability</th>
-        <th data-key="previous_round_cutoff">Last cut-off</th>
-        <th data-key="anticipated_places">Places</th>
-      </tr>
-    </thead>
-    <tbody id="rows"></tbody>
-  </table>
-  <div id="empty">Nothing matches these filters. Try relaxing one.</div>
 </main>
 <footer>
-  Data file: <a href="./data/current.json">current.json</a>.
-  Fictional demo build of <a href="https://github.com/Waldo0926/monash-abroad-tracker">monash-abroad-tracker</a>.
+  <a href="./data/current.json">Fictional demo dataset</a> · Portfolio demo of the private production tracker.
 </footer>
-
 <script>
-let programs = [];
-let sortKey = "university";
-let sortDir = 1;
+let programs=[];
+let sortKey="university";
+let sortDir=1;
 
-function fill(select, values) {
-  values.forEach(v => {
-    const opt = document.createElement("option");
-    opt.value = v; opt.textContent = v;
-    select.appendChild(opt);
-  });
+const FACETS=[
+  {key:"region",label:"Region",list:true,open:true},
+  {key:"semester_availability",label:"Program terms",list:true,open:true},
+  {key:"program_duration",label:"Duration",list:true},
+  {key:"search_eligible_campus",label:"Eligible campus",list:true},
+  {key:"search_eligible_faculties",label:"Faculties / schools available",list:true,open:true},
+  {key:"open_closed",label:"Application status",list:false},
+  {key:"exchange_availability",label:"Exchange availability",list:false}
+];
+
+function asList(v){
+  if(Array.isArray(v)) return v.filter(Boolean);
+  if(v===null||v===undefined||v==="") return [];
+  return [String(v)];
 }
 
-function render() {
-  const q = document.getElementById("q").value.trim().toLowerCase();
-  const fStatus = document.getElementById("fStatus").value;
-  const fRegion = document.getElementById("fRegion").value;
-  const fAvail = document.getElementById("fAvail").value;
+function selectedValues(key){
+  return [...document.querySelectorAll(`input[data-facet="${key}"]:checked`)].map(el=>el.value);
+}
 
-  let rows = programs.filter(p => {
-    if (q && !(p.university.toLowerCase().includes(q) || p.country.toLowerCase().includes(q))) return false;
-    if (fStatus && p.open_closed !== fStatus) return false;
-    if (fRegion && !(p.region || []).includes(fRegion)) return false;
-    if (fAvail && p.exchange_availability !== fAvail) return false;
-    return true;
+function buildFacets(){
+  const host=document.getElementById("facetHost");
+  host.innerHTML="";
+  for(const facet of FACETS){
+    const counts=new Map();
+    for(const p of programs){
+      for(const value of asList(p[facet.key])) counts.set(value,(counts.get(value)||0)+1);
+    }
+    const details=document.createElement("details");
+    details.className="facet";
+    details.open=!!facet.open;
+    const summary=document.createElement("summary");
+    summary.textContent=facet.label;
+    details.appendChild(summary);
+    const options=document.createElement("div");
+    options.className="facet-options";
+    [...counts.entries()].sort((a,b)=>a[0].localeCompare(b[0])).forEach(([value,count])=>{
+      const label=document.createElement("label");
+      label.className="facet-option";
+      const input=document.createElement("input");
+      input.type="checkbox";
+      input.value=value;
+      input.dataset.facet=facet.key;
+      input.addEventListener("change",render);
+      const text=document.createElement("span");
+      text.textContent=value;
+      const n=document.createElement("span");
+      n.className="count";
+      n.textContent=count;
+      label.append(input,text,n);
+      options.appendChild(label);
+    });
+    details.appendChild(options);
+    host.appendChild(details);
+  }
+}
+
+function matchesFacet(program,facet){
+  const selected=selectedValues(facet.key);
+  if(!selected.length) return true;
+  const values=asList(program[facet.key]);
+  return selected.some(value=>values.includes(value));
+}
+
+function sortValue(p,key){
+  const value=p[key];
+  return Array.isArray(value)?value.join(" | "):String(value??"");
+}
+
+function render(){
+  const q=document.getElementById("q").value.trim().toLowerCase();
+  let rows=programs.filter(p=>{
+    const haystack=`${p.university||""} ${p.country||""}`.toLowerCase();
+    if(q&&!haystack.includes(q)) return false;
+    return FACETS.every(f=>matchesFacet(p,f));
   });
 
-  rows.sort((a, b) => {
-    const av = (a[sortKey] ?? "").toString();
-    const bv = (b[sortKey] ?? "").toString();
-    return av.localeCompare(bv) * sortDir;
-  });
+  rows.sort((a,b)=>sortValue(a,sortKey).localeCompare(sortValue(b,sortKey),undefined,{numeric:true})*sortDir);
 
-  const tbody = document.getElementById("rows");
-  tbody.innerHTML = "";
-  document.getElementById("empty").style.display = rows.length ? "none" : "block";
+  document.getElementById("metaLine").textContent=
+    `${rows.length} of ${programs.length} fictional programs · static portfolio dataset · no production data`;
 
-  rows.forEach(p => {
-    const tr = document.createElement("tr");
-    const mismatch = (p.search_detail_mismatch || []).length > 0;
-    tr.innerHTML = `
-      <td>${p.university}${mismatch ? '<span class="warn" title="Search page and detail page disagree on: ' + p.search_detail_mismatch.join(", ") + '">⚠</span>' : ""}</td>
-      <td>${p.country}</td>
-      <td>${(p.region || []).join(", ")}</td>
-      <td><span class="pill ${p.open_closed === "Open" ? "open" : "closed"}">${p.open_closed}</span></td>
-      <td><span class="dot ${p.exchange_availability}">${p.exchange_availability}</span></td>
-      <td>${p.previous_round_cutoff || "—"}</td>
-      <td>${p.anticipated_places || "—"}</td>
-    `;
+  const tbody=document.getElementById("rows");
+  tbody.innerHTML="";
+  document.getElementById("empty").style.display=rows.length?"none":"block";
+
+  rows.forEach(p=>{
+    const tr=document.createElement("tr");
+    const mismatch=(p.search_detail_mismatch||[]).length>0;
+    const warning=mismatch?`<span class="warn" title="Search page and detail page disagree on: ${(p.search_detail_mismatch||[]).join(", ")}">⚠</span>`:"";
+    tr.innerHTML=`
+      <td>${p.university||"—"}${warning}</td>
+      <td>${p.country||"—"}</td>
+      <td>${asList(p.region).join(", ")||"—"}</td>
+      <td><span class="pill ${p.open_closed==="Open"?"open":"closed"}">${p.open_closed||"—"}</span></td>
+      <td><span class="dot ${p.exchange_availability||""}">${p.exchange_availability||"—"}</span></td>
+      <td>${p.previous_round_cutoff||"—"}</td>
+      <td>${p.anticipated_places||"—"}</td>`;
     tbody.appendChild(tr);
   });
 }
 
+document.getElementById("q").addEventListener("input",render);
+document.getElementById("clearFilters").addEventListener("click",()=>{
+  document.getElementById("q").value="";
+  document.querySelectorAll('input[type="checkbox"][data-facet]').forEach(el=>el.checked=false);
+  render();
+});
+
+document.querySelectorAll("th[data-key]").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const key=th.dataset.key;
+    if(sortKey===key) sortDir*=-1; else {sortKey=key;sortDir=1;}
+    render();
+  });
+});
+
 fetch("./data/current.json")
-  .then(r => r.json())
-  .then(data => {
-    programs = data.programs || [];
-    const meta = data.meta || {};
-    document.getElementById("metaLine").textContent =
-      `${programs.length} fictional programs · generated ${meta.generated_at || ""} · fake data, for demo purposes only`;
-
-    fill(document.getElementById("fStatus"), [...new Set(programs.map(p => p.open_closed))].sort());
-    fill(document.getElementById("fRegion"), [...new Set(programs.flatMap(p => p.region || []))].sort());
-    fill(document.getElementById("fAvail"), [...new Set(programs.map(p => p.exchange_availability))].sort());
-
-    document.querySelectorAll("th[data-key]").forEach(th => {
-      th.addEventListener("click", () => {
-        const key = th.dataset.key;
-        if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
-        render();
-      });
-    });
-    ["q", "fStatus", "fRegion", "fAvail"].forEach(id =>
-      document.getElementById(id).addEventListener("input", render)
-    );
+  .then(r=>{if(!r.ok) throw new Error(`HTTP ${r.status}`); return r.json();})
+  .then(data=>{
+    programs=data.programs||[];
+    buildFacets();
     render();
   })
-  .catch(err => {
-    document.getElementById("metaLine").textContent = "Could not load data/current.json: " + err;
+  .catch(err=>{
+    document.getElementById("metaLine").textContent="Could not load data/current.json: "+err;
   });
 </script>
 </body>
