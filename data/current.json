@@ -1,1038 +1,1284 @@
 {
   "schema_version": 1,
   "meta": {
-    "generated_at": "2026-09-13T00:00:00Z",
-    "started_at": "2026-09-13T00:00:00Z",
-    "source": "fictional-demo",
-    "program_type_filter": "Semester exchange",
-    "cards_on_search_page": 18,
+    "generated_at": "2026-09-13T03:00:00Z",
+    "started_at": "2026-09-13T01:35:00Z",
+    "source": "https://demo.example.org/study-abroad/outbound/program-search",
+    "program_type_filter": "semester exchange",
+    "cards_on_search_page": 24,
     "programs_tracked": 18,
     "detail_fetch_failures": 0,
     "detail_pages_reused_from_cache": 0,
-    "requests_made": 0,
-    "crawl_delay_seconds": 0,
+    "requests_made": 19,
+    "crawl_delay_seconds": 30,
     "changes": {
-      "added": 18,
+      "added": 0,
       "removed": 0,
-      "modified": 0,
-      "inconsistent": 2,
-      "changes": 20
+      "modified": 2,
+      "inconsistent": 1,
+      "changes": 3
     },
     "inconsistent_programs": [
-      "https://demo.invalid/exchange/redwood-metropolitan-university",
-      "https://demo.invalid/exchange/metrovale-university"
+      "Thornfield University"
     ],
-    "fictional_data": true,
-    "note": "All institutions, countries, URLs, scores, availability values and place counts in this file are fictional and exist only for the public portfolio demo."
+    "note": "This is a fictional demo dataset for portfolio purposes. No real Monash data is included. See the README for details."
   },
   "programs": [
     {
-      "university": "Northholm University",
-      "country": "Norland",
-      "url": "https://demo.invalid/exchange/northholm-university",
+      "university": "University of Nordholm",
+      "country": "Norvenia",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/university-of-nordholm_",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "78 WAM",
-      "previous_round_cutoff": "83 WAM",
-      "anticipated_places": "4-6 places",
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "65% WAM",
+      "previous_round_cutoff": "65% WAM",
+      "anticipated_places": "8 places",
       "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
+      "detail_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Business and Economics"
+      ],
       "extra_requirements": [],
-      "minimum_result_value": 78.0,
+      "minimum_result_value": 65,
       "minimum_result_scale": "WAM",
-      "minimum_result_note": "78 WAM",
-      "previous_round_cutoff_value": 83,
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 65,
       "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 4,
-      "anticipated_places_max": 6,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-01",
-      "raw_page_hash": "demo-raw-01",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
+      "anticipated_places_min": 8,
+      "anticipated_places_max": 8,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
       "search_detail_mismatch": [],
       "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Europe",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "78 WAM",
-        "previous_round_cutoff": "83 WAM",
-        "anticipated_places": "4-6 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs",
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "University of Nordholm"
     },
     {
       "university": "Fictional Institute of Technology",
-      "country": "Pacifica",
-      "url": "https://demo.invalid/exchange/fictional-institute-of-technology",
+      "country": "Suvalia",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/fictional-institute-of-technology_",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Asia"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "3.0 GPA",
-      "previous_round_cutoff": "3.2 GPA",
-      "anticipated_places": "2-4 places",
+      "region": [
+        "Asia"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Engineering"
+      ],
+      "language_of_instruction": [
+        "English",
+        "Suvalian"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "70% WAM",
+      "previous_round_cutoff": "72% WAM",
+      "anticipated_places": "4 places",
       "exchange_availability": "Yellow",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Engineering"
+      ],
       "extra_requirements": [],
-      "minimum_result_value": 3.0,
-      "minimum_result_scale": "GPA",
-      "minimum_result_note": "3.0 GPA",
-      "previous_round_cutoff_value": 3.2,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places_min": 2,
-      "anticipated_places_max": 4,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-02",
-      "raw_page_hash": "demo-raw-02",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Asia",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "3.0 GPA",
-        "previous_round_cutoff": "3.2 GPA",
-        "anticipated_places": "2-4 places",
-        "exchange_availability": "Yellow",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Westbridge University",
-      "country": "Albion",
-      "url": "https://demo.invalid/exchange/westbridge-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Closed",
-      "region": ["Europe"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "75 WAM",
-      "previous_round_cutoff": "80 WAM",
-      "anticipated_places": "0 places",
-      "exchange_availability": "Closed",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": [],
-      "minimum_result_value": 75.0,
+      "minimum_result_value": 70,
       "minimum_result_scale": "WAM",
-      "minimum_result_note": "75 WAM",
-      "previous_round_cutoff_value": 80,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 0,
-      "anticipated_places_max": 0,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-03",
-      "raw_page_hash": "demo-raw-03",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Closed",
-        "region": "Europe",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "75 WAM",
-        "previous_round_cutoff": "80 WAM",
-        "anticipated_places": "0 places",
-        "exchange_availability": "Closed",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Eastmere Technical University",
-      "country": "Estavia",
-      "url": "https://demo.invalid/exchange/eastmere-technical-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "70 WAM",
-      "previous_round_cutoff": "75 WAM",
-      "anticipated_places": "6-8 places",
-      "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["Faculty-specific"],
-      "extra_requirements": [],
-      "minimum_result_value": 70.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "70 WAM",
-      "previous_round_cutoff_value": 75,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 6,
-      "anticipated_places_max": 8,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-04",
-      "raw_page_hash": "demo-raw-04",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Europe",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "70 WAM",
-        "previous_round_cutoff": "75 WAM",
-        "anticipated_places": "6-8 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "Faculty-specific",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Lakehaven University",
-      "country": "Canterra",
-      "url": "https://demo.invalid/exchange/lakehaven-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Americas"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "2.8 GPA",
-      "previous_round_cutoff": "3.0 GPA",
-      "anticipated_places": "3-5 places",
-      "exchange_availability": "Yellow",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": ["Nomination required"],
-      "minimum_result_value": 2.8,
-      "minimum_result_scale": "GPA",
-      "minimum_result_note": "2.8 GPA",
-      "previous_round_cutoff_value": 3.0,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places_min": 3,
-      "anticipated_places_max": 5,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-05",
-      "raw_page_hash": "demo-raw-05",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Americas",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "2.8 GPA",
-        "previous_round_cutoff": "3.0 GPA",
-        "anticipated_places": "3-5 places",
-        "exchange_availability": "Yellow",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": "Nomination required"
-      }
-    },
-    {
-      "university": "Southern Crossroads University",
-      "country": "Australis",
-      "url": "https://demo.invalid/exchange/southern-crossroads-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Oceania"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "65 WAM",
-      "previous_round_cutoff": "70 WAM",
-      "anticipated_places": "8-10 places",
-      "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": [],
-      "minimum_result_value": 65.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "65 WAM",
-      "previous_round_cutoff_value": 70,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 8,
-      "anticipated_places_max": 10,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-06",
-      "raw_page_hash": "demo-raw-06",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Oceania",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "65 WAM",
-        "previous_round_cutoff": "70 WAM",
-        "anticipated_places": "8-10 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Redwood Metropolitan University",
-      "country": "Columbia Nova",
-      "url": "https://demo.invalid/exchange/redwood-metropolitan-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Americas"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "3.2 GPA",
-      "previous_round_cutoff": "3.4 GPA",
-      "anticipated_places": "1-2 places",
-      "exchange_availability": "Red",
-      "detail_eligible_campus": ["Australia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": [],
-      "minimum_result_value": 3.2,
-      "minimum_result_scale": "GPA",
-      "minimum_result_note": "3.2 GPA",
-      "previous_round_cutoff_value": 3.4,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places_min": 1,
-      "anticipated_places_max": 2,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-07",
-      "raw_page_hash": "demo-raw-07",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": ["eligible_campus"],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Americas",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "3.2 GPA",
-        "previous_round_cutoff": "3.4 GPA",
-        "anticipated_places": "1-2 places",
-        "exchange_availability": "Red",
-        "detail_eligible_campus": "Australia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Aurora State University",
-      "country": "Nordica",
-      "url": "https://demo.invalid/exchange/aurora-state-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Closed",
-      "region": ["Europe"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "72 WAM",
-      "previous_round_cutoff": "77 WAM",
-      "anticipated_places": "0 places",
-      "exchange_availability": "Closed",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["Faculty-specific"],
-      "extra_requirements": [],
-      "minimum_result_value": 72.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "72 WAM",
-      "previous_round_cutoff_value": 77,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 0,
-      "anticipated_places_max": 0,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-08",
-      "raw_page_hash": "demo-raw-08",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Closed",
-        "region": "Europe",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "72 WAM",
-        "previous_round_cutoff": "77 WAM",
-        "anticipated_places": "0 places",
-        "exchange_availability": "Closed",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "Faculty-specific",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Harbor City University",
-      "country": "Pacifica",
-      "url": "https://demo.invalid/exchange/harbor-city-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Asia"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "68 WAM",
-      "previous_round_cutoff": "73 WAM",
-      "anticipated_places": "5-7 places",
-      "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": [],
-      "minimum_result_value": 68.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "68 WAM",
-      "previous_round_cutoff_value": 73,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 5,
-      "anticipated_places_max": 7,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-09",
-      "raw_page_hash": "demo-raw-09",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Asia",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "68 WAM",
-        "previous_round_cutoff": "73 WAM",
-        "anticipated_places": "5-7 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Bluepeak Institute of Science",
-      "country": "Helvetia Nova",
-      "url": "https://demo.invalid/exchange/bluepeak-institute-of-science",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "3.1 GPA",
-      "previous_round_cutoff": "3.3 GPA",
-      "anticipated_places": "2-3 places",
-      "exchange_availability": "Yellow",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": ["Nomination required"],
-      "minimum_result_value": 3.1,
-      "minimum_result_scale": "GPA",
-      "minimum_result_note": "3.1 GPA",
-      "previous_round_cutoff_value": 3.3,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places_min": 2,
-      "anticipated_places_max": 3,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-10",
-      "raw_page_hash": "demo-raw-10",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Europe",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "3.1 GPA",
-        "previous_round_cutoff": "3.3 GPA",
-        "anticipated_places": "2-3 places",
-        "exchange_availability": "Yellow",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": "Nomination required"
-      }
-    },
-    {
-      "university": "Sunvale University",
-      "country": "Solaria",
-      "url": "https://demo.invalid/exchange/sunvale-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Asia"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "70 WAM",
-      "previous_round_cutoff": "75 WAM",
-      "anticipated_places": "4-5 places",
-      "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": [],
-      "minimum_result_value": 70.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "70 WAM",
-      "previous_round_cutoff_value": 75,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 4,
-      "anticipated_places_max": 5,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-11",
-      "raw_page_hash": "demo-raw-11",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Asia",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "70 WAM",
-        "previous_round_cutoff": "75 WAM",
-        "anticipated_places": "4-5 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Rivergate University",
-      "country": "Freedonia",
-      "url": "https://demo.invalid/exchange/rivergate-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Americas"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "2.9 GPA",
-      "previous_round_cutoff": "3.1 GPA",
-      "anticipated_places": "5-6 places",
-      "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["Faculty-specific"],
-      "extra_requirements": [],
-      "minimum_result_value": 2.9,
-      "minimum_result_scale": "GPA",
-      "minimum_result_note": "2.9 GPA",
-      "previous_round_cutoff_value": 3.1,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places_min": 5,
-      "anticipated_places_max": 6,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-12",
-      "raw_page_hash": "demo-raw-12",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Americas",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "2.9 GPA",
-        "previous_round_cutoff": "3.1 GPA",
-        "anticipated_places": "5-6 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "Faculty-specific",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Cedar Coast University",
-      "country": "Canterra",
-      "url": "https://demo.invalid/exchange/cedar-coast-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Closed",
-      "region": ["Americas"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "75 WAM",
-      "previous_round_cutoff": "80 WAM",
-      "anticipated_places": "0 places",
-      "exchange_availability": "Closed",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": [],
-      "minimum_result_value": 75.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "75 WAM",
-      "previous_round_cutoff_value": 80,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 0,
-      "anticipated_places_max": 0,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-13",
-      "raw_page_hash": "demo-raw-13",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Closed",
-        "region": "Americas",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "75 WAM",
-        "previous_round_cutoff": "80 WAM",
-        "anticipated_places": "0 places",
-        "exchange_availability": "Closed",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Silverplain University",
-      "country": "Ardonia",
-      "url": "https://demo.invalid/exchange/silverplain-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "73 WAM",
-      "previous_round_cutoff": "78 WAM",
-      "anticipated_places": "2-4 places",
-      "exchange_availability": "Yellow",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": [],
-      "minimum_result_value": 73.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "73 WAM",
-      "previous_round_cutoff_value": 78,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 2,
-      "anticipated_places_max": 4,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-14",
-      "raw_page_hash": "demo-raw-14",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": [],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Europe",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "73 WAM",
-        "previous_round_cutoff": "78 WAM",
-        "anticipated_places": "2-4 places",
-        "exchange_availability": "Yellow",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
-    },
-    {
-      "university": "Metrovale University",
-      "country": "Pacifica",
-      "url": "https://demo.invalid/exchange/metrovale-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Asia"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "3.3 GPA",
-      "previous_round_cutoff": "3.5 GPA",
-      "anticipated_places": "1 place",
-      "exchange_availability": "Red",
-      "detail_eligible_campus": ["Australia"],
-      "agreement_scope": ["University-wide"],
-      "extra_requirements": ["Nomination required"],
-      "minimum_result_value": 3.3,
-      "minimum_result_scale": "GPA",
-      "minimum_result_note": "3.3 GPA",
-      "previous_round_cutoff_value": 3.5,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places_min": 1,
-      "anticipated_places_max": 1,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-15",
-      "raw_page_hash": "demo-raw-15",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
-      "search_detail_mismatch": ["eligible_campus"],
-      "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Asia",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "3.3 GPA",
-        "previous_round_cutoff": "3.5 GPA",
-        "anticipated_places": "1 place",
-        "exchange_availability": "Red",
-        "detail_eligible_campus": "Australia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": "Nomination required"
-      }
-    },
-    {
-      "university": "Highland Arts and Technology University",
-      "country": "Caledon",
-      "url": "https://demo.invalid/exchange/highland-arts-and-technology-university",
-      "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "67 WAM",
-      "previous_round_cutoff": "72 WAM",
-      "anticipated_places": "6 places",
-      "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["Faculty-specific"],
-      "extra_requirements": [],
-      "minimum_result_value": 67.0,
-      "minimum_result_scale": "WAM",
-      "minimum_result_note": "67 WAM",
+      "minimum_result_note": "",
       "previous_round_cutoff_value": 72,
       "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 6,
-      "anticipated_places_max": 6,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-16",
-      "raw_page_hash": "demo-raw-16",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
+      "anticipated_places_min": 4,
+      "anticipated_places_max": 4,
+      "anticipated_places_term": "Semester 1, 2027",
+      "detail_program_duration": [
+        "1 semester"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
       "search_detail_mismatch": [],
       "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Europe",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "67 WAM",
-        "previous_round_cutoff": "72 WAM",
-        "anticipated_places": "6 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "Faculty-specific",
-        "extra_requirements": ""
-      }
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Fictional Institute of Technology"
+    },
+    {
+      "university": "Aldergate University",
+      "country": "Kestoria",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/aldergate-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Closed",
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Calendar Year (Feb - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Arts and Social Sciences"
+      ],
+      "language_of_instruction": [
+        "English",
+        "Kestorian"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "60% WAM",
+      "previous_round_cutoff": "Case by case",
+      "anticipated_places": "0 places",
+      "exchange_availability": "Red",
+      "detail_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Arts and Social Sciences"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 60,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": null,
+      "previous_round_cutoff_scale": null,
+      "anticipated_places_min": 0,
+      "anticipated_places_max": 0,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-08-30T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Aldergate University"
+    },
+    {
+      "university": "Marlowe State University",
+      "country": "Freedland",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/marlowe-state-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "North America"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics",
+        "Law"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "70% WAM",
+      "previous_round_cutoff": "71% WAM",
+      "anticipated_places": "6 places",
+      "exchange_availability": "Green",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Business and Economics",
+        "Law"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 70,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 71,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 6,
+      "anticipated_places_max": 6,
+      "anticipated_places_term": "Semester 1, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Marlowe State University"
+    },
+    {
+      "university": "Bright Coast University",
+      "country": "Meridiana",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/bright-coast-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Oceania"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Science"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "60% WAM",
+      "previous_round_cutoff": "60% WAM",
+      "anticipated_places": "12 places",
+      "exchange_availability": "Green",
+      "detail_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Science"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 60,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 60,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 12,
+      "anticipated_places_max": 12,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs",
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Bright Coast University"
+    },
+    {
+      "university": "Northfell Polytechnic",
+      "country": "Duvenrock",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/northfell-polytechnic_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Information Technology"
+      ],
+      "language_of_instruction": [
+        "English",
+        "Duvenroan"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "65% WAM",
+      "previous_round_cutoff": "68% WAM",
+      "anticipated_places": "3 places",
+      "exchange_availability": "Yellow",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Information Technology"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 65,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 68,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 3,
+      "anticipated_places_max": 3,
+      "anticipated_places_term": "Semester 1, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Northfell Polytechnic"
+    },
+    {
+      "university": "Cinderpeak University",
+      "country": "Andovar",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/cinderpeak-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Closed",
+      "region": [
+        "South America"
+      ],
+      "program_duration": [
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Calendar Year (Feb - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Arts and Social Sciences"
+      ],
+      "language_of_instruction": [
+        "Spanish",
+        "English (limited in some areas)"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "65% WAM",
+      "previous_round_cutoff": "Case by case",
+      "anticipated_places": "0 places",
+      "exchange_availability": "Closed",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Arts and Social Sciences"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 65,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": null,
+      "previous_round_cutoff_scale": null,
+      "anticipated_places_min": 0,
+      "anticipated_places_max": 0,
+      "anticipated_places_term": "Calendar Year 2027",
+      "detail_program_duration": [
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Cinderpeak University"
+    },
+    {
+      "university": "Sunspire University",
+      "country": "Halvenport",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/sunspire-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Asia"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "60% WAM",
+      "previous_round_cutoff": "62% WAM",
+      "anticipated_places": "10 places",
+      "exchange_availability": "Green",
+      "detail_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Business and Economics"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 60,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 62,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 10,
+      "anticipated_places_max": 10,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Sunspire University"
+    },
+    {
+      "university": "Whitmoor College",
+      "country": "Kestoria",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/whitmoor-college_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Law"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Postgraduate"
+      ],
+      "minimum_result_required": "75% WAM",
+      "previous_round_cutoff": "76% WAM",
+      "anticipated_places": "2 places",
+      "exchange_availability": "Red",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Law"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 75,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 76,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 2,
+      "anticipated_places_max": 2,
+      "anticipated_places_term": "Semester 1, 2027",
+      "detail_program_duration": [
+        "1 semester"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Whitmoor College"
+    },
+    {
+      "university": "Dunmore University",
+      "country": "Freedland",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/dunmore-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Closed",
+      "region": [
+        "North America"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Engineering"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "70% WAM",
+      "previous_round_cutoff": "70% WAM",
+      "anticipated_places": "0 places",
+      "exchange_availability": "Red",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Engineering"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 70,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 70,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 0,
+      "anticipated_places_max": 0,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-09-01T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Dunmore University"
+    },
+    {
+      "university": "Ashford International University",
+      "country": "Norvenia",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/ashford-international-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Calendar Year (Feb - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics",
+        "Arts and Social Sciences"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "60% WAM",
+      "previous_round_cutoff": "61% WAM",
+      "anticipated_places": "9 places",
+      "exchange_availability": "Green",
+      "detail_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Business and Economics",
+        "Arts and Social Sciences"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 60,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 61,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 9,
+      "anticipated_places_max": 9,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs",
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Ashford International University"
+    },
+    {
+      "university": "Port Aurelia University",
+      "country": "Meridiana",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/port-aurelia-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Oceania"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Science"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "65% WAM",
+      "previous_round_cutoff": "66% WAM",
+      "anticipated_places": "5 places",
+      "exchange_availability": "Yellow",
+      "detail_eligible_campus": [
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Science"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 65,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 66,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 5,
+      "anticipated_places_max": 5,
+      "anticipated_places_term": "Semester 1, 2027",
+      "detail_program_duration": [
+        "1 semester"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Port Aurelia University"
+    },
+    {
+      "university": "Silverlake University",
+      "country": "Suvalia",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/silverlake-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Asia"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Information Technology"
+      ],
+      "language_of_instruction": [
+        "English",
+        "Suvalian"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "60% WAM",
+      "previous_round_cutoff": "63% WAM",
+      "anticipated_places": "7 places",
+      "exchange_availability": "Green",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Information Technology"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 60,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 63,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 7,
+      "anticipated_places_max": 7,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Silverlake University"
+    },
+    {
+      "university": "Vaelmont University",
+      "country": "Duvenrock",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/vaelmont-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "65% WAM",
+      "previous_round_cutoff": "65% WAM",
+      "anticipated_places": "6 places",
+      "exchange_availability": "Green",
+      "detail_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Business and Economics"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 65,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 65,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 6,
+      "anticipated_places_max": 6,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Vaelmont University"
     },
     {
       "university": "Coral Bay University",
-      "country": "Australis",
-      "url": "https://demo.invalid/exchange/coral-bay-university",
+      "country": "Meridiana",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/coral-bay-university_",
       "program_type": "Semester exchange",
-      "open_closed": "Open",
-      "region": ["Oceania"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 1", "Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Information Technology", "Engineering"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "70 WAM",
-      "previous_round_cutoff": "75 WAM",
-      "anticipated_places": "3-4 places",
-      "exchange_availability": "Yellow",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
+      "open_closed": "Closed",
+      "region": [
+        "Oceania"
+      ],
+      "program_duration": [
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Calendar Year (Feb - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Arts and Social Sciences"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "60% WAM",
+      "previous_round_cutoff": "Case by case",
+      "anticipated_places": "0 places",
+      "exchange_availability": "Red",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Arts and Social Sciences"
+      ],
       "extra_requirements": [],
-      "minimum_result_value": 70.0,
+      "minimum_result_value": 60,
       "minimum_result_scale": "WAM",
-      "minimum_result_note": "70 WAM",
-      "previous_round_cutoff_value": 75,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places_min": 3,
-      "anticipated_places_max": 4,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-17",
-      "raw_page_hash": "demo-raw-17",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": null,
+      "previous_round_cutoff_scale": null,
+      "anticipated_places_min": 0,
+      "anticipated_places_max": 0,
+      "anticipated_places_term": "Calendar Year 2027",
+      "detail_program_duration": [
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
       "search_detail_mismatch": [],
       "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Oceania",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 1 | Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Information Technology | Engineering",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "70 WAM",
-        "previous_round_cutoff": "75 WAM",
-        "anticipated_places": "3-4 places",
-        "exchange_availability": "Yellow",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Coral Bay University"
     },
     {
-      "university": "Maple Frontier University",
-      "country": "Canterra",
-      "url": "https://demo.invalid/exchange/maple-frontier-university",
+      "university": "Ironwood State University",
+      "country": "Freedland",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/ironwood-state-university_",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Americas"],
-      "program_duration": ["1 semester"],
-      "semester_availability": ["Semester 2"],
-      "search_eligible_campus": ["Malaysia"],
-      "search_eligible_faculties": ["Business", "Arts"],
-      "language_of_instruction": ["English"],
-      "academic_level": ["Undergraduate"],
-      "minimum_result_required": "3.0 GPA",
-      "previous_round_cutoff": "3.2 GPA",
+      "region": [
+        "North America"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Engineering",
+        "Science"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "68% WAM",
+      "previous_round_cutoff": "69% WAM",
       "anticipated_places": "4 places",
-      "exchange_availability": "Green",
-      "detail_eligible_campus": ["Malaysia"],
-      "agreement_scope": ["University-wide"],
+      "exchange_availability": "Yellow",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Engineering",
+        "Science"
+      ],
       "extra_requirements": [],
-      "minimum_result_value": 3.0,
-      "minimum_result_scale": "GPA",
-      "minimum_result_note": "3.0 GPA",
-      "previous_round_cutoff_value": 3.2,
-      "previous_round_cutoff_scale": "GPA",
+      "minimum_result_value": 68,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 69,
+      "previous_round_cutoff_scale": "WAM",
       "anticipated_places_min": 4,
       "anticipated_places_max": 4,
-      "anticipated_places_term": "per semester",
-      "detail_program_duration": ["1 semester"],
-      "first_seen": "2026-09-13T00:00:00Z",
-      "last_seen": "2026-09-13T00:00:00Z",
-      "last_changed": "2026-09-13T00:00:00Z",
-      "html_hash": "demo-18",
-      "raw_page_hash": "demo-raw-18",
-      "fetch_status": "demo",
-      "detail_fetched_at": "2026-09-13T00:00:00Z",
+      "anticipated_places_term": "Semester 1, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
       "search_detail_mismatch": [],
       "raw": {
-        "program_type": "Semester exchange",
-        "open_closed": "Open",
-        "region": "Americas",
-        "program_duration": "1 semester",
-        "semester_availability": "Semester 2",
-        "search_eligible_campus": "Malaysia",
-        "search_eligible_faculties": "Business | Arts",
-        "language_of_instruction": "English",
-        "academic_level": "Undergraduate",
-        "minimum_result_required": "3.0 GPA",
-        "previous_round_cutoff": "3.2 GPA",
-        "anticipated_places": "4 places",
-        "exchange_availability": "Green",
-        "detail_eligible_campus": "Malaysia",
-        "agreement_scope": "University-wide",
-        "extra_requirements": ""
-      }
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Ironwood State University"
+    },
+    {
+      "university": "Thornfield University",
+      "country": "Kestoria",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/thornfield-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Law",
+        "Business and Economics"
+      ],
+      "language_of_instruction": [
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate",
+        "Postgraduate"
+      ],
+      "minimum_result_required": "65% WAM",
+      "previous_round_cutoff": "65% WAM",
+      "anticipated_places": "5 places",
+      "exchange_availability": "Green",
+      "detail_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "agreement_scope": [
+        "Law",
+        "Business and Economics"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 65,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 65,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 5,
+      "anticipated_places_max": 5,
+      "anticipated_places_term": "Semester 2, 2027",
+      "detail_program_duration": [
+        "1 semester",
+        "2 semesters"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [
+        "program_duration"
+      ],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Monash Partner Programs",
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Thornfield University"
+    },
+    {
+      "university": "Rosemont University",
+      "country": "Andovar",
+      "url": "https://demo.example.org/study-abroad/outbound/program-search/rosemont-university_",
+      "program_type": "Semester exchange",
+      "open_closed": "Open",
+      "region": [
+        "South America"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Arts and Social Sciences"
+      ],
+      "language_of_instruction": [
+        "Spanish",
+        "English"
+      ],
+      "academic_level": [
+        "Undergraduate"
+      ],
+      "minimum_result_required": "62% WAM",
+      "previous_round_cutoff": "64% WAM",
+      "anticipated_places": "3 places",
+      "exchange_availability": "Yellow",
+      "detail_eligible_campus": [
+        "Monash Australia"
+      ],
+      "agreement_scope": [
+        "Arts and Social Sciences"
+      ],
+      "extra_requirements": [],
+      "minimum_result_value": 62,
+      "minimum_result_scale": "WAM",
+      "minimum_result_note": "",
+      "previous_round_cutoff_value": 64,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places_min": 3,
+      "anticipated_places_max": 3,
+      "anticipated_places_term": "Semester 1, 2027",
+      "detail_program_duration": [
+        "1 semester"
+      ],
+      "first_seen": "2026-06-22T00:00:00Z",
+      "last_seen": "2026-09-13T03:00:00Z",
+      "last_changed": "2026-06-22T00:00:00Z",
+      "html_hash": "demo0000000000000000000000000000000000000000000000000000000000",
+      "fetch_status": "ok",
+      "raw_page_hash": "demo1111111111111111111111111111111111111111111111111111111111",
+      "detail_fetched_at": "2026-09-13T03:00:00Z",
+      "search_detail_mismatch": [],
+      "raw": {
+        "note": "raw fields are omitted in this fictional demo dataset; the production tracker keeps the original page text here for auditing."
+      },
+      "program_grouping": [
+        "Exchange Programs"
+      ],
+      "search_html_hash": "demo2222222222222222222222222222222222222222222222222222222222",
+      "detail_university": "Rosemont University"
     }
   ]
 }
