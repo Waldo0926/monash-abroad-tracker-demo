@@ -1,84 +1,108 @@
 {
   "meta": {
     "fictional_data": true,
-    "baseline_label": "Fictional previous round",
-    "note": "This file contains synthetic previous-round values used only to demonstrate change detection in the public portfolio demo."
+    "baseline_label": "Synthetic previous round",
+    "note": "Synthetic comparison values for portfolio demonstration only. They are not derived from production data or a real application round."
   },
   "by_university": {
-    "Northholm University": {
+    "Northbridge University": {
       "open_closed": "Closed",
       "exchange_availability": "Yellow",
-      "previous_round_cutoff": "85 WAM",
-      "previous_round_cutoff_value": 85,
+      "previous_round_cutoff": "68% WAM",
+      "previous_round_cutoff_value": 68,
       "previous_round_cutoff_scale": "WAM",
-      "anticipated_places": "2-3 places",
-      "anticipated_places_max": 3
+      "anticipated_places": "4 places",
+      "anticipated_places_max": 4
     },
     "Fictional Institute of Technology": {
       "open_closed": "Open",
       "exchange_availability": "Green",
-      "previous_round_cutoff": "3.0 GPA",
-      "previous_round_cutoff_value": 3.0,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places": "5-6 places",
+      "previous_round_cutoff": "69% WAM",
+      "previous_round_cutoff_value": 69,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "6 places",
       "anticipated_places_max": 6
     },
-    "Westbridge University": {
-      "open_closed": "Open",
-      "exchange_availability": "Red",
-      "previous_round_cutoff": "80 WAM",
-      "previous_round_cutoff_value": 80,
-      "previous_round_cutoff_scale": "WAM",
-      "anticipated_places": "1 place",
-      "anticipated_places_max": 1
-    },
-    "Eastmere Technical University": {
+    "Aldergate University": {
       "open_closed": "Open",
       "exchange_availability": "Yellow",
-      "previous_round_cutoff": "78 WAM",
-      "previous_round_cutoff_value": 78,
+      "previous_round_cutoff": "60% WAM",
+      "previous_round_cutoff_value": 60,
       "previous_round_cutoff_scale": "WAM",
-      "anticipated_places": "3-4 places",
-      "anticipated_places_max": 4
-    },
-    "Lakehaven University": {
-      "open_closed": "Open",
-      "exchange_availability": "Red",
-      "previous_round_cutoff": "3.2 GPA",
-      "previous_round_cutoff_value": 3.2,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places": "1-2 places",
+      "anticipated_places": "2 places",
       "anticipated_places_max": 2
     },
-    "Southern Crossroads University": {
+    "Marlowe State University": {
       "open_closed": "Open",
       "exchange_availability": "Green",
-      "previous_round_cutoff": "72 WAM",
-      "previous_round_cutoff_value": 72,
+      "previous_round_cutoff": "73% WAM",
+      "previous_round_cutoff_value": 73,
       "previous_round_cutoff_scale": "WAM",
-      "anticipated_places": "5-6 places",
-      "anticipated_places_max": 6
+      "anticipated_places": "4 places",
+      "anticipated_places_max": 4
     },
-    "Metrovale University": {
+    "Bright Coast University": {
       "open_closed": "Open",
       "exchange_availability": "Yellow",
-      "previous_round_cutoff": "3.4 GPA",
-      "previous_round_cutoff_value": 3.4,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places": "2-3 places",
+      "previous_round_cutoff": "62% WAM",
+      "previous_round_cutoff_value": 62,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "8 places",
+      "anticipated_places_max": 8
+    },
+    "Northfell Polytechnic": {
+      "open_closed": "Open",
+      "exchange_availability": "Green",
+      "previous_round_cutoff": "66% WAM",
+      "previous_round_cutoff_value": 66,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "5 places",
+      "anticipated_places_max": 5
+    },
+    "Cinderpeak University": {
+      "open_closed": "Open",
+      "exchange_availability": "Yellow",
+      "previous_round_cutoff": "63% WAM",
+      "previous_round_cutoff_value": 63,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "2 places",
+      "anticipated_places_max": 2
+    },
+    "Sunspire University": {
+      "open_closed": "Open",
+      "exchange_availability": "Green",
+      "previous_round_cutoff": "64% WAM",
+      "previous_round_cutoff_value": 64,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "8 places",
+      "anticipated_places_max": 8
+    },
+    "Whitmoor College": {
+      "open_closed": "Open",
+      "exchange_availability": "Yellow",
+      "previous_round_cutoff": "74% WAM",
+      "previous_round_cutoff_value": 74,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "3 places",
       "anticipated_places_max": 3
     },
-    "Redwood Metropolitan University": {
-      "open_closed": "Closed",
-      "exchange_availability": "Closed",
-      "previous_round_cutoff": "3.5 GPA",
-      "previous_round_cutoff_value": 3.5,
-      "previous_round_cutoff_scale": "GPA",
-      "anticipated_places": "0 places",
-      "anticipated_places_max": 0
+    "Dunmore University": {
+      "open_closed": "Open",
+      "exchange_availability": "Yellow",
+      "previous_round_cutoff": "69% WAM",
+      "previous_round_cutoff_value": 69,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "2 places",
+      "anticipated_places_max": 2
     },
-    "Harbor City University": {
-      "new": true
+    "Thornfield University": {
+      "open_closed": "Open",
+      "exchange_availability": "Yellow",
+      "previous_round_cutoff": "66% WAM",
+      "previous_round_cutoff_value": 66,
+      "previous_round_cutoff_scale": "WAM",
+      "anticipated_places": "4 places",
+      "anticipated_places_max": 4
     }
   }
 }
