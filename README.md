@@ -2,64 +2,81 @@
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-waldo0926.github.io-2563eb?style=for-the-badge)](https://waldo0926.github.io/monash-abroad-tracker-demo/)
 [![Type](https://img.shields.io/badge/Type-Portfolio_Demo-7c3aed?style=for-the-badge)](#)
-[![Data](https://img.shields.io/badge/Data-Fictional_Only-475569?style=for-the-badge)](#public-demo-vs-production-project)
-
+[![Data](https://img.shields.io/badge/Data-Synthetic_Only-475569?style=for-the-badge)](#privacy-boundary)
 
 **English** · [简体中文](README.zh-CN.md)
 
-[**Public demo**](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [Current demo dataset](./data/current.json) · [Fictional previous-round baseline](./data/comparison.json)
+[**Public demo**](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [Architecture](ARCHITECTURE.md) · [Synthetic current dataset](./data/current.json) · [Synthetic comparison baseline](./data/comparison.json)
 
-A portfolio-safe public demonstration of my **Monash Abroad exchange-program tracker**.
+A portfolio-safe public demonstration of my **Monash semester-exchange tracking system**.
 
-The full tracker collects Monash program-search data, normalises program details, compares runs and application rounds, records field-level changes, and publishes a searchable viewer. The production repository remains private while the project is associated with active university coursework.
+The private production system collects program-search data, normalises fields, detects field-level changes, keeps historical snapshots, compares application rounds, generates comparison reports, and publishes an access-controlled viewer. This repository demonstrates the user-facing filtering and comparison workflow without publishing production records, customer-facing comparison results, or scraper internals.
 
-This repository demonstrates the viewer and comparison workflow without publishing production data or scraper internals.
-
-> **Demo-data notice:** every institution, country, URL, score, availability value, previous-round value and place count in this repository is fictional. No real Monash exchange-program record is included.
+> **Synthetic-data notice:** every institution, country, URL, date, score, availability value, previous-round value and place count in this repository is fictional. The dataset is designed only to exercise the UI and change-detection presentation.
 
 ## What this demo shows
 
 - English / 简体中文 interface switching
 - Search by university or country
-- Production-style sidebar filtering with checkbox facets for region, program terms, duration, eligible campus, faculties/schools, application status and exchange availability
+- Multi-facet filtering for region, program terms, duration, eligible campus, faculties/schools, application status and exchange availability
 - OR matching within a facet and AND matching across different facets
-- **Dynamic facet counts** that react to the other active filters
+- **Dynamic facet counts** that react to other active filters
 - Filter-aware summary cards for total results and Green / Yellow / Red / Closed availability
 - Interactive table-column sorting
 - Previous-round cut-offs, minimum results and anticipated places
-- **Automatic comparison against a fictional previous-round baseline**, producing change chips such as availability ↑/↓, places ↑/↓, cut-off ↑/↓, opened/closed and new
+- **Runtime comparison against a synthetic previous-round baseline**, generating change chips for availability, places, cut-offs, opening/closing and new programs
 - Search/detail consistency warnings
-- The same canonical JSON field structure used by the private tracker for the demonstrated current records
-- Responsive layout that collapses the two-column viewer cleanly on smaller screens
+- A reduced version of the production JSON schema for demonstrated fields
+- Responsive layout for desktop and smaller screens
 
-The public page intentionally describes itself as a **static portfolio dataset**, rather than a live production feed.
+The public page intentionally presents itself as a **static portfolio demo**, not a live Monash data feed.
 
 ## How the comparison demo works
 
-`data/current.json` contains the fictional current round. `data/comparison.json` contains a separate fictional previous-round baseline. The viewer derives its change chips at runtime by comparing the two datasets rather than hard-coding labels into the HTML.
+`data/current.json` contains a fully synthetic current round and `data/comparison.json` contains a separate synthetic previous-round baseline. The browser derives change chips at runtime by comparing the two datasets; the displayed changes are not hard-coded into the HTML.
 
-The direction semantics mirror the production viewer: a higher cut-off or more competitive availability is treated as an adverse change, while more places, a lower comparable cut-off, or reopening is treated as favourable.
+The comparison semantics mirror the production viewer: for example, fewer places or a higher comparable cut-off is treated as an adverse change, while more places, a lower comparable cut-off, improved availability or reopening is favourable.
 
-## Public demo vs production project
+## Public demo vs. private production system
 
-| Component | Production tracker | This public demo |
+| Component | Private production system | This public demo |
 | --- | --- | --- |
-| Scraper / crawler | Included in private repository | Not included |
-| Current-record schema | Canonical tracker schema | Same structure for demonstrated fields |
-| Data | Real collected records | 18 fictional records |
-| Previous-round comparison | Real frozen baseline | Separate fictional baseline |
-| Viewer | Production viewer | Portfolio-safe viewer using the same interaction and comparison concepts |
-| Automated collection | Scheduled workflow | Not included |
-| Historical change tracking | Full append-only history and snapshots | Static fictional comparison demonstration only |
+| Scraper / crawler | Scheduled collection | Not published |
+| Normalisation | Full production pipeline | Demonstrated through synthetic schema |
+| Data | Real collected records | 12 synthetic records |
+| Historical tracking | Append-only changes + snapshots | Not published |
+| Round comparison | Real frozen baseline | Synthetic baseline |
+| Comparison reports | Private customer-facing output | Not published |
+| Viewer | Access-controlled production viewer | Public portfolio-safe viewer |
+| Deployment | Private production environment | GitHub Pages |
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for a sanitised overview of the complete system.
+
+## Privacy boundary
+
+The public repository intentionally excludes:
+
+- real Monash exchange-program records;
+- real historical snapshots or field-level change logs;
+- real previous-round baselines;
+- generated comparison spreadsheets/reports;
+- customer-facing comparison results;
+- production credentials, access-control configuration and infrastructure details;
+- production scraper/crawler source code.
+
+This split allows the engineering and interaction design to be demonstrated publicly while the live dataset and historical comparison service remain private.
 
 ## Repository structure
 
 ```text
 .
 ├── index.html              # Search, facets, comparison chips, bilingual UI
+├── ARCHITECTURE.md         # Sanitised production-system architecture
+├── README.md
+├── README.zh-CN.md
 └── data/
-    ├── current.json        # Fictional current dataset using the tracker schema
-    └── comparison.json     # Fictional previous-round baseline for change detection
+    ├── current.json        # Synthetic current dataset
+    └── comparison.json     # Synthetic previous-round baseline
 ```
 
 ## Run locally
@@ -76,10 +93,10 @@ Then open:
 http://localhost:8000/
 ```
 
-## Why the production repository is private
+## Production deployment
 
-The production tracker contains the actual data-collection implementation and real collected exchange-program data. Keeping it private prevents assessment-related source code and production data from being exposed while still allowing the interface, data model and comparison workflow to be demonstrated publicly.
+The real tracker and its historical data remain in a separate private repository and deployment. Production comparison results are deliberately not mirrored into this public repository.
 
 ## Disclaimer
 
-This is an independent portfolio project and is **not an official Monash University service**. The fictional demo records must not be used for exchange planning, eligibility decisions, or application advice.
+This is an independent portfolio project and is **not an official Monash University service**. All records in this demo are synthetic and must not be used for exchange planning, eligibility decisions, or application advice.
