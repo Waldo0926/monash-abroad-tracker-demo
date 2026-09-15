@@ -1,5 +1,10 @@
 # Monash Exchange Tracker — Public Demo
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-waldo0926.github.io-2563eb?style=for-the-badge)](https://waldo0926.github.io/monash-abroad-tracker-demo/)
+[![Type](https://img.shields.io/badge/Type-Portfolio_Demo-7c3aed?style=for-the-badge)](#)
+[![Data](https://img.shields.io/badge/Data-Fictional_Only-475569?style=for-the-badge)](#public-demo-vs-production-project)
+
+
 **English** · [简体中文](README.zh-CN.md)
 
 [**Public demo**](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [Current demo dataset](./data/current.json) · [Fictional previous-round baseline](./data/comparison.json)
