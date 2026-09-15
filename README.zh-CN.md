@@ -1,5 +1,10 @@
 # Monash Exchange Tracker — 公开演示版
 
+[![在线演示](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA-waldo0926.github.io-2563eb?style=for-the-badge)](https://waldo0926.github.io/monash-abroad-tracker-demo/)
+[![类型](https://img.shields.io/badge/%E7%B1%BB%E5%9E%8B-%E4%BD%9C%E5%93%81%E9%9B%86%E6%BC%94%E7%A4%BA-7c3aed?style=for-the-badge)](#)
+[![数据](https://img.shields.io/badge/%E6%95%B0%E6%8D%AE-%E4%BB%85%E8%99%9A%E6%9E%84%E6%95%B0%E6%8D%AE-475569?style=for-the-badge)](#)
+
+
 [English](README.md) · **简体中文**
 
 [公开演示](https://waldo0926.github.io/monash-abroad-tracker-demo/) · [虚构当前数据](./data/current.json) · [虚构上一轮基准](./data/comparison.json)
