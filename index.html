@@ -18,6 +18,7 @@
   .hero-copy h1{font-size:1.55rem;margin:0 0 5px}
   .hero-copy p{margin:0;color:var(--muted);font-size:.93rem}
   .hero-tools{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  .signin-link{font-size:.8rem;text-decoration:none;border:1px solid #cfe0ff;background:#f7faff;border-radius:7px;padding:5px 9px}
   .lang-switch{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:8px;overflow:hidden}
   .lang-switch button{border:0;background:#fff;color:var(--muted);padding:6px 9px;cursor:pointer;font-size:.78rem}
   .lang-switch button.active{background:#1267a8;color:#fff;font-weight:650}
@@ -52,7 +53,7 @@
   .content{min-width:0}
   .meta-line{color:var(--muted);font-size:.83rem;margin:3px 0 10px}
   .table-wrap{overflow:auto;border-radius:10px;box-shadow:0 1px 3px rgba(20,30,50,.06)}
-  table{width:100%;min-width:1120px;border-collapse:collapse;background:var(--card);font-size:.86rem}
+  table{width:100%;min-width:1210px;border-collapse:collapse;background:var(--card);font-size:.86rem}
   th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
   th{cursor:pointer;user-select:none;color:var(--muted);font-weight:650;white-space:nowrap;background:#fbfcfd;position:sticky;top:0;z-index:1}
   th:hover{color:var(--ink)}
@@ -73,6 +74,36 @@
   .change-chip.neutral{background:var(--blue-bg);border-color:#bfd3fa;color:#325b9d}
   .warn{color:var(--yellow);margin-left:4px;cursor:help}
   #empty{display:none;padding:24px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line);border-top:0}
+  .qs{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:650}
+  .qs .tag{font-size:.64rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 3px;margin-left:4px}
+  .qs.subject{color:#325b9d;font-weight:600}
+  .qs.none{color:#94a3b8;font-weight:500}
+  [data-tip]{cursor:help}
+  #tip{position:fixed;z-index:50;max-width:280px;background:#1f2937;color:#fff;font-size:.76rem;line-height:1.45;padding:7px 9px;border-radius:7px;pointer-events:none;display:none;white-space:pre-line;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+  details.panel{background:var(--card);border:1px solid var(--line);border-radius:11px;margin:0 0 12px}
+  details.panel>summary{list-style:none;cursor:pointer;padding:11px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.92rem;font-weight:700}
+  details.panel>summary::-webkit-details-marker{display:none}
+  details.panel>summary::after{content:"+";font-weight:500;color:var(--muted)}
+  details.panel[open]>summary::after{content:"−"}
+  details.panel>summary .sub{flex:1;color:var(--muted);font-weight:400;font-size:.82rem}
+  .panel-body{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;padding:0 14px 14px}
+  .panel-body h3{font-size:.78rem;margin:0 0 8px;color:var(--muted);font-weight:650}
+  .tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+  .tile{border:1px solid var(--line);border-radius:9px;background:#fbfcfd;padding:8px 4px;text-align:center;cursor:pointer;font:inherit;color:inherit}
+  .tile .n{display:block;font-size:1.15rem;font-weight:750;font-variant-numeric:tabular-nums}
+  .tile .l{display:block;font-size:.7rem;color:var(--muted);margin-top:2px;line-height:1.2}
+  .tile.good .n{color:var(--green)} .tile.bad .n{color:var(--red)} .tile.neutral .n{color:#325b9d}
+  .tile.active{outline:2px solid var(--accent);background:var(--blue-bg)}
+  .tile:disabled{opacity:.45;cursor:default}
+  .tile-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px;font-size:.76rem;color:var(--muted)}
+  .feed ul{list-style:none;margin:0;padding:0}
+  .feed li{display:grid;grid-template-columns:74px minmax(0,1fr);gap:8px;padding:5px 0;border-bottom:1px dashed var(--line);font-size:.8rem}
+  .feed li:last-child{border-bottom:0}
+  .feed .date{color:var(--muted);font-variant-numeric:tabular-nums}
+  .feed .uni{border:0;background:none;padding:0;color:var(--accent);cursor:pointer;font:inherit;font-weight:650;text-align:left}
+  .feed .ev-good{color:var(--green)} .feed .ev-bad{color:var(--red)} .feed .ev-neutral{color:#325b9d}
+  .feed .more{margin-top:6px}
+  .feed-empty{color:var(--muted);font-size:.8rem}
   footer{max-width:1500px;margin:0 auto;padding:0 22px 36px;color:var(--muted);font-size:.81rem}
   @media(max-width:1050px){
     .hero-row{flex-direction:column}
@@ -85,6 +116,8 @@
     .sidebar{position:static}
     .facet-options{max-height:180px}
     .summary-card{min-width:68px}
+    .panel-body{grid-template-columns:1fr}
+    .tile .l{font-size:.62rem}
   }
 </style>
 </head>
@@ -96,6 +129,7 @@
       <p id="pageSubtitle">A portfolio-safe demonstration of the production viewer using a fully fictional dataset.</p>
     </div>
     <div class="hero-tools">
+      <a id="signinLink" class="signin-link" href="./signin.html">Sign-in page preview</a>
       <div class="lang-switch" aria-label="Language">
         <button id="langEn" class="active" type="button">EN</button>
         <button id="langZh" type="button">中文</button>
@@ -121,12 +155,28 @@
 
     <section class="content">
       <div id="metaLine" class="meta-line"></div>
+      <details id="changePanel" class="panel">
+        <summary><span id="panelTitle">Change summary</span><span id="panelSub" class="sub"></span></summary>
+        <div class="panel-body">
+          <div>
+            <h3 id="tilesTitle">Against the previous round</h3>
+            <div id="tiles" class="tiles"></div>
+            <div class="tile-foot"><span id="tileHint"></span><button id="clearTile" class="clear-btn" type="button">Clear</button></div>
+          </div>
+          <div class="feed">
+            <h3 id="feedTitle">Day by day</h3>
+            <ul id="feed"></ul>
+            <button id="feedMore" class="clear-btn more" type="button"></button>
+          </div>
+        </div>
+      </details>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th data-key="university" data-i18n="colUniversity">University</th>
               <th data-key="country" data-i18n="colCountry">Country</th>
+              <th data-key="qs" data-i18n="colQs">QS rank</th>
               <th data-key="region" data-i18n="colRegion">Region</th>
               <th data-key="open_closed" data-i18n="colStatus">Status</th>
               <th data-key="exchange_availability" data-i18n="colAvailability">Availability</th>
@@ -144,12 +194,27 @@
   </div>
 </main>
 <footer id="footerText"></footer>
+<div id="tip" role="tooltip"></div>
 <script>
 let programs=[];
 let baselineByUniversity={};
 let sortKey="university";
 let sortDir=1;
 let lang="en";
+let changeFeed=[];
+let activeTile=null;
+let feedExpanded=false;
+let baselineLoaded=false;
+
+const TILES=[
+  {id:"cutDown",key:"tCutDown",tone:"good"},{id:"placesUp",key:"tPlacesUp",tone:"good"},
+  {id:"compDown",key:"tCompDown",tone:"good"},{id:"opened",key:"tOpened",tone:"good"},
+  {id:"new",key:"tNew",tone:"neutral"},
+  {id:"cutUp",key:"tCutUp",tone:"bad"},{id:"placesDown",key:"tPlacesDown",tone:"bad"},
+  {id:"compUp",key:"tCompUp",tone:"bad"},{id:"closed",key:"tClosed",tone:"bad"},
+  {id:"any",key:"tAny",tone:"neutral"}
+];
+const PANEL_KEY="demo.changePanelOpen";
 
 const I18N={
   en:{
@@ -164,11 +229,24 @@ const I18N={
     results:"Results", green:"Green · good", yellow:"Yellow · competitive", red:"Red · limited", closed:"Closed",
     empty:"Nothing matches these filters. Try clearing one or more selections.",
     meta:(shown,total)=>`${shown} of ${total} fictional programs · comparison against a fictional previous round · no production data`,
-    footer:'<a href="./data/current.json">Fictional current dataset</a> · <a href="./data/comparison.json">Fictional previous-round baseline</a> · Portfolio demo of the private production tracker.',
+    footer:'<a href="./data/current.json">Fictional current dataset</a> · <a href="./data/comparison.json">Fictional previous-round baseline</a> · <a href="./data/changes.json">Fictional change feed</a> · Portfolio demo of the private production tracker.',
     open:"Open", statusClosed:"Closed", Green:"Green", Yellow:"Yellow", Red:"Red", Closed:"Closed",
     chgNew:"new", chgAvail:"Avail", chgPlaces:"Places", chgCutoff:"Cutoff", chgOpened:"Opened", chgClosed:"Closed",
     from:"From", to:"to", mismatch:"Search page and detail page disagree on",
-    noComparison:"No demonstrated change"
+    noComparison:"No demonstrated change", signinLink:"Sign-in page preview",
+    colQs:"QS rank", qsNone:"Not listed", qs2026:"2026",
+    qsOverall2027:"QS World University Rankings 2027 (fictional)",
+    qsOverall2026:"Not in the 2027 table, so the 2026 table is used (fictional)",
+    qsSubjectTip:"Specialist institution: not in the overall table, so its best subject placing is shown. All subjects (fictional):",
+    qsNoneTip:"In neither the overall nor the subject tables. Absent does not mean poorly ranked.",
+    panelTitle:"Change summary", tilesTitle:"Against the previous round", feedTitle:"Day by day",
+    panelSub:(changed,pool)=>`${changed} of ${pool} programs changed against the previous round`,
+    tileHint:"Click a tile to filter the table; click again to clear.", tileActive:"Table filtered to one tile.",
+    tCutDown:"Cut-off ↓", tPlacesUp:"Places ↑", tCompDown:"Competition ↓", tOpened:"Opened", tNew:"New",
+    tCutUp:"Cut-off ↑", tPlacesDown:"Places ↓", tCompUp:"Competition ↑", tClosed:"Closed", tAny:"Any change",
+    feedMore:n=>`Show all (${n})`, feedLess:"Show fewer", feedEmpty:"No changes for the current filters.",
+    evAdded:"newly listed", fOpen:"Status", fAvail:"Availability", fPlaces:"Places", fCutoff:"Cut-off",
+    feedSearch:"Search the table for this university"
   },
   zh:{
     title:"Monash Exchange Tracker — 公开演示",
@@ -182,11 +260,24 @@ const I18N={
     results:"筛选结果", green:"绿灯 · 好申", yellow:"黄灯 · 竞争", red:"红灯 · 激烈", closed:"已关闭",
     empty:"没有项目符合当前筛选条件，请清除一个或多个筛选项。",
     meta:(shown,total)=>`${shown} / ${total} 个虚构交换项目 · 与虚构上一轮数据自动对比 · 不含生产数据`,
-    footer:'<a href="./data/current.json">虚构当前数据</a> · <a href="./data/comparison.json">虚构上一轮基准</a> · 私有正式 Tracker 的公开作品集 Demo。',
+    footer:'<a href="./data/current.json">虚构当前数据</a> · <a href="./data/comparison.json">虚构上一轮基准</a> · <a href="./data/changes.json">虚构逐日变化</a> · 私有正式 Tracker 的公开作品集 Demo。',
     open:"开放", statusClosed:"已关闭", Green:"绿灯", Yellow:"黄灯", Red:"红灯", Closed:"已关闭",
     chgNew:"新增", chgAvail:"竞争", chgPlaces:"名额", chgCutoff:"分数线", chgOpened:"转开放", chgClosed:"转关闭",
     from:"从", to:"变为", mismatch:"搜索页与详情页不一致字段",
-    noComparison:"无演示变化"
+    noComparison:"无演示变化", signinLink:"登录页预览",
+    colQs:"QS 排名", qsNone:"未收录", qs2026:"2026",
+    qsOverall2027:"QS 世界大学排名 2027（虚构）",
+    qsOverall2026:"2027 榜未收录，改用 2026 榜（虚构）",
+    qsSubjectTip:"专业型院校：综合榜未收录，显示其最好的学科名次。全部学科（虚构）：",
+    qsNoneTip:"综合榜和学科榜都未收录。未收录不代表排名差。",
+    panelTitle:"变化汇总", tilesTitle:"对比上一轮", feedTitle:"逐日变化",
+    panelSub:(changed,pool)=>`${pool} 个项目中有 ${changed} 个与上一轮相比有变化`,
+    tileHint:"点一格筛选表格，再点一次取消。", tileActive:"表格已按该项筛选。",
+    tCutDown:"分数线↓", tPlacesUp:"名额↑", tCompDown:"竞争↓", tOpened:"转开放", tNew:"新增",
+    tCutUp:"分数线↑", tPlacesDown:"名额↓", tCompUp:"竞争↑", tClosed:"转关闭", tAny:"有变化",
+    feedMore:n=>`展开全部（${n}）`, feedLess:"收起", feedEmpty:"当前筛选下没有变化。",
+    evAdded:"新上线", fOpen:"状态", fAvail:"竞争", fPlaces:"名额", fCutoff:"分数线",
+    feedSearch:"在表格中搜索这所学校"
   }
 };
 
@@ -260,7 +351,7 @@ function buildFacets(saved={}){
   }
 }
 
-function matchesProgram(p,excludeFacet=null){
+function matchesProgram(p,excludeFacet=null,ignoreTile=false){
   const q=document.getElementById("q").value.trim().toLowerCase();
   if(q){
     const haystack=`${p.university||""} ${p.country||""}`.toLowerCase();
@@ -273,6 +364,7 @@ function matchesProgram(p,excludeFacet=null){
     const values=asList(p[facet.key]);
     if(!selected.some(v=>values.includes(v))) return false;
   }
+  if(!ignoreTile&&activeTile&&!categories(p).has(activeTile)) return false;
   return true;
 }
 
@@ -294,13 +386,14 @@ function updateFacetCounts(){
 
 function sortValue(p,key){
   if(key==="change_sort") return String(changeChips(p).length);
+  if(key==="qs") return String(qsSort(p)).padStart(6,"0");
   const value=p[key];
   return Array.isArray(value)?value.join(" | "):String(value??"");
 }
 
 function changeChips(p){
   const b=baselineByUniversity[p.university];
-  if(!b) return [];
+  if(!b) return baselineLoaded?[{key:"chgNew",tone:"neutral",arrow:"",from:"",to:""}]:[];
   if(b.new) return [{key:"chgNew",tone:"neutral",arrow:"",from:"",to:""}];
   const chips=[];
   const a0=b.exchange_availability, a1=p.exchange_availability;
@@ -329,6 +422,85 @@ function changeChips(p){
     chips.push({key:closed?"chgClosed":"chgOpened",arrow:"",tone:closed?"bad":"good",from:s0,to:s1,type:"status"});
   }
   return chips;
+}
+
+function categories(p){
+  const cats=new Set();
+  const chips=changeChips(p);
+  for(const c of chips){
+    if(c.key==="chgNew") cats.add("new");
+    else if(c.key==="chgCutoff"){ if(c.tone==="good") cats.add("cutDown"); else if(c.tone==="bad") cats.add("cutUp"); }
+    else if(c.key==="chgPlaces") cats.add(c.tone==="good"?"placesUp":"placesDown");
+    else if(c.key==="chgAvail") cats.add(c.tone==="good"?"compDown":"compUp");
+    else if(c.key==="chgOpened") cats.add("opened");
+    else if(c.key==="chgClosed") cats.add("closed");
+  }
+  if(chips.length) cats.add("any");
+  return cats;
+}
+
+function fmtRank(r){r=String(r??"");return r.includes("-")?r.replace("-","–"):"#"+r;}
+function qsSort(p){const q=p.qs||{};return q.sort??99999;}
+
+function renderQs(p){
+  const q=p.qs||{};
+  if(!q.source||q.source==="none") return `<span class="qs none" data-tip="${esc(t("qsNoneTip"))}">${esc(t("qsNone"))}</span>`;
+  if(q.source==="subject_2026"){
+    const subs=q.subjects||[];
+    const name=s=>lang==="zh"?(s.subject_zh||s.subject):s.subject;
+    const best=subs[0];
+    const tip=`${t("qsSubjectTip")}\n${subs.map(s=>`${name(s)} ${fmtRank(s.rank)}`).join("\n")}`;
+    return `<span class="qs subject" data-tip="${esc(tip)}">${esc(name(best))} ${esc(fmtRank(best.rank))}</span>`;
+  }
+  const fallback=q.source==="overall_2026";
+  const tag=fallback?`<span class="tag">${esc(t("qs2026"))}</span>`:"";
+  return `<span class="qs" data-tip="${esc(t(fallback?"qsOverall2026":"qsOverall2027"))}">${esc(fmtRank(q.rank))}${tag}</span>`;
+}
+
+function fieldLabel(f){return {open_closed:t("fOpen"),exchange_availability:t("fAvail"),anticipated_places:t("fPlaces"),previous_round_cutoff:t("fCutoff")}[f]||f;}
+function fieldValue(f,v){if(f==="open_closed") return statusText(v); if(f==="exchange_availability") return availabilityText(v); return v??"—";}
+
+function renderPanel(){
+  const pool=programs.filter(p=>matchesProgram(p,null,true));
+  const counts={};
+  for(const tile of TILES) counts[tile.id]=0;
+  for(const p of pool) for(const c of categories(p)) if(c in counts) counts[c]++;
+  document.getElementById("panelTitle").textContent=t("panelTitle");
+  document.getElementById("panelSub").textContent=I18N[lang].panelSub(counts.any,pool.length);
+  document.getElementById("tilesTitle").textContent=t("tilesTitle");
+  document.getElementById("feedTitle").textContent=t("feedTitle");
+  document.getElementById("tileHint").textContent=activeTile?t("tileActive"):t("tileHint");
+  const clearBtn=document.getElementById("clearTile");
+  clearBtn.textContent=t("clear");
+  clearBtn.style.visibility=activeTile?"visible":"hidden";
+  const host=document.getElementById("tiles");
+  host.innerHTML="";
+  for(const tile of TILES){
+    const b=document.createElement("button");
+    b.type="button";
+    b.className=`tile ${tile.tone}${activeTile===tile.id?" active":""}`;
+    b.disabled=counts[tile.id]===0&&activeTile!==tile.id;
+    b.setAttribute("aria-pressed",activeTile===tile.id?"true":"false");
+    b.innerHTML=`<span class="n">${counts[tile.id]}</span><span class="l">${esc(t(tile.key))}</span>`;
+    b.addEventListener("click",()=>{activeTile=activeTile===tile.id?null:tile.id;render();});
+    host.appendChild(b);
+  }
+  const names=new Set(pool.map(p=>p.university));
+  const events=changeFeed.filter(e=>names.has(e.university)).sort((a,b)=>b.date.localeCompare(a.date));
+  const shown=feedExpanded?events:events.slice(0,6);
+  const ul=document.getElementById("feed");
+  ul.innerHTML=shown.length?shown.map(e=>{
+    const what=e.type==="added"?esc(t("evAdded")):`${esc(fieldLabel(e.field))}: ${esc(fieldValue(e.field,e.old))} → ${esc(fieldValue(e.field,e.new))}`;
+    return `<li><span class="date">${esc(e.date.slice(5))}</span><span><button type="button" class="uni" data-uni="${esc(e.university)}" title="${esc(t("feedSearch"))}">${esc(e.university)}</button> <span class="ev-${esc(e.tone||"neutral")}">${what}</span></span></li>`;
+  }).join(""):`<li class="feed-empty">${esc(t("feedEmpty"))}</li>`;
+  ul.querySelectorAll(".uni").forEach(btn=>btn.addEventListener("click",()=>{
+    document.getElementById("q").value=btn.dataset.uni;
+    activeTile=null;
+    render();
+  }));
+  const more=document.getElementById("feedMore");
+  more.style.display=events.length>6?"inline-block":"none";
+  more.textContent=feedExpanded?t("feedLess"):I18N[lang].feedMore(events.length);
 }
 
 function displayChangeEndpoint(chip,value){
@@ -367,6 +539,7 @@ function render(){
   rows.sort((a,b)=>sortValue(a,sortKey).localeCompare(sortValue(b,sortKey),undefined,{numeric:true})*sortDir);
   document.getElementById("metaLine").textContent=I18N[lang].meta(rows.length,programs.length);
   renderSummary(rows);
+  renderPanel();
   updateFacetCounts();
 
   const tbody=document.getElementById("rows");
@@ -379,6 +552,7 @@ function render(){
     tr.innerHTML=`
       <td>${esc(p.university||"—")}${warning}</td>
       <td>${esc(p.country||"—")}</td>
+      <td>${renderQs(p)}</td>
       <td>${esc(asList(p.region).join(", ")||"—")}</td>
       <td><span class="pill ${p.open_closed==="Open"?"open":"closed"}">${esc(statusText(p.open_closed))}</span></td>
       <td><span class="dot ${esc(p.exchange_availability||"")}">${esc(availabilityText(p.exchange_availability))}</span></td>
@@ -393,6 +567,8 @@ function render(){
 function applyLanguage(next){
   const saved=captureSelections();
   lang=next;
+  try{localStorage.setItem("demo.lang",lang);}catch(e){}
+  document.getElementById("signinLink").textContent=t("signinLink");
   document.documentElement.lang=lang==="zh"?"zh-CN":"en";
   document.getElementById("langEn").classList.toggle("active",lang==="en");
   document.getElementById("langZh").classList.toggle("active",lang==="zh");
@@ -413,8 +589,37 @@ document.getElementById("q").addEventListener("input",render);
 document.getElementById("clearFilters").addEventListener("click",()=>{
   document.getElementById("q").value="";
   document.querySelectorAll('input[type="checkbox"][data-facet]').forEach(el=>el.checked=false);
+  activeTile=null;
   render();
 });
+document.getElementById("clearTile").addEventListener("click",()=>{activeTile=null;render();});
+document.getElementById("feedMore").addEventListener("click",()=>{feedExpanded=!feedExpanded;renderPanel();});
+(function initPanel(){
+  const panel=document.getElementById("changePanel");
+  let saved=null;
+  try{saved=localStorage.getItem(PANEL_KEY);}catch(e){}
+  panel.open=saved===null?!window.matchMedia("(max-width:820px)").matches:saved==="1";
+  panel.addEventListener("toggle",()=>{try{localStorage.setItem(PANEL_KEY,panel.open?"1":"0");}catch(e){}});
+})();
+(function initTooltip(){
+  const tip=document.getElementById("tip");
+  let pinned=null;
+  const place=(x,y)=>{
+    const w=tip.offsetWidth,h=tip.offsetHeight;
+    tip.style.left=Math.max(8,Math.min(x+12,window.innerWidth-w-8))+"px";
+    tip.style.top=(y+16+h>window.innerHeight?y-h-10:y+16)+"px";
+  };
+  const show=(el,x,y)=>{tip.textContent=el.dataset.tip;tip.style.display="block";place(x,y);};
+  document.addEventListener("mouseover",e=>{const el=e.target.closest("[data-tip]");if(el&&!pinned) show(el,e.clientX,e.clientY);});
+  document.addEventListener("mousemove",e=>{if(tip.style.display==="block"&&!pinned) place(e.clientX,e.clientY);});
+  document.addEventListener("mouseout",e=>{const el=e.target.closest("[data-tip]");if(el&&!pinned&&!el.contains(e.relatedTarget)) tip.style.display="none";});
+  document.addEventListener("click",e=>{
+    const el=e.target.closest("[data-tip]");
+    if(el){pinned=pinned===el?null:el; if(pinned) show(el,e.clientX,e.clientY); else tip.style.display="none";}
+    else if(pinned){pinned=null;tip.style.display="none";}
+  });
+  window.addEventListener("scroll",()=>{if(!pinned) tip.style.display="none";},{passive:true});
+})();
 document.getElementById("langEn").addEventListener("click",()=>applyLanguage("en"));
 document.getElementById("langZh").addEventListener("click",()=>applyLanguage("zh"));
 document.querySelectorAll("th[data-key]").forEach(th=>{
@@ -431,12 +636,16 @@ async function fetchJson(path){
   return r.json();
 }
 
-Promise.all([fetchJson("./data/current.json"),fetchJson("./data/comparison.json")])
-  .then(([current,comparison])=>{
+Promise.all([fetchJson("./data/current.json"),fetchJson("./data/comparison.json"),fetchJson("./data/changes.json").catch(()=>({events:[]}))])
+  .then(([current,comparison,changes])=>{
     programs=current.programs||[];
     baselineByUniversity=comparison.by_university||{};
+    baselineLoaded=true;
+    changeFeed=changes.events||[];
     buildFacets();
-    applyLanguage("en");
+    let initial="en";
+    try{const saved=localStorage.getItem("demo.lang");if(saved==="zh"||saved==="en")initial=saved;}catch(e){}
+    applyLanguage(initial);
   })
   .catch(err=>{
     document.getElementById("metaLine").textContent="Could not load demo data: "+err;
