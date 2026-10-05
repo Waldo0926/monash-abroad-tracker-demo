@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sign in · Monash Exchange Tracker — demo preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --ink:#111827; --muted:#64748b; --line:#dfe4ec; --page:#f5f7fb; --card:#fff; --field:#f8fafc;
+    --accent:#1f5eff; --accent-ink:#fff; --panel-a:#0f2f7a; --panel-b:#1f5eff;
+    --note-bg:#fff8e8; --note-line:#efd188; --note-ink:#6b4b00;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--ink:#e5e7eb; --muted:#9aa4b2; --line:#2b3442; --page:#0d1220; --card:#151c2c; --field:#0f1626;
+      --note-bg:#2a2412; --note-line:#5c4a1a; --note-ink:#f0d9a0;}
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Noto Sans SC",sans-serif;color:var(--ink);background:var(--page)}
+  .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:100%}
+  .brand-panel{position:relative;overflow:hidden;color:#fff;padding:56px 64px 40px;display:flex;flex-direction:column;
+    background:linear-gradient(160deg,var(--panel-a) 0%,#1740b8 55%,var(--panel-b) 100%)}
+  .brand-panel::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:44px 44px}
+  .brand-panel>*{position:relative}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:600;font-size:1rem}
+  .logo .mark{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);display:grid;place-items:center;font-weight:800}
+  .pitch{margin:auto 0;max-width:560px}
+  .pitch h1{font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.15;margin:0 0 18px;letter-spacing:-.01em}
+  .pitch p{margin:0 0 30px;font-size:1.02rem;line-height:1.6;color:rgba(255,255,255,.82)}
+  .features{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+  .features li{display:flex;align-items:center;gap:12px;font-size:.98rem;color:rgba(255,255,255,.92)}
+  .features .ico{width:30px;height:30px;flex:none;border-radius:7px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);display:grid;place-items:center}
+  .dots{display:flex;gap:3px}.dots i{width:6px;height:6px;border-radius:50%;display:block}
+  .source{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:40px}
+  .form-side{position:relative;display:grid;place-items:center;padding:80px 28px 40px}
+  .lang{position:absolute;top:24px;right:24px;display:inline-flex;border:1px solid var(--line);border-radius:10px;background:var(--card);padding:3px}
+  .lang button{border:0;background:none;color:var(--muted);padding:6px 12px;border-radius:7px;cursor:pointer;font:inherit;font-size:.86rem}
+  .lang button.active{background:var(--accent);color:var(--accent-ink);font-weight:600}
+  .card{width:100%;max-width:380px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px 30px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
+  .card h2{margin:0 0 8px;font-size:1.55rem}
+  .card .lead{margin:0 0 24px;color:var(--muted);font-size:.92rem;line-height:1.5}
+  label.field{display:block;font-weight:600;font-size:.86rem;margin:0 0 7px}
+  .input{position:relative;margin-bottom:18px}
+  .input input{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);padding:0 44px 0 12px;font:inherit;font-size:16px}
+  .input input:focus{outline:2px solid color-mix(in srgb,var(--accent) 40%,transparent);border-color:var(--accent)}
+  .eye{position:absolute;right:6px;top:6px;width:32px;height:32px;border:0;background:none;color:var(--muted);cursor:pointer;border-radius:6px;display:grid;place-items:center}
+  .keep{display:flex;align-items:center;gap:9px;font-size:.9rem;margin:2px 0 20px}
+  .keep input{width:17px;height:17px;accent-color:var(--accent)}
+  .submit{width:100%;height:46px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:600;font-size:.98rem;cursor:pointer}
+  .submit:hover{filter:brightness(1.06)}
+  .foot{margin:18px 0 0;text-align:center;color:var(--muted);font-size:.86rem}
+  .preview{margin:0 0 20px;padding:9px 11px;border:1px solid var(--note-line);background:var(--note-bg);color:var(--note-ink);border-radius:9px;font-size:.8rem;line-height:1.45}
+  .preview a{color:inherit}
+  @media(max-width:900px){
+    .wrap{grid-template-columns:1fr}
+    .brand-panel{padding:26px 22px 24px}
+    .pitch{margin:26px 0 0}
+    .pitch h1{font-size:1.55rem;margin-bottom:10px}
+    .pitch p{margin-bottom:18px;font-size:.92rem}
+    .features{gap:10px}.features li{font-size:.88rem}
+    .source{margin-top:20px}
+    .form-side{padding:64px 16px 32px}
+    .lang{top:14px;right:14px}
+    .card{padding:26px 20px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="brand-panel" aria-hidden="false">
+    <div class="logo"><span class="mark">M</span><span>Monash Exchange Tracker</span></div>
+    <div class="pitch">
+      <h1 id="hero"></h1>
+      <p id="heroSub"></p>
+      <ul class="features">
+        <li><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 13h12M3 10l3-3 2.5 2L13 4"/></svg></span><span id="f1"></span></li>
+        <li><span class="ico"><span class="dots"><i style="background:#f05252"></i><i style="background:#f5b301"></i><i style="background:#22c55e"></i></span></span><span id="f2"></span></li>
+        <li><span class="ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2h6v4a3 3 0 0 1-6 0zM5 3H3v1a2 2 0 0 0 2 2M11 3h2v1a2 2 0 0 1-2 2M8 9v3M5.5 14h5"/></svg></span><span id="f3"></span></li>
+      </ul>
+    </div>
+    <div class="source" id="source"></div>
+  </section>
+
+  <section class="form-side">
+    <div class="lang" role="group" aria-label="Language">
+      <button id="langEn" type="button">EN</button>
+      <button id="langZh" type="button">中文</button>
+    </div>
+    <form class="card" id="form" novalidate>
+      <h2 id="title"></h2>
+      <p class="lead" id="lead"></p>
+      <p class="preview" id="preview"></p>
+      <label class="field" for="user" id="userLabel"></label>
+      <div class="input"><input id="user" name="username" autocomplete="off" spellcheck="false"></div>
+      <label class="field" for="pass" id="passLabel"></label>
+      <div class="input">
+        <input id="pass" name="password" type="password" autocomplete="off">
+        <button class="eye" id="eye" type="button" aria-pressed="false">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.5 10S4.5 4 10 4s8.5 6 8.5 6-3 6-8.5 6S1.5 10 1.5 10z"/><circle cx="10" cy="10" r="2.6"/></svg>
+        </button>
+      </div>
+      <label class="keep"><input id="keep" type="checkbox" checked><span id="keepLabel"></span></label>
+      <button class="submit" id="submit" type="submit"></button>
+      <p class="foot" id="foot"></p>
+    </form>
+  </section>
+</div>
+<script>
+const LANG_KEY="demo.lang";
+const T={
+  en:{
+    doc:"Sign in · Monash Exchange Tracker — demo preview",
+    hero:"Every Monash exchange programme, watched daily",
+    heroSub:"Places, cut-offs and requirements are recorded the moment they move, so you can see where it is easy to get in and where it is not.",
+    f1:"How cut-offs, places and competition have shifted",
+    f2:"Red, amber and green for how hard each one is",
+    f3:"QS rankings alongside, filtered by campus, term and faculty",
+    source:"Data from Monash's official exchange pages, refreshed every day.",
+    title:"Sign in", lead:"Access is by invitation. Use the account you were given.",
+    preview:'Portfolio preview of the production sign-in page. Nothing you type is checked or sent anywhere; signing in opens the <a href="./index.html">public demo</a>.',
+    user:"Username", pass:"Password", keep:"Keep me signed in for 30 days", submit:"Sign in",
+    foot:"No account? Ask the site owner for one.", show:"Show password", hide:"Hide password"
+  },
+  zh:{
+    doc:"登录 · Monash Exchange Tracker — 演示预览",
+    hero:"每天替你盯着 Monash 交换项目",
+    heroSub:"名额、分数线和申请条件一有变动就记下来，选校时一眼看清哪里松、哪里紧。",
+    f1:"分数线、名额、竞争程度的历史变化",
+    f2:"红黄绿灯标出申请难度",
+    f3:"对照 QS 排名，按校区、学期、学院筛选",
+    source:"数据来自 Monash 官方交换项目页面，每日自动更新。",
+    title:"登录", lead:"本站仅限受邀访问，请使用分配给你的账号。",
+    preview:'这是正式版登录页的作品集预览。输入的内容不会被校验，也不会发送到任何地方；点登录会进入<a href="./index.html">公开演示</a>。',
+    user:"用户名", pass:"密码", keep:"30 天内保持登录", submit:"登录",
+    foot:"没有账号？请联系管理员开通。", show:"显示密码", hide:"隐藏密码"
+  }
+};
+let lang="en";
+try{const s=localStorage.getItem(LANG_KEY);if(s==="zh"||s==="en")lang=s;else if((navigator.language||"").toLowerCase().startsWith("zh"))lang="zh";}catch(e){}
+function apply(next){
+  lang=next;
+  try{localStorage.setItem(LANG_KEY,lang);}catch(e){}
+  const t=T[lang];
+  document.documentElement.lang=lang==="zh"?"zh-CN":"en";
+  document.title=t.doc;
+  for(const id of ["hero","heroSub","f1","f2","f3","source","title","lead","foot"]) document.getElementById(id).textContent=t[id];
+  document.getElementById("preview").innerHTML=t.preview;
+  document.getElementById("userLabel").textContent=t.user;
+  document.getElementById("passLabel").textContent=t.pass;
+  document.getElementById("keepLabel").textContent=t.keep;
+  document.getElementById("submit").textContent=t.submit;
+  const eye=document.getElementById("eye");
+  eye.setAttribute("aria-label",eye.getAttribute("aria-pressed")==="true"?t.hide:t.show);
+  document.getElementById("langEn").classList.toggle("active",lang==="en");
+  document.getElementById("langZh").classList.toggle("active",lang==="zh");
+}
+document.getElementById("langEn").addEventListener("click",()=>apply("en"));
+document.getElementById("langZh").addEventListener("click",()=>apply("zh"));
+document.getElementById("eye").addEventListener("click",e=>{
+  const btn=e.currentTarget, pass=document.getElementById("pass");
+  const showing=pass.type==="text";
+  pass.type=showing?"password":"text";
+  btn.setAttribute("aria-pressed",showing?"false":"true");
+  btn.setAttribute("aria-label",showing?T[lang].show:T[lang].hide);
+});
+document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();location.href="./index.html";});
+apply(lang);
+</script>
+</body>
+</html>

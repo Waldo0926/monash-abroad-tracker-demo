@@ -62,9 +62,23 @@ Historical snapshots and append-only change records support auditability and mak
 
 A frozen previous-round baseline is compared with the current round to identify changes in application status, availability, cut-offs, place counts and selected eligibility fields.
 
-### 7. Private reporting
+### 7. Ranking enrichment
 
-Production comparison reports and the live viewer are private outputs. They are not committed to this public repository.
+Each partner is matched to the QS World University Rankings through a hand-checked alias table, with subject rankings as the fallback for specialist institutions. The build fails while any partner is unresolved, so a wrong or missing rank is never published silently.
+
+### 8. Private reporting and viewer
+
+Production comparison reports and the live viewer are private outputs. The viewer adds a change-summary panel against the previous round and sits behind a dedicated sign-in page:
+
+```text
+browser --> web server --(every request)--> sign-in service: is this session cookie valid?
+                 |                                   |
+                 |                                   +--> on sign-in: loopback Basic Auth check
+                 |                                        against the existing account file
+                 +--> no valid session --> sign-in page
+```
+
+Sessions are stateless HMAC-signed cookies bound to a fingerprint of the user's account entry, so a password change or account removal ends them immediately. See the "Sign-in design" section of the README. None of this is committed to this public repository.
 
 ## Public-demo architecture
 

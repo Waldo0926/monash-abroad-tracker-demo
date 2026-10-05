@@ -6,7 +6,8 @@
     "program_type_filter": "semester exchange",
     "programs_tracked": 12,
     "fictional_data": true,
-    "note": "Synthetic portfolio dataset only. Institutions, countries, URLs, dates, scores, availability values and place counts are fictional and are not derived from production records."
+    "note": "Synthetic portfolio dataset only. Institutions, countries, URLs, dates, scores, availability values and place counts are fictional and are not derived from production records.",
+    "qs_note": "Fictional QS-style ranks for demonstration only. Real QS rankings are not reproduced."
   },
   "programs": [
     {
@@ -15,11 +16,24 @@
       "url": "https://demo.example.org/exchange/northbridge-university",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 Semester", "2 Semesters"],
-      "semester_availability": ["Semester 1 (Feb - June)", "Semester 2 (July - Nov)"],
-      "search_eligible_campus": ["Monash Australia", "Monash Malaysia"],
-      "search_eligible_faculties": ["Business and Economics"],
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics"
+      ],
       "minimum_result_required": "65% WAM",
       "previous_round_cutoff": "65% WAM",
       "previous_round_cutoff_value": 65,
@@ -27,7 +41,12 @@
       "anticipated_places": "8 places",
       "anticipated_places_max": 8,
       "exchange_availability": "Green",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "88",
+        "sort": 88
+      }
     },
     {
       "university": "Fictional Institute of Technology",
@@ -35,11 +54,21 @@
       "url": "https://demo.example.org/exchange/fictional-institute-of-technology",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Asia"],
-      "program_duration": ["1 Semester"],
-      "semester_availability": ["Semester 1 (Feb - June)"],
-      "search_eligible_campus": ["Monash Australia"],
-      "search_eligible_faculties": ["Engineering"],
+      "region": [
+        "Asia"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Engineering"
+      ],
       "minimum_result_required": "70% WAM",
       "previous_round_cutoff": "72% WAM",
       "previous_round_cutoff_value": 72,
@@ -47,7 +76,12 @@
       "anticipated_places": "4 places",
       "anticipated_places_max": 4,
       "exchange_availability": "Yellow",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "41",
+        "sort": 41
+      }
     },
     {
       "university": "Aldergate University",
@@ -55,11 +89,23 @@
       "url": "https://demo.example.org/exchange/aldergate-university",
       "program_type": "Semester exchange",
       "open_closed": "Closed",
-      "region": ["Europe"],
-      "program_duration": ["1 Semester", "2 Semesters"],
-      "semester_availability": ["Calendar Year (Feb - Nov)"],
-      "search_eligible_campus": ["Monash Australia", "Monash Malaysia"],
-      "search_eligible_faculties": ["Arts and Social Sciences"],
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Calendar Year (Feb - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Arts and Social Sciences"
+      ],
       "minimum_result_required": "60% WAM",
       "previous_round_cutoff": "62% WAM",
       "previous_round_cutoff_value": 62,
@@ -67,7 +113,12 @@
       "anticipated_places": "0 places",
       "anticipated_places_max": 0,
       "exchange_availability": "Red",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "301-350",
+        "sort": 301
+      }
     },
     {
       "university": "Marlowe State University",
@@ -75,11 +126,24 @@
       "url": "https://demo.example.org/exchange/marlowe-state-university",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["North America"],
-      "program_duration": ["1 Semester", "2 Semesters"],
-      "semester_availability": ["Semester 1 (Feb - June)", "Semester 2 (July - Nov)"],
-      "search_eligible_campus": ["Monash Australia"],
-      "search_eligible_faculties": ["Business and Economics", "Law"],
+      "region": [
+        "North America"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics",
+        "Law"
+      ],
       "minimum_result_required": "70% WAM",
       "previous_round_cutoff": "71% WAM",
       "previous_round_cutoff_value": 71,
@@ -87,7 +151,12 @@
       "anticipated_places": "6 places",
       "anticipated_places_max": 6,
       "exchange_availability": "Green",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "156",
+        "sort": 156
+      }
     },
     {
       "university": "Bright Coast University",
@@ -95,11 +164,22 @@
       "url": "https://demo.example.org/exchange/bright-coast-university",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Oceania"],
-      "program_duration": ["1 Semester"],
-      "semester_availability": ["Semester 2 (July - Nov)"],
-      "search_eligible_campus": ["Monash Australia", "Monash Malaysia"],
-      "search_eligible_faculties": ["Science"],
+      "region": [
+        "Oceania"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Science"
+      ],
       "minimum_result_required": "60% WAM",
       "previous_round_cutoff": "60% WAM",
       "previous_round_cutoff_value": 60,
@@ -107,7 +187,12 @@
       "anticipated_places": "12 places",
       "anticipated_places_max": 12,
       "exchange_availability": "Green",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "212",
+        "sort": 212
+      }
     },
     {
       "university": "Northfell Polytechnic",
@@ -115,11 +200,22 @@
       "url": "https://demo.example.org/exchange/northfell-polytechnic",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 Semester", "2 Semesters"],
-      "semester_availability": ["Semester 1 (Feb - June)"],
-      "search_eligible_campus": ["Monash Australia"],
-      "search_eligible_faculties": ["Information Technology"],
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Information Technology"
+      ],
       "minimum_result_required": "65% WAM",
       "previous_round_cutoff": "68% WAM",
       "previous_round_cutoff_value": 68,
@@ -127,7 +223,28 @@
       "anticipated_places": "3 places",
       "anticipated_places_max": 3,
       "exchange_availability": "Yellow",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "subject_2026",
+        "subjects": [
+          {
+            "subject": "Engineering & Technology",
+            "subject_zh": "工程与技术",
+            "rank": "37"
+          },
+          {
+            "subject": "Computer Science",
+            "subject_zh": "计算机科学",
+            "rank": "52"
+          },
+          {
+            "subject": "Architecture",
+            "subject_zh": "建筑",
+            "rank": "51-100"
+          }
+        ],
+        "sort": 37
+      }
     },
     {
       "university": "Cinderpeak University",
@@ -135,11 +252,21 @@
       "url": "https://demo.example.org/exchange/cinderpeak-university",
       "program_type": "Semester exchange",
       "open_closed": "Closed",
-      "region": ["South America"],
-      "program_duration": ["2 Semesters"],
-      "semester_availability": ["Calendar Year (Feb - Nov)"],
-      "search_eligible_campus": ["Monash Australia"],
-      "search_eligible_faculties": ["Arts and Social Sciences"],
+      "region": [
+        "South America"
+      ],
+      "program_duration": [
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Calendar Year (Feb - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Arts and Social Sciences"
+      ],
       "minimum_result_required": "65% WAM",
       "previous_round_cutoff": "64% WAM",
       "previous_round_cutoff_value": 64,
@@ -147,7 +274,12 @@
       "anticipated_places": "0 places",
       "anticipated_places_max": 0,
       "exchange_availability": "Closed",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "551-560",
+        "sort": 551
+      }
     },
     {
       "university": "Sunspire University",
@@ -155,11 +287,24 @@
       "url": "https://demo.example.org/exchange/sunspire-university",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Asia"],
-      "program_duration": ["1 Semester", "2 Semesters"],
-      "semester_availability": ["Semester 1 (Feb - June)", "Semester 2 (July - Nov)"],
-      "search_eligible_campus": ["Monash Australia", "Monash Malaysia"],
-      "search_eligible_faculties": ["Business and Economics"],
+      "region": [
+        "Asia"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Business and Economics"
+      ],
       "minimum_result_required": "60% WAM",
       "previous_round_cutoff": "62% WAM",
       "previous_round_cutoff_value": 62,
@@ -167,7 +312,12 @@
       "anticipated_places": "10 places",
       "anticipated_places_max": 10,
       "exchange_availability": "Green",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2026",
+        "rank": "129",
+        "sort": 129
+      }
     },
     {
       "university": "Whitmoor College",
@@ -175,11 +325,21 @@
       "url": "https://demo.example.org/exchange/whitmoor-college",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 Semester"],
-      "semester_availability": ["Semester 1 (Feb - June)"],
-      "search_eligible_campus": ["Monash Australia"],
-      "search_eligible_faculties": ["Law"],
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Law"
+      ],
       "minimum_result_required": "75% WAM",
       "previous_round_cutoff": "76% WAM",
       "previous_round_cutoff_value": 76,
@@ -187,7 +347,28 @@
       "anticipated_places": "2 places",
       "anticipated_places_max": 2,
       "exchange_availability": "Red",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "subject_2026",
+        "subjects": [
+          {
+            "subject": "Business & Management",
+            "subject_zh": "商科与管理",
+            "rank": "24"
+          },
+          {
+            "subject": "Accounting & Finance",
+            "subject_zh": "会计与金融",
+            "rank": "51-100"
+          },
+          {
+            "subject": "Economics",
+            "subject_zh": "经济学",
+            "rank": "101-150"
+          }
+        ],
+        "sort": 24
+      }
     },
     {
       "university": "Dunmore University",
@@ -195,11 +376,22 @@
       "url": "https://demo.example.org/exchange/dunmore-university",
       "program_type": "Semester exchange",
       "open_closed": "Closed",
-      "region": ["North America"],
-      "program_duration": ["1 Semester", "2 Semesters"],
-      "semester_availability": ["Semester 2 (July - Nov)"],
-      "search_eligible_campus": ["Monash Australia"],
-      "search_eligible_faculties": ["Engineering"],
+      "region": [
+        "North America"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Engineering"
+      ],
       "minimum_result_required": "70% WAM",
       "previous_round_cutoff": "70% WAM",
       "previous_round_cutoff_value": 70,
@@ -207,7 +399,12 @@
       "anticipated_places": "0 places",
       "anticipated_places_max": 0,
       "exchange_availability": "Red",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "67",
+        "sort": 67
+      }
     },
     {
       "university": "Thornfield University",
@@ -215,11 +412,25 @@
       "url": "https://demo.example.org/exchange/thornfield-university",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["Europe"],
-      "program_duration": ["1 Semester", "2 Semesters"],
-      "semester_availability": ["Semester 1 (Feb - June)", "Semester 2 (July - Nov)"],
-      "search_eligible_campus": ["Monash Australia", "Monash Malaysia"],
-      "search_eligible_faculties": ["Law", "Business and Economics"],
+      "region": [
+        "Europe"
+      ],
+      "program_duration": [
+        "1 Semester",
+        "2 Semesters"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)",
+        "Semester 2 (July - Nov)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia",
+        "Monash Malaysia"
+      ],
+      "search_eligible_faculties": [
+        "Law",
+        "Business and Economics"
+      ],
       "minimum_result_required": "65% WAM",
       "previous_round_cutoff": "65% WAM",
       "previous_round_cutoff_value": 65,
@@ -227,7 +438,12 @@
       "anticipated_places": "5 places",
       "anticipated_places_max": 5,
       "exchange_availability": "Green",
-      "search_detail_mismatch": ["program_duration"]
+      "search_detail_mismatch": [
+        "program_duration"
+      ],
+      "qs": {
+        "source": "none"
+      }
     },
     {
       "university": "Rosemont University",
@@ -235,11 +451,21 @@
       "url": "https://demo.example.org/exchange/rosemont-university",
       "program_type": "Semester exchange",
       "open_closed": "Open",
-      "region": ["South America"],
-      "program_duration": ["1 Semester"],
-      "semester_availability": ["Semester 1 (Feb - June)"],
-      "search_eligible_campus": ["Monash Australia"],
-      "search_eligible_faculties": ["Arts and Social Sciences"],
+      "region": [
+        "South America"
+      ],
+      "program_duration": [
+        "1 Semester"
+      ],
+      "semester_availability": [
+        "Semester 1 (Feb - June)"
+      ],
+      "search_eligible_campus": [
+        "Monash Australia"
+      ],
+      "search_eligible_faculties": [
+        "Arts and Social Sciences"
+      ],
       "minimum_result_required": "62% WAM",
       "previous_round_cutoff": "64% WAM",
       "previous_round_cutoff_value": 64,
@@ -247,7 +473,12 @@
       "anticipated_places": "3 places",
       "anticipated_places_max": 3,
       "exchange_availability": "Yellow",
-      "search_detail_mismatch": []
+      "search_detail_mismatch": [],
+      "qs": {
+        "source": "overall_2027",
+        "rank": "410",
+        "sort": 410
+      }
     }
   ]
 }

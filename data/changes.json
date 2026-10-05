@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "fictional_data": true,
+    "note": "Synthetic day-by-day change feed for portfolio demonstration only. Mirrors the shape of the production change log; no production events are included."
+  },
+  "events": [
+    {
+      "date": "2026-09-12",
+      "university": "Rosemont University",
+      "type": "added",
+      "field": null,
+      "old": null,
+      "new": null,
+      "tone": "neutral"
+    },
+    {
+      "date": "2026-09-11",
+      "university": "Northbridge University",
+      "type": "modified",
+      "field": "open_closed",
+      "old": "Closed",
+      "new": "Open",
+      "tone": "good"
+    },
+    {
+      "date": "2026-09-11",
+      "university": "Northbridge University",
+      "type": "modified",
+      "field": "exchange_availability",
+      "old": "Yellow",
+      "new": "Green",
+      "tone": "good"
+    },
+    {
+      "date": "2026-09-10",
+      "university": "Dunmore University",
+      "type": "modified",
+      "field": "open_closed",
+      "old": "Open",
+      "new": "Closed",
+      "tone": "bad"
+    },
+    {
+      "date": "2026-09-10",
+      "university": "Dunmore University",
+      "type": "modified",
+      "field": "exchange_availability",
+      "old": "Yellow",
+      "new": "Red",
+      "tone": "bad"
+    },
+    {
+      "date": "2026-09-09",
+      "university": "Whitmoor College",
+      "type": "modified",
+      "field": "anticipated_places",
+      "old": "3 places",
+      "new": "2 places",
+      "tone": "bad"
+    },
+    {
+      "date": "2026-09-08",
+      "university": "Bright Coast University",
+      "type": "modified",
+      "field": "anticipated_places",
+      "old": "8 places",
+      "new": "12 places",
+      "tone": "good"
+    },
+    {
+      "date": "2026-09-06",
+      "university": "Fictional Institute of Technology",
+      "type": "modified",
+      "field": "exchange_availability",
+      "old": "Green",
+      "new": "Yellow",
+      "tone": "bad"
+    },
+    {
+      "date": "2026-09-05",
+      "university": "Cinderpeak University",
+      "type": "modified",
+      "field": "open_closed",
+      "old": "Open",
+      "new": "Closed",
+      "tone": "bad"
+    },
+    {
+      "date": "2026-09-03",
+      "university": "Thornfield University",
+      "type": "modified",
+      "field": "exchange_availability",
+      "old": "Yellow",
+      "new": "Green",
+      "tone": "good"
+    },
+    {
+      "date": "2026-09-02",
+      "university": "Northfell Polytechnic",
+      "type": "modified",
+      "field": "anticipated_places",
+      "old": "5 places",
+      "new": "3 places",
+      "tone": "bad"
+    },
+    {
+      "date": "2026-08-30",
+      "university": "Sunspire University",
+      "type": "modified",
+      "field": "anticipated_places",
+      "old": "8 places",
+      "new": "10 places",
+      "tone": "good"
+    }
+  ]
+}
