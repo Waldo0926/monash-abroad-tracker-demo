@@ -1,4 +1,4 @@
-# Monash Exchange Tracker — Public Demo
+# Monash Exchange Tracker: Public Demo
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-waldo0926.github.io-2563eb?style=for-the-badge)](https://waldo0926.github.io/monash-abroad-tracker-demo/)
 [![Type](https://img.shields.io/badge/Type-Portfolio_Demo-7c3aed?style=for-the-badge)](#)
@@ -51,6 +51,7 @@ The private system has been running daily since August 2026. Without publishing 
 - **QS rankings without silent mismatches.** A sortable QS column covers 150 of 164 partners from the 2027 and 2026 overall tables, falling back to subject rankings for specialist schools (shown as their best subject placing). Matching uses a hand-checked alias table, because an automatic first attempt paired the University of Hong Kong with Hong Kong Metropolitan (#781 instead of #11); the build fails while any partner is unresolved.
 - **A viewer people actually use.** A collapsible change-summary panel counts cut-off, place, competition and status changes against the previous round, filters the table in one click, and lists the daily change feed. Access goes through a dedicated bilingual sign-in page with signed session cookies, per-IP rate limiting, and sessions that end as soon as a password changes or an account is removed.
 - **Reliability fixes from real operation.** Running unattended surfaced bugs worth knowing about: git conflict markers committed into generated data (fixed by syncing before crawling and refusing to commit on conflict), a read-modify-write race that overwrote back-filled dates, `set -o pipefail` treating a `grep -q` match as failure through SIGPIPE, and a macOS launchd job that never ran because of privacy protection on the Desktop folder.
+- **Scheduled on hardware the site accepts.** GitHub-hosted runners get HTTP 403 from the Monash site, so the crawl runs on a small always-on Debian machine at home: one run every evening at 19:00, plus two-hourly retries that only crawl if the last scheduled run is more than 20 hours old. A manual crawl never uses up the evening one.
 - **Offline tests.** Parser tests run against trimmed HTML fixtures, and a pipeline test drives whole runs through a stub fetcher: first run, unchanged re-run, real change, removal, guard trip, search failure and detail failure.
 
 ### Sign-in design
