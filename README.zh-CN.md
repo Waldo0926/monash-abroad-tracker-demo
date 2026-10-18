@@ -41,6 +41,17 @@
 
 变化语义与正式查看器一致。例如：名额减少、同口径分数线上升视为不利变化；名额增加、同口径分数线下降、竞争缓和或重新开放视为有利变化。
 
+## 技术栈
+
+| 部分 | 用到的技术 |
+| --- | --- |
+| 爬虫与数据流水线 | Python 3、`requests`、BeautifulSoup 配合 `lxml`，网站拒绝普通 HTTP 请求时才改用 Playwright（无头 Chromium） |
+| 报告与排名 | 用 `openpyxl` 生成 Excel 对比报告，并构建 QS 排名表 |
+| 测试 | pytest，配合裁剪过的 HTML 样本和替身抓取器 |
+| 定时运行 | 家里一台 Debian 机器上的 systemd 定时器，跑完把新数据推送到 GitHub |
+| 查看页面 | 纯 HTML、CSS 和 JavaScript，不用框架，通过 GitHub Actions 部署到 GitHub Pages |
+| 登录 | 只用 Python 标准库写的小服务，签发 HMAC 签名的 Cookie，由 Nginx `auth_request` 校验 |
+
 ## 私有正式系统的工程要点
 
 私有正式系统从 2026 年 8 月起每天运行。在不公开代码和数据的前提下，这里列出它背后的工程决策：

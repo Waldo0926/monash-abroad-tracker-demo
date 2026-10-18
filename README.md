@@ -41,6 +41,17 @@ The public page intentionally presents itself as a **static portfolio demo**, no
 
 The comparison semantics mirror the production viewer: for example, fewer places or a higher comparable cut-off is treated as an adverse change, while more places, a lower comparable cut-off, improved availability or reopening is favourable.
 
+## Tech stack
+
+| Part | Built with |
+| --- | --- |
+| Crawler and pipeline | Python 3, `requests`, BeautifulSoup with `lxml`, Playwright (headless Chromium, only when the site refuses plain HTTP) |
+| Reports and rankings | `openpyxl` for the Excel comparison reports and the QS ranking build |
+| Tests | pytest with trimmed HTML fixtures and a stub fetcher |
+| Scheduling | systemd timers on a home Debian machine, which pushes the refreshed data to GitHub |
+| Viewer | Plain HTML, CSS and JavaScript, no framework; deployed with GitHub Actions and GitHub Pages |
+| Sign-in | A small standard-library Python service with HMAC-signed cookies, checked by Nginx `auth_request` |
+
 ## Production system highlights
 
 The private system has been running daily since August 2026. Without publishing its code or data, these are the engineering decisions behind it:
