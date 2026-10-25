@@ -28,6 +28,9 @@ The private production system collects program-search data, normalises fields, d
 - Search/detail consistency warnings
 - **Sortable QS rank column** with fictional ranks: overall ranks, ranges, a fallback to the previous year's table, specialist schools shown by their best subject placing (all subjects on hover or tap), and "Not listed" kept distinct from a poor rank
 - **Collapsible change-summary panel**: ten tiles count cut-off, place, competition and status changes plus new programs against the previous round, follow the sidebar filters, and filter the table in one click
+- **Clickable summary counters** that toggle the matching facet, and a row of removable filter chips above the table
+- **Phone layout**: the sidebar becomes a drawer and the table becomes one card per program
+- Light / dark toggle shared with the sign-in preview, and a comfortable / compact row-density switch
 - **Day-by-day change feed** next to the tiles; clicking a university searches the table for it
 - **Sign-in page preview** that reproduces the production design (bilingual, mobile and dark mode) without checking any credentials
 - A reduced version of the production JSON schema for demonstrated fields
