@@ -2,198 +2,534 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Monash Exchange Tracker — Public Demo</title>
+<title>Monash Exchange Tracker: Public Demo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e5eff'/%3E%3Cpath d='M9 22V10l7 7 7-7v12' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+  /* 配色和登录页（auth/login.html）同一套：蓝 #1e5eff、灰蓝底、12px 圆角。
+     之前表格页是 Monash 蓝 #006dae、白底，登录完一跳进来像换了个网站。 */
   :root {
-    --ink:#1f2937; --muted:#64748b; --line:#e2e8f0; --bg:#f7f8fa; --card:#fff;
-    --accent:#1e5eff; --green:#148a4b; --green-bg:#e8f7ee; --yellow:#ad7900;
-    --yellow-bg:#fff4d6; --red:#c92d43; --red-bg:#fde9ec; --blue-bg:#eaf2ff;
+    --bg:#f4f6fb; --card:#ffffff; --panel:#ffffff; --fg:#141a2b; --muted:#5d6680;
+    --line:#dde2ee; --field:#f8f9fd; --chip:#eef1f7;
+    --accent:#1e5eff; --accent-hover:#164ad1; --accent-soft:rgba(30,94,255,.12);
+    --green:#148a4b; --yellow:#a86800; --red:#c62f3b; --closed:#6b7284;
+    --shadow:0 1px 2px rgba(20,26,43,.04), 0 8px 24px rgba(20,26,43,.06);
+    --radius:12px; --topbar:56px;
   }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;color:var(--ink);background:var(--bg)}
-  a{color:var(--accent)}
-  header{max-width:1500px;margin:0 auto;padding:26px 22px 16px}
-  .hero-row{display:flex;justify-content:space-between;align-items:flex-start;gap:22px}
-  .hero-copy h1{font-size:1.55rem;margin:0 0 5px}
-  .hero-copy p{margin:0;color:var(--muted);font-size:.93rem}
-  .hero-tools{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-  .signin-link{font-size:.8rem;text-decoration:none;border:1px solid #cfe0ff;background:#f7faff;border-radius:7px;padding:5px 9px}
-  .lang-switch{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:8px;overflow:hidden}
-  .lang-switch button{border:0;background:#fff;color:var(--muted);padding:6px 9px;cursor:pointer;font-size:.78rem}
-  .lang-switch button.active{background:#1267a8;color:#fff;font-weight:650}
-  .summary-cards{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-  .summary-card{min-width:76px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:8px 10px;text-align:center}
-  .summary-card .value{display:block;font-size:1.05rem;font-weight:750;line-height:1.05;font-variant-numeric:tabular-nums}
-  .summary-card .label{display:block;margin-top:4px;color:var(--muted);font-size:.68rem;white-space:nowrap}
-  .summary-card.green .value{color:var(--green)}
-  .summary-card.yellow .value{color:var(--yellow)}
-  .summary-card.red .value{color:var(--red)}
-  .summary-card.closed .value{color:#64748b}
-  .banner{margin-top:13px;padding:10px 13px;border:1px solid #efd188;border-radius:9px;background:#fff8e8;color:#6b4b00;font-size:.84rem}
-  main{max-width:1500px;margin:0 auto;padding:0 22px 44px}
-  .layout{display:grid;grid-template-columns:265px minmax(0,1fr);gap:18px;align-items:start}
-  .sidebar{background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden;position:sticky;top:12px}
-  .side-head{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid var(--line)}
-  .side-head strong{font-size:.98rem}
-  .clear-btn{border:1px solid #cfe0ff;background:#f7faff;color:#1762d6;border-radius:7px;padding:5px 9px;font-size:.78rem;cursor:pointer}
-  .search-wrap{padding:11px 12px;border-bottom:1px solid var(--line)}
-  #q{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:.88rem;background:#fff}
-  details.facet{border-bottom:1px solid var(--line)}
-  details.facet:last-child{border-bottom:0}
-  details.facet summary{cursor:pointer;list-style:none;padding:11px 13px;font-size:.88rem;font-weight:650;display:flex;justify-content:space-between;align-items:center}
-  details.facet summary::-webkit-details-marker{display:none}
-  details.facet summary::after{content:"+";font-weight:500;color:var(--muted)}
-  details.facet[open] summary::after{content:"−"}
-  .facet-options{padding:0 12px 10px;max-height:240px;overflow:auto}
-  .facet-option{display:grid;grid-template-columns:18px 1fr auto;gap:6px;align-items:start;padding:4px 0;font-size:.82rem;line-height:1.28}
-  .facet-option input{margin:2px 0 0}
-  .facet-option .count{color:#94a3b8;font-variant-numeric:tabular-nums}
-  .facet-option.unavailable{opacity:.45}
-  .content{min-width:0}
-  .meta-line{color:var(--muted);font-size:.83rem;margin:3px 0 10px}
-  .table-wrap{overflow:auto;border-radius:10px;box-shadow:0 1px 3px rgba(20,30,50,.06)}
-  table{width:100%;min-width:1210px;border-collapse:collapse;background:var(--card);font-size:.86rem}
-  th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-  th{cursor:pointer;user-select:none;color:var(--muted);font-weight:650;white-space:nowrap;background:#fbfcfd;position:sticky;top:0;z-index:1}
-  th:hover{color:var(--ink)}
-  tr:last-child td{border-bottom:0}
-  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.76rem;font-weight:650}
-  .pill.open{background:var(--green-bg);color:var(--green)}
-  .pill.closed{background:#eef1f4;color:#667085}
-  .dot{display:inline-flex;align-items:center;gap:6px;font-weight:650;white-space:nowrap}
-  .dot::before{content:"";width:8px;height:8px;border-radius:50%;display:inline-block}
-  .dot.Green::before{background:var(--green)}
-  .dot.Yellow::before{background:var(--yellow)}
-  .dot.Red::before{background:var(--red)}
-  .dot.Closed::before{background:#64748b}
-  .changes{display:flex;gap:4px;flex-wrap:wrap;min-width:118px}
-  .change-chip{display:inline-block;border:1px solid;border-radius:6px;padding:2px 5px;font-size:.7rem;font-weight:700;white-space:nowrap;cursor:help}
-  .change-chip.good{background:var(--green-bg);border-color:#acd7bc;color:#18763f}
-  .change-chip.bad{background:var(--red-bg);border-color:#efb8c0;color:#ae2638}
-  .change-chip.neutral{background:var(--blue-bg);border-color:#bfd3fa;color:#325b9d}
-  .warn{color:var(--yellow);margin-left:4px;cursor:help}
-  #empty{display:none;padding:24px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line);border-top:0}
-  .qs{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:650}
-  .qs .tag{font-size:.64rem;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 3px;margin-left:4px}
-  .qs.subject{color:#325b9d;font-weight:600}
-  .qs.none{color:#94a3b8;font-weight:500}
-  [data-tip]{cursor:help}
-  #tip{position:fixed;z-index:50;max-width:280px;background:#1f2937;color:#fff;font-size:.76rem;line-height:1.45;padding:7px 9px;border-radius:7px;pointer-events:none;display:none;white-space:pre-line;box-shadow:0 4px 14px rgba(0,0,0,.18)}
-  details.panel{background:var(--card);border:1px solid var(--line);border-radius:11px;margin:0 0 12px}
-  details.panel>summary{list-style:none;cursor:pointer;padding:11px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.92rem;font-weight:700}
-  details.panel>summary::-webkit-details-marker{display:none}
-  details.panel>summary::after{content:"+";font-weight:500;color:var(--muted)}
-  details.panel[open]>summary::after{content:"−"}
-  details.panel>summary .sub{flex:1;color:var(--muted);font-weight:400;font-size:.82rem}
-  .panel-body{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;padding:0 14px 14px}
-  .panel-body h3{font-size:.78rem;margin:0 0 8px;color:var(--muted);font-weight:650}
-  .tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
-  .tile{border:1px solid var(--line);border-radius:9px;background:#fbfcfd;padding:8px 4px;text-align:center;cursor:pointer;font:inherit;color:inherit}
-  .tile .n{display:block;font-size:1.15rem;font-weight:750;font-variant-numeric:tabular-nums}
-  .tile .l{display:block;font-size:.7rem;color:var(--muted);margin-top:2px;line-height:1.2}
-  .tile.good .n{color:var(--green)} .tile.bad .n{color:var(--red)} .tile.neutral .n{color:#325b9d}
-  .tile.active{outline:2px solid var(--accent);background:var(--blue-bg)}
-  .tile:disabled{opacity:.45;cursor:default}
-  .tile-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px;font-size:.76rem;color:var(--muted)}
-  .feed ul{list-style:none;margin:0;padding:0}
-  .feed li{display:grid;grid-template-columns:74px minmax(0,1fr);gap:8px;padding:5px 0;border-bottom:1px dashed var(--line);font-size:.8rem}
-  .feed li:last-child{border-bottom:0}
-  .feed .date{color:var(--muted);font-variant-numeric:tabular-nums}
-  .feed .uni{border:0;background:none;padding:0;color:var(--accent);cursor:pointer;font:inherit;font-weight:650;text-align:left}
-  .feed .ev-good{color:var(--green)} .feed .ev-bad{color:var(--red)} .feed .ev-neutral{color:#325b9d}
-  .feed .more{margin-top:6px}
-  .feed-empty{color:var(--muted);font-size:.8rem}
-  footer{max-width:1500px;margin:0 auto;padding:0 22px 36px;color:var(--muted);font-size:.81rem}
-  @media(max-width:1050px){
-    .hero-row{flex-direction:column}
-    .hero-tools{align-items:flex-start;width:100%}
-    .summary-cards{justify-content:flex-start}
+  /* 深色：跟系统走，右上角也能手动切（存在 localStorage 的 theme 里，登录页读同一个键） */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#0d111b; --card:#151b29; --panel:#151b29; --fg:#e8ecf6; --muted:#97a1ba;
+      --line:#273049; --field:#10151f; --chip:#1c2335;
+      --accent:#5b8bff; --accent-hover:#7aa1ff; --accent-soft:rgba(91,139,255,.18);
+      --green:#4ccf7f; --yellow:#e6b94a; --red:#ff7a85; --closed:#9aa3b8;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.4);
+    }
   }
-  @media(max-width:820px){
-    header,main,footer{padding-left:14px;padding-right:14px}
-    .layout{grid-template-columns:1fr}
-    .sidebar{position:static}
-    .facet-options{max-height:180px}
-    .summary-card{min-width:68px}
-    .panel-body{grid-template-columns:1fr}
-    .tile .l{font-size:.62rem}
+  :root[data-theme="dark"] {
+    --bg:#0d111b; --card:#151b29; --panel:#151b29; --fg:#e8ecf6; --muted:#97a1ba;
+    --line:#273049; --field:#10151f; --chip:#1c2335;
+    --accent:#5b8bff; --accent-hover:#7aa1ff; --accent-soft:rgba(91,139,255,.18);
+    --green:#4ccf7f; --yellow:#e6b94a; --red:#ff7a85; --closed:#9aa3b8;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.4);
   }
+  * { box-sizing:border-box; }
+  html { scroll-padding-top:calc(var(--topbar) + 1rem); }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+              "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", Roboto, sans-serif;
+         -webkit-font-smoothing:antialiased; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  button { font:inherit; color:inherit; }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  .page { max-width:1600px; margin:0 auto; padding:1rem 1.25rem 2rem; }
+
+  /* ── 顶栏 ────────────────────────────────────────────────────────────
+     标题、更新时间、语言、主题、退出都收在一条 56px 的栏里并吸顶。
+     之前标题和五个统计格挤在同一行，窗口一窄就折成三层。 */
+  .topbar { position:sticky; top:0; z-index:30; height:var(--topbar);
+            background:color-mix(in srgb, var(--card) 88%, transparent);
+            backdrop-filter:saturate(1.4) blur(10px); -webkit-backdrop-filter:saturate(1.4) blur(10px);
+            border-bottom:1px solid var(--line); }
+  .topbar-in { max-width:1600px; margin:0 auto; height:100%; padding:0 1.25rem;
+               display:flex; align-items:center; gap:1rem; }
+  .brand { display:flex; align-items:center; gap:.65rem; min-width:0; color:var(--fg); }
+  .brand:hover { text-decoration:none; }
+  .brand .mark { flex:none; width:32px; height:32px; border-radius:9px; display:grid; place-items:center;
+                 background:linear-gradient(150deg, #0f2a6b, #1e5eff); color:#fff;
+                 box-shadow:0 2px 6px rgba(30,94,255,.3); }
+  .brand .name { display:block; font-weight:700; letter-spacing:-.01em; line-height:1.2; white-space:nowrap;
+                 overflow:hidden; text-overflow:ellipsis; }
+  @media (max-width:430px) { .brand .long { display:none; } }
+  .brand .meta { display:block; font-size:.74rem; color:var(--muted); line-height:1.3;
+                 white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .brand .meta b { color:var(--fg); font-weight:600; }
+  .tools { margin-left:auto; display:flex; align-items:center; gap:.45rem; flex:none; }
+  /* 语言切换：两个并排、当前高亮，和登录页一样的做法 */
+  .seg { display:inline-flex; padding:3px; border:1px solid var(--line); border-radius:9px; background:var(--card); }
+  .seg button { border:0; background:transparent; color:var(--muted); cursor:pointer; font-size:.76rem;
+                padding:.22rem .55rem; border-radius:6px; line-height:1.4; }
+  .seg button[aria-pressed="true"] { background:var(--accent); color:#fff; font-weight:600; }
+  .seg button:hover:not([aria-pressed="true"]) { color:var(--accent); }
+  .icon-btn { display:inline-grid; place-items:center; width:32px; height:32px; border:1px solid var(--line);
+              border-radius:9px; background:var(--card); color:var(--muted); cursor:pointer; padding:0; }
+  .icon-btn:hover { color:var(--accent); border-color:color-mix(in srgb, var(--accent) 40%, var(--line)); }
+  .icon-btn svg { width:16px; height:16px; }
+  #theme .moon { display:none; }
+  :root[data-theme="dark"] #theme .sun { display:none; }
+  :root[data-theme="dark"] #theme .moon { display:block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) #theme .sun { display:none; }
+    :root:not([data-theme="light"]) #theme .moon { display:block; }
+  }
+  #logout { display:inline-flex; align-items:center; gap:.35rem; height:32px; padding:0 .65rem;
+            border:1px solid var(--line); border-radius:9px; background:var(--card); color:var(--muted);
+            font-size:.78rem; white-space:nowrap; }
+  #logout:hover { color:var(--red); border-color:color-mix(in srgb, var(--red) 40%, var(--line)); text-decoration:none; }
+  @media (max-width:760px) {
+    .topbar-in { padding:0 .9rem; gap:.6rem; }
+    .brand .meta { display:none; }
+    #logout span { display:none; }
+    #logout { width:32px; padding:0; justify-content:center; }
+  }
+
+  /* 抓取被拦或机器没开时，数据会停在旧的一天。与其让人自己比对日期，
+     不如页面直接说出来。 */
+  #stale { display:none; margin:0 0 1rem; padding:.6rem .85rem; border-radius:10px;
+           background:color-mix(in srgb, var(--red) 10%, var(--card)); color:var(--red);
+           border:1px solid color-mix(in srgb, var(--red) 35%, var(--line)); font-size:.88rem; }
+
+  /* ── 总览：五个可点的统计格 ──────────────────────────────────────────
+     数的是**当前筛选结果**。点绿灯/黄灯/红灯/已关闭等于在左边勾那一项，
+     少走一趟侧栏。「筛选结果」那一格不能点。 */
+  .overview { display:flex; flex-wrap:wrap; gap:.5rem; margin:0 0 1rem; }
+  .stat { --tone:var(--fg); display:inline-flex; align-items:baseline; gap:.45rem; padding:.4rem .8rem;
+          border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer;
+          box-shadow:0 1px 2px rgba(20,26,43,.04); transition:border-color .12s, box-shadow .12s; }
+  .stat .dot { align-self:center; width:8px; height:8px; border-radius:50%; background:var(--tone); }
+  .stat .v { font-size:1.05rem; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.2; }
+  .stat .k { font-size:.78rem; color:var(--muted); white-space:nowrap; }
+  .stat.g { --tone:var(--green); } .stat.y { --tone:var(--yellow); }
+  .stat.r { --tone:var(--red); }   .stat.c { --tone:var(--closed); }
+  .stat.total { cursor:default; }
+  .stat.total .v { color:var(--accent); }
+  .stat:not(.total):hover { border-color:var(--tone); }
+  .stat[aria-pressed="true"] { border-color:var(--tone);
+                               box-shadow:0 0 0 2px color-mix(in srgb, var(--tone) 25%, transparent);
+                               background:color-mix(in srgb, var(--tone) 8%, var(--card)); }
+  .stat[aria-pressed="true"] .k { color:var(--tone); }
+  @media (max-width:600px) {
+    .overview { gap:.35rem; }
+    .stat { padding:.3rem .6rem; gap:.35rem; } .stat .v { font-size:.95rem; } .stat .k { font-size:.72rem; }
+  }
+
+  /* ── 变化汇总 ────────────────────────────────────────────────────────
+     表格里的「变化」列是逐行看的，这里先回答「整体动了多少、最近动了什么」，
+     再一键把表格筛到那几所。格子压成两行各 56px，之前一屏高、表格被推到第二屏。 */
+  .card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
+  #changePanel { margin:0 0 1rem; padding:0; }
+  #changePanel > summary { list-style:none; cursor:pointer; display:flex; align-items:center; gap:.6rem;
+                      padding:.7rem 1rem; font-weight:600; font-size:.92rem; }
+  #changePanel > summary::-webkit-details-marker { display:none; }
+  #changePanel > summary > span:first-child { white-space:nowrap; flex:none; }
+  #changePanel > summary .hint { font-weight:400; font-size:.8rem; color:var(--muted); min-width:0;
+                            overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #changePanel > summary .hint b { color:var(--accent); font-weight:600; }
+  #changePanel > summary .chev { margin-left:auto; flex:none; color:var(--muted); transition:transform .15s; }
+  #changePanel[open] > summary .chev { transform:rotate(180deg); }
+  #changePanel[open] > summary { border-bottom:1px solid var(--line); }
+  .digest-body { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:1.25rem; padding:.85rem 1rem 1rem; }
+  @media (max-width:900px) { .digest-body { grid-template-columns:minmax(0,1fr); gap:1rem; } }
+  .digest-body h3 { margin:0 0 .55rem; font-size:.76rem; font-weight:600; color:var(--muted); letter-spacing:.01em; }
+  /* 左半边：行首一个小标签说这一行是「利好」还是「更难」，格子本身就不用再
+     每个都写一遍 "in your favour"。同一列上下对照，一眼看出这一项整体是松了还是紧了。 */
+  .tiles { display:grid; grid-template-columns:3.6rem repeat(5, minmax(0,1fr)); gap:.4rem; align-items:stretch; }
+  .rowlab { --tone:var(--muted); display:flex; align-items:center; font-size:.7rem; font-weight:600; color:var(--tone);
+            padding-left:.1rem; }
+  .rowlab.good { --tone:var(--green); } .rowlab.bad { --tone:var(--red); }
+  .tile { --tone:var(--muted); text-align:left; cursor:pointer; padding:.45rem .6rem; border-radius:10px;
+          display:flex; align-items:center; gap:.55rem; min-height:54px; color:var(--fg);
+          border:1px solid color-mix(in srgb, var(--tone) 22%, var(--line));
+          background:color-mix(in srgb, var(--tone) 6%, var(--card));
+          transition:border-color .12s, box-shadow .12s, transform .12s; }
+  .tile.good { --tone:var(--green); } .tile.bad { --tone:var(--red); }
+  .tile.neutral { --tone:var(--yellow); } .tile.new { --tone:var(--accent); }
+  .tile .v { font-size:1.35rem; font-weight:700; line-height:1; color:var(--tone); font-variant-numeric:tabular-nums; min-width:1.4ch; }
+  .tile .t { display:flex; flex-direction:column; min-width:0; }
+  .tile .k { font-size:.76rem; font-weight:600; color:var(--fg); white-space:nowrap; line-height:1.25; }
+  .tile .s { font-size:.66rem; color:var(--muted); white-space:nowrap; line-height:1.2; }
+  .tile .s:empty { display:none; }
+  .tile:hover:not(:disabled) { border-color:var(--tone); transform:translateY(-1px); }
+  .tile[aria-pressed="true"] { border-color:var(--tone);
+                               box-shadow:0 0 0 2px color-mix(in srgb, var(--tone) 28%, transparent);
+                               background:color-mix(in srgb, var(--tone) 14%, var(--card)); }
+  /* 0 的格子留着占位（两行五列的对照要完整），只是退成灰色、不能点 */
+  .tile:disabled { cursor:default; --tone:var(--muted); opacity:.5; }
+  @media (max-width:600px) {
+    .tiles { grid-template-columns:repeat(5, minmax(0,1fr)); gap:.3rem; }
+    .rowlab { grid-column:1 / -1; padding:.1rem 0 0; }
+    .tile { flex-direction:column; align-items:flex-start; gap:.15rem; padding:.4rem .45rem; min-height:0; }
+    .tile .v { font-size:1.1rem; }
+    .tile .k { font-size:.66rem; white-space:normal; word-break:keep-all; }
+    .tile .s { display:none; }
+  }
+  .digest-note { margin:.5rem 0 0; font-size:.76rem; color:var(--muted); }
+  .digest-note:empty { display:none; }
+  .digest-note button { color:var(--accent); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; }
+  /* 右半边：逐日记录，日期靠左成一条时间轴 */
+  #feed { list-style:none; margin:0; padding:0; font-size:.8rem; }
+  #feed.expanded { max-height:16rem; overflow-y:auto; padding-right:.3rem; }
+  #feed li { display:grid; grid-template-columns:3.2rem minmax(0,1fr); gap:.5rem; align-items:baseline;
+               padding:.38rem 0; border-bottom:1px dashed var(--line); }
+  #feed li:last-child { border-bottom:0; }
+  #feed time { color:var(--muted); font-variant-numeric:tabular-nums; font-size:.74rem; }
+  #feed .what { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #feed .uni { font-weight:600; color:var(--accent); background:none; border:0; padding:0; cursor:pointer; }
+  #feed .uni:hover { text-decoration:underline; }
+  #feed .field { color:var(--muted); margin:0 .3rem; }
+  #feed .old { color:var(--muted); text-decoration:line-through; }
+  #feed .to.good { color:var(--green); font-weight:600; }
+  #feed .to.bad { color:var(--red); font-weight:600; }
+  #feed .to.neutral { font-weight:600; }
+  #feed .tag { display:inline-block; font-size:.68rem; font-weight:600; padding:0 .35rem; border-radius:5px;
+                 color:var(--accent); background:var(--accent-soft); margin-left:.3rem; }
+  #feed li.recent-empty { display:block; border:0; padding:0; color:var(--muted); }
+
+  /* ── 主体：左筛选、右表格 ───────────────────────────────────────────── */
+  .layout { display:grid; grid-template-columns:236px minmax(0,1fr); gap:1rem; align-items:start; }
+  /* minmax(0,…) 不能省：裸 1fr 的下限是内容的最小宽度，而这张表最小也要
+     1100px，于是窄屏上整个版面被撑出屏幕。写成 minmax(0,1fr) 才允许这一列
+     缩下去，把横向滚动关回表格自己的 .wrap 里。 */
+  @media (max-width:1400px) and (min-width:901px) {
+    .layout { grid-template-columns:208px minmax(0,1fr); gap:.85rem; }
+  }
+  aside { position:sticky; top:calc(var(--topbar) + 1rem); max-height:calc(100vh - var(--topbar) - 2rem);
+          overflow-y:auto; overscroll-behavior:contain; }
+  .side-head { display:flex; justify-content:space-between; align-items:center; padding:.75rem .9rem;
+               border-bottom:1px solid var(--line); font-weight:600; font-size:.92rem; }
+  .side-close { display:none; }
+  #clearFilters { font-size:.76rem; padding:.2rem .55rem; cursor:pointer; border:1px solid var(--line);
+           border-radius:7px; background:var(--card); color:var(--accent); }
+  #clearFilters:hover { border-color:var(--accent); }
+  .search { position:relative; padding:.7rem .9rem; border-bottom:1px solid var(--line); }
+  .search svg { position:absolute; left:1.45rem; top:50%; transform:translateY(-50%); width:14px; height:14px; color:var(--muted); pointer-events:none; }
+  #q { width:100%; padding:.5rem .6rem .5rem 1.9rem; font-size:.86rem; border:1px solid var(--line);
+       border-radius:8px; background:var(--field); color:var(--fg); }
+  #q:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  #facets details { padding:0 .9rem; border-bottom:1px solid var(--line); }
+  #facets details:last-child { border-bottom:0; }
+  summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:.4rem;
+            padding:.6rem 0; font-size:.84rem; font-weight:600; color:var(--fg); }
+  summary::-webkit-details-marker { display:none; }
+  #facets summary::after { content:""; width:7px; height:7px; border-right:1.5px solid var(--muted);
+                           border-bottom:1.5px solid var(--muted); transform:rotate(-45deg); transition:transform .15s; flex:none; }
+  #facets details[open] summary::after { transform:rotate(45deg); }
+  .opts { margin:0 0 .6rem; display:flex; flex-direction:column; gap:.2rem; }
+  .opt { display:flex; gap:.5rem; align-items:flex-start; font-size:.82rem; cursor:pointer;
+         padding:.15rem .3rem; margin:0 -.3rem; border-radius:6px; }
+  .opt:hover { background:var(--chip); }
+  .opt input { margin:.25rem 0 0; flex:none; accent-color:var(--accent); }
+  .opt .n { color:var(--muted); font-size:.74rem; margin-left:auto; padding-left:.3rem; font-variant-numeric:tabular-nums; }
+  .badge { display:inline-block; background:var(--accent); color:#fff; border-radius:10px; padding:0 .4rem;
+           font-size:.68rem; margin-left:.4rem; line-height:1.5; }
+  .badge[hidden] { display:none; }
+
+  /* 手机：侧栏变成从左边滑出来的抽屉，底部一个「筛选」按钮打开。
+     之前侧栏整个排在表格上面，打开页面第一屏全是筛选项，表格在第二屏。 */
+  .backdrop { display:none; position:fixed; inset:0; z-index:40; background:rgba(10,14,25,.45); }
+  .fab { display:none; position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); z-index:35;
+         align-items:center; gap:.45rem; padding:.6rem 1.1rem; border:0; border-radius:999px;
+         background:var(--accent); color:#fff; font-weight:600; font-size:.88rem; cursor:pointer;
+         box-shadow:0 8px 24px rgba(30,94,255,.35); }
+  .fab .badge { background:#fff; color:var(--accent); margin-left:.1rem; }
+  @media (max-width:900px) {
+    .layout { grid-template-columns:minmax(0,1fr); }
+    aside { position:fixed; top:0; left:0; bottom:0; width:min(86vw, 340px); max-height:none; z-index:45;
+            border-radius:0; border-width:0 1px 0 0; transform:translateX(-102%); transition:transform .2s ease; }
+    body.filters-open aside { transform:none; }
+    body.filters-open .backdrop { display:block; }
+    body.filters-open { overflow:hidden; }
+    .side-close { display:inline-grid; }
+    .fab { display:inline-flex; }
+    .page { padding-bottom:4.5rem; }
+  }
+
+  /* 表格上方：当前生效的筛选条件一排可删的标签，右边是行数和密度 */
+  .toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin:0 0 .6rem; min-height:32px; }
+  .active { display:flex; flex-wrap:wrap; gap:.35rem; align-items:center; min-width:0; }
+  .active:empty { display:none; }
+  .fchip { display:inline-flex; align-items:center; gap:.3rem; padding:.18rem .3rem .18rem .6rem; border-radius:999px;
+           background:var(--accent-soft); color:var(--accent); font-size:.76rem; font-weight:600; max-width:100%; }
+  .fchip i { font-style:normal; font-weight:400; color:var(--muted); }
+  .fchip span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .fchip button { border:0; background:transparent; color:inherit; cursor:pointer; width:18px; height:18px;
+                  border-radius:50%; display:grid; place-items:center; padding:0; line-height:1; }
+  .fchip button:hover { background:var(--accent); color:#fff; }
+  .toolbar-right { margin-left:auto; display:flex; align-items:center; gap:.6rem; font-size:.8rem; color:var(--muted); white-space:nowrap; }
+  .toolbar-right b { color:var(--fg); font-weight:600; }
+  #density button svg { width:14px; height:14px; display:block; }
+  @media (max-width:760px) { #density { display:none; } }
+
+  /* ── 表格 ────────────────────────────────────────────────────────────
+     文字列左对齐、数字列右对齐、状态色块居中。之前全列居中，校名长短不一，
+     一眼扫不出一列的起点。 */
+  .table-card { overflow:hidden; }
+  .wrap { overflow-x:auto; }
+  table { border-collapse:separate; border-spacing:0; width:100%; font-size:.84rem; }
+  /* 横向内边距要克制：12 列 × 两侧，每边多 2px 就是全表多 48px，
+     而这张表的宽度预算正好卡在「更新时间那一列露不露得出来」上。 */
+  th, td { padding:.55rem .45rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:middle; }
+  /* 表头可以折行：英文标签比中文长，nowrap 会让最长的那个语言把列撑开。
+     word-break:keep-all 禁止 CJK 字间断行，英文仍按空格正常折。 */
+  th { position:sticky; top:0; z-index:2; background:var(--card); cursor:pointer; user-select:none;
+       font-size:.74rem; font-weight:600; color:var(--muted);
+       white-space:normal; line-height:1.25; word-break:keep-all; }
+  th:hover { color:var(--fg); }
+  th.sorted { color:var(--accent); }
+  th.sorted::after { content:" ↓"; }
+  th.sorted.asc::after { content:" ↑"; }
+  th.num, td.num { text-align:right; }
+  th.mid, td.mid { text-align:center; }
+  td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tbody tr { transition:background .1s; }
+  tbody tr:hover { background:color-mix(in srgb, var(--accent) 5%, var(--card)); }
+  tbody tr:last-child td { border-bottom:0; }
+  /* 密度：舒适 / 紧凑，记在 localStorage */
+  body[data-density="compact"] td { padding-top:.32rem; padding-bottom:.32rem; }
+  body[data-density="compact"] table { font-size:.8rem; }
+
+  /* 学校名固定在左边：横向滚动时不至于看着一行数字却不知道是哪所学校 */
+  th.stick, td.stick { position:sticky; left:0; z-index:1; background:var(--card); min-width:168px; max-width:205px; }
+  th.stick { z-index:3; }
+  tbody tr:hover td.stick { background:color-mix(in srgb, var(--accent) 5%, var(--card)); }
+  /* 吸附列右侧的投影用 ::before：::after 要留给排序箭头 */
+  td.stick::before, th.stick::before { content:""; position:absolute; top:0; right:0; bottom:0; width:6px;
+                                       transform:translateX(100%); pointer-events:none;
+                                       background:linear-gradient(90deg, rgba(0,0,0,.05), transparent); }
+  td.stick a { color:var(--fg); font-weight:500; }
+  td.stick a:hover { color:var(--accent); }
+  /* 数值后面的单位（WAM / GPA）每行都一样，压暗让数字先被看见 */
+  .unit { color:var(--muted); font-size:.88em; font-weight:400; margin-left:.15em; }
+  td.small { font-size:.78rem; color:var(--muted); }
+  td.tight, th.tight { min-width:0; width:1%; white-space:nowrap; }
+  td.clip { max-width:100px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .dim { color:var(--muted); }
+
+  /* 状态与竞争用色块而不是彩色文字：一屏 164 行，色块能扫，文字不能。
+     两者不合并——有项目状态 Closed 而竞争 Red，合并会抹掉这个差别。 */
+  .pill { --tone:var(--closed); display:inline-flex; align-items:center; gap:.32rem; padding:.08rem .5rem .08rem .4rem;
+          border-radius:999px; font-size:.72rem; font-weight:600; white-space:nowrap; color:var(--tone);
+          background:color-mix(in srgb, var(--tone) 11%, transparent);
+          border:1px solid color-mix(in srgb, var(--tone) 28%, transparent); }
+  .pill::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--tone); flex:none; }
+  .pill.Open, .pill.av-Green { --tone:var(--green); }
+  .pill.av-Yellow { --tone:var(--yellow); }
+  .pill.av-Red { --tone:var(--red); }
+  .pill.Closed, .pill.av-Closed { --tone:var(--closed); }
+
+  /* 分数之外的硬门槛：语言能力、学分前提、仅限邀请。用琥珀色而不是 ⚠ 的红——
+     ⚠ 说的是「数据自相矛盾」，这里说的是「你得先满足这个」。 */
+  .cond { margin-left:.12rem; font-size:.8rem; font-weight:800; cursor:help; color:var(--yellow); }
+
+  /* 变化列。颜色按「对你是好是坏」而不是按箭头方向：名额↑ 是好事，分数线↑ 是坏事。 */
+  .chg { --tone:var(--muted); display:inline-block; padding:.04rem .3rem; border-radius:6px; font-size:.7rem;
+         font-weight:600; white-space:nowrap; color:var(--tone);
+         background:color-mix(in srgb, var(--tone) 11%, transparent);
+         border:1px solid color-mix(in srgb, var(--tone) 28%, transparent); }
+  .chg + .chg { margin-left:.2rem; }
+  .chg.bad { --tone:var(--red); } .chg.good { --tone:var(--green); }
+  .chg.neutral { --tone:var(--yellow); } .chg.new { --tone:var(--accent); }
+  th[data-key="change_rank"], td.chg-cell { min-width:118px; }
+  td.chg-cell { max-width:136px; white-space:normal; line-height:1.7; }
+  /* 窗口不够宽时先从内边距和我自己设的下限要地方，而不是藏掉某一列：
+     状态和竞争看着重复，但有项目状态已关闭而竞争仍是红灯，藏掉就成了错的信息 */
+  @media (max-width:1400px) {
+    th, td { padding:.5rem .32rem; }
+    th.stick, td.stick { min-width:150px; max-width:190px; }
+    th[data-key="change_rank"], td.chg-cell { min-width:96px; }
+    td.chg-cell { max-width:110px; }
+    td.clip { max-width:88px; }
+  }
+  .warn { color:var(--red); cursor:help; }
+  .only-one { color:var(--yellow); }
+  /* QS 单元格。原生 title 要悬停一两秒才出、窄格子里也塞不下多行，所以用跟随鼠标的浮层。 */
+  .chip { display:inline-block; padding:0 .3rem; border-radius:6px; font-size:.72rem; line-height:1.5;
+          white-space:nowrap; cursor:help; }
+  .chip-subject { background:var(--accent-soft); color:var(--accent); font-weight:600; }
+  .chip-none { color:var(--muted); }
+  .qs-rank { cursor:help; border-bottom:1px dotted var(--muted); font-variant-numeric:tabular-nums; }
+  #tip { position:fixed; z-index:60; max-width:340px; padding:.5rem .65rem; border-radius:8px;
+         background:var(--fg); color:var(--bg); font-size:.78rem; line-height:1.45;
+         box-shadow:0 6px 20px rgba(0,0,0,.25); pointer-events:none; display:none; }
+  #tip b { color:var(--bg); }
+  #tip i { opacity:.72; font-style:normal; }
+  .empty { padding:3rem 1rem; text-align:center; color:var(--muted); }
+  .empty svg { width:40px; height:40px; color:var(--line); display:block; margin:0 auto .6rem; }
+  .empty[hidden] { display:none; }
+
+  /* 手机：表格换成卡片。12 列横向滚动在 390px 宽的屏上一次只看得到两列，
+     而真正要比的就那几项：状态、竞争、分数线、名额、变化。 */
+  #cards { display:none; }
+  @media (max-width:760px) {
+    .wrap { display:none; }
+    .table-card { background:transparent; border:0; box-shadow:none; overflow:visible; }
+    #cards { display:grid; gap:.6rem; }
+    .empty { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); }
+  }
+  .pcard { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:.75rem .85rem; }
+  .pcard-head { display:flex; justify-content:space-between; align-items:flex-start; gap:.6rem; }
+  .pcard .name { font-weight:600; line-height:1.3; }
+  .pcard .name a { color:var(--fg); }
+  .pcard .sub { color:var(--muted); font-size:.76rem; margin-top:.1rem; }
+  .pcard .qs { flex:none; text-align:right; font-size:.76rem; color:var(--muted); }
+  .pcard .qs b { display:block; font-size:1rem; color:var(--fg); font-variant-numeric:tabular-nums; }
+  .pcard .pills { display:flex; flex-wrap:wrap; gap:.35rem; margin:.5rem 0; }
+  .pcard .facts { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:.4rem .6rem; font-size:.82rem; }
+  .pcard .facts b { display:block; font-size:.64rem; font-weight:500; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; }
+  .pcard .facts .num { font-variant-numeric:tabular-nums; }
+  .pcard .chg-line { margin-top:.5rem; line-height:1.8; }
+  .pcard .chg-line:empty { display:none; }
+
+  footer { margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--muted); font-size:.78rem;
+           display:flex; flex-wrap:wrap; gap:.4rem 1.5rem; justify-content:space-between; }
+
+  /* ── 仅 demo 有的东西 ── */
+  .banner { margin:0 0 1rem; padding:.6rem .85rem; border-radius:10px; font-size:.84rem;
+            background:color-mix(in srgb, var(--yellow) 10%, var(--card)); color:var(--yellow);
+            border:1px solid color-mix(in srgb, var(--yellow) 35%, var(--line)); }
+  .banner a { color:inherit; text-decoration:underline; }
+  .signin-link { display:inline-flex; align-items:center; gap:.35rem; height:32px; padding:0 .65rem; border:1px solid var(--line);
+                 border-radius:9px; background:var(--card); color:var(--muted); font-size:.78rem; white-space:nowrap; }
+  .signin-link:hover { color:var(--accent); border-color:color-mix(in srgb, var(--accent) 40%, var(--line)); text-decoration:none; }
+  @media (max-width:760px) { .signin-link span { display:none; } .signin-link { width:32px; padding:0; justify-content:center; } }
+  .opt.unavailable { opacity:.45; }
+  .qs { white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .qs .tag { font-size:.64rem; font-weight:600; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:0 3px; margin-left:4px; }
+  .qs.subject { color:var(--accent); font-weight:600; font-size:.78rem; }
+  .qs.none { color:var(--muted); }
+  [data-tip] { cursor:help; }
+  #tip { white-space:pre-line; }
+  #feed .to.neutral { color:var(--fg); }
 </style>
 </head>
 <body>
-<header>
-  <div class="hero-row">
-    <div class="hero-copy">
-      <h1 id="pageTitle">Monash Exchange Tracker — public demo</h1>
-      <p id="pageSubtitle">A portfolio-safe demonstration of the production viewer using a fully fictional dataset.</p>
-    </div>
-    <div class="hero-tools">
-      <a id="signinLink" class="signin-link" href="./signin.html">Sign-in page preview</a>
-      <div class="lang-switch" aria-label="Language">
-        <button id="langEn" class="active" type="button">EN</button>
-        <button id="langZh" type="button">中文</button>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+        stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 22V10l7 7 7-7v12"/></svg></span>
+      <span style="min-width:0">
+        <span class="name" id="pageTitle">Monash Exchange Tracker</span>
+        <span class="meta" id="pageSubtitle"></span>
+      </span>
+    </a>
+    <div class="tools">
+      <div id="lang" class="seg" role="group" aria-label="Language">
+        <button id="langEn" type="button" aria-pressed="true">EN</button>
+        <button id="langZh" type="button" aria-pressed="false">中文</button>
       </div>
-      <div class="summary-cards">
-        <div class="summary-card"><span id="sumTotal" class="value">—</span><span id="sumTotalLabel" class="label">Results</span></div>
-        <div class="summary-card green"><span id="sumGreen" class="value">—</span><span id="sumGreenLabel" class="label">Green · good</span></div>
-        <div class="summary-card yellow"><span id="sumYellow" class="value">—</span><span id="sumYellowLabel" class="label">Yellow · competitive</span></div>
-        <div class="summary-card red"><span id="sumRed" class="value">—</span><span id="sumRedLabel" class="label">Red · limited</span></div>
-        <div class="summary-card closed"><span id="sumClosed" class="value">—</span><span id="sumClosedLabel" class="label">Closed</span></div>
-      </div>
+      <button id="theme" class="icon-btn" type="button" title="Light / dark">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a id="signinLinkWrap" class="signin-link" href="./signin.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+        aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span id="signinLink">Sign-in page preview</span></a>
     </div>
   </div>
-  <div id="banner" class="banner"></div>
 </header>
-<main>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="side-head"><strong id="filtersTitle">Filters</strong><button id="clearFilters" class="clear-btn" type="button">Clear</button></div>
-      <div class="search-wrap"><input id="q" type="search" placeholder="Search university / country…"></div>
-      <div id="facetHost"></div>
-    </aside>
 
-    <section class="content">
-      <div id="metaLine" class="meta-line"></div>
-      <details id="changePanel" class="panel">
-        <summary><span id="panelTitle">Change summary</span><span id="panelSub" class="sub"></span></summary>
-        <div class="panel-body">
-          <div>
-            <h3 id="tilesTitle">Against the previous round</h3>
-            <div id="tiles" class="tiles"></div>
-            <div class="tile-foot"><span id="tileHint"></span><button id="clearTile" class="clear-btn" type="button">Clear</button></div>
-          </div>
-          <div class="feed">
-            <h3 id="feedTitle">Day by day</h3>
-            <ul id="feed"></ul>
-            <button id="feedMore" class="clear-btn more" type="button"></button>
-          </div>
+<div class="page">
+<div id="banner" class="banner"></div>
+<div class="overview" id="summary"></div>
+
+<details id="changePanel" class="card">
+  <summary><span id="panelTitle">Change summary</span><span class="hint" id="panelSub"></span><svg class="chev"
+    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+    stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+  <div class="digest-body">
+    <section>
+      <h3 id="tilesTitle">Against the previous round</h3>
+      <div id="tiles" class="tiles"></div>
+      <p class="digest-note"><span id="tileHint"></span> <button id="clearTile" type="button">Clear</button></p>
+    </section>
+    <section>
+      <h3 id="feedTitle">Day by day</h3>
+      <ol id="feed" class="feed"></ol>
+      <p class="digest-note"><button id="feedMore" type="button"></button></p>
+    </section>
+  </div>
+</details>
+
+<div class="layout">
+  <aside class="card" id="filters" aria-label="Filters">
+    <div class="side-head">
+      <span id="filtersTitle">Filters</span>
+      <span style="display:flex;gap:.4rem;align-items:center">
+        <button id="clearFilters" type="button">Clear</button>
+        <button class="icon-btn side-close" type="button" data-close-filters aria-label="Close"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </span>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+        aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search university / country…">
+    </div>
+    <div id="facetHost"></div>
+  </aside>
+
+  <main>
+    <div class="toolbar">
+      <div class="active" id="active"></div>
+      <div class="toolbar-right">
+        <span id="metaLine"></span>
+        <div id="density" class="seg" role="group">
+          <button type="button" data-density="comfortable" aria-pressed="true" title="Comfortable rows"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+          <button type="button" data-density="compact" aria-pressed="false" title="Compact rows"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16M4 9h16M4 13h16M4 17h16M4 21h16"/></svg></button>
         </div>
-      </details>
-      <div class="table-wrap">
+      </div>
+    </div>
+    <div class="table-card card">
+      <div class="wrap">
         <table>
           <thead>
             <tr>
-              <th data-key="university" data-i18n="colUniversity">University</th>
+              <th data-key="university" class="stick" data-i18n="colUniversity">University</th>
               <th data-key="country" data-i18n="colCountry">Country</th>
-              <th data-key="qs" data-i18n="colQs">QS rank</th>
+              <th data-key="qs" class="num tight" data-i18n="colQs">QS rank</th>
               <th data-key="region" data-i18n="colRegion">Region</th>
-              <th data-key="open_closed" data-i18n="colStatus">Status</th>
-              <th data-key="exchange_availability" data-i18n="colAvailability">Availability</th>
+              <th data-key="open_closed" class="mid tight" data-i18n="colStatus">Status</th>
+              <th data-key="exchange_availability" class="mid tight" data-i18n="colAvailability">Availability</th>
               <th data-key="change_sort" data-i18n="colChange">Change</th>
-              <th data-key="minimum_result_required" data-i18n="colMinimum">Minimum</th>
-              <th data-key="previous_round_cutoff" data-i18n="colCutoff">Last cut-off</th>
-              <th data-key="anticipated_places" data-i18n="colPlaces">Places</th>
+              <th data-key="minimum_result_required" class="num" data-i18n="colMinimum">Minimum</th>
+              <th data-key="previous_round_cutoff" class="num" data-i18n="colCutoff">Last cut-off</th>
+              <th data-key="anticipated_places" class="num tight" data-i18n="colPlaces">Places</th>
             </tr>
           </thead>
           <tbody id="rows"></tbody>
         </table>
-        <div id="empty">Nothing matches these filters. Try clearing one or more selections.</div>
       </div>
-    </section>
-  </div>
-</main>
+      <div id="cards"></div>
+      <div class="empty" id="empty" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M8.5 11h5"/></svg><span
+        id="emptyText">Nothing matches these filters. Try clearing one or more selections.</span></div>
+    </div>
+  </main>
+</div>
 <footer id="footerText"></footer>
+</div>
+
+<div class="backdrop" id="backdrop" data-close-filters></div>
+<button class="fab" id="fab" type="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg><span
+  id="fabLabel">Filters</span><span class="badge" id="fabCount" hidden></span></button>
 <div id="tip" role="tooltip"></div>
 <script>
 let programs=[];
@@ -209,17 +545,17 @@ let baselineLoaded=false;
 const TILES=[
   {id:"cutDown",key:"tCutDown",tone:"good"},{id:"placesUp",key:"tPlacesUp",tone:"good"},
   {id:"compDown",key:"tCompDown",tone:"good"},{id:"opened",key:"tOpened",tone:"good"},
-  {id:"new",key:"tNew",tone:"neutral"},
+  {id:"new",key:"tNew",tone:"new"},
   {id:"cutUp",key:"tCutUp",tone:"bad"},{id:"placesDown",key:"tPlacesDown",tone:"bad"},
   {id:"compUp",key:"tCompUp",tone:"bad"},{id:"closed",key:"tClosed",tone:"bad"},
-  {id:"any",key:"tAny",tone:"neutral"}
+  {id:"cutScale",key:"tCutScale",tone:"neutral",sub:"tCutScaleSub"}
 ];
 const PANEL_KEY="demo.changePanelOpen";
 
 const I18N={
   en:{
-    title:"Monash Exchange Tracker — public demo",
-    subtitle:"A portfolio-safe demonstration of the production viewer using a fully fictional dataset.",
+    title:"Monash Exchange Tracker",
+    subtitle:"Public demo · fully fictional dataset · comparison against a fictional previous round",
     banner:'Every institution, country, URL, score, availability value, previous-round value and place count shown here is made up. No production Monash exchange data is published in this demo. Source: <a href="https://github.com/Waldo0926/monash-abroad-tracker-demo">public demo repository</a>.',
     filters:"Filters", clear:"Clear", search:"Search university / country…",
     facetRegion:"Region", facetTerms:"Program terms", facetDuration:"Duration", facetCampus:"Eligible campus",
@@ -228,7 +564,7 @@ const I18N={
     colChange:"Change", colMinimum:"Minimum", colCutoff:"Last cut-off", colPlaces:"Places",
     results:"Results", green:"Green · good", yellow:"Yellow · competitive", red:"Red · limited", closed:"Closed",
     empty:"Nothing matches these filters. Try clearing one or more selections.",
-    meta:(shown,total)=>`${shown} of ${total} fictional programs · comparison against a fictional previous round · no production data`,
+    meta:(shown,total)=>`<b>${shown}</b> of ${total} fictional programs`,
     footer:'<a href="./data/current.json">Fictional current dataset</a> · <a href="./data/comparison.json">Fictional previous-round baseline</a> · <a href="./data/changes.json">Fictional change feed</a> · Portfolio demo of the private production tracker.',
     open:"Open", statusClosed:"Closed", Green:"Green", Yellow:"Yellow", Red:"Red", Closed:"Closed",
     chgNew:"new", chgAvail:"Avail", chgPlaces:"Places", chgCutoff:"Cutoff", chgOpened:"Opened", chgClosed:"Closed",
@@ -243,14 +579,17 @@ const I18N={
     panelSub:(changed,pool)=>`${changed} of ${pool} programs changed against the previous round`,
     tileHint:"Click a tile to filter the table; click again to clear.", tileActive:"Table filtered to one tile.",
     tCutDown:"Cut-off ↓", tPlacesUp:"Places ↑", tCompDown:"Competition ↓", tOpened:"Opened", tNew:"New",
-    tCutUp:"Cut-off ↑", tPlacesDown:"Places ↓", tCompUp:"Competition ↑", tClosed:"Closed", tAny:"Any change",
+    tCutUp:"Cut-off ↑", tPlacesDown:"Places ↓", tCompUp:"Competition ↑", tClosed:"Closed", tCutScale:"Cut-off ~", tCutScaleSub:"WAM ⇄ GPA",
+    tNewSub:"not in that round", rowGood:"Easier", rowBad:"Harder", densityComfy:"Comfortable rows", densityCompact:"Compact rows",
+    theme:"Light / dark", fchipSearch:"Search", fchipTile:"Moved", removeFilter:"Remove this filter",
+    cardMin:"Minimum", cardCutoff:"Cut-off", cardPlaces:"Places",
     feedMore:n=>`Show all (${n})`, feedLess:"Show fewer", feedEmpty:"No changes for the current filters.",
     evAdded:"newly listed", fOpen:"Status", fAvail:"Availability", fPlaces:"Places", fCutoff:"Cut-off",
     feedSearch:"Search the table for this university"
   },
   zh:{
-    title:"Monash Exchange Tracker — 公开演示",
-    subtitle:"使用完全虚构数据展示正式版查看器的作品集安全版本。",
+    title:"Monash Exchange Tracker",
+    subtitle:"公开演示 · 数据全部虚构 · 与虚构的上一轮自动对比",
     banner:'页面中的院校、国家/地区、URL、成绩、竞争状态、上一轮数据和名额均为虚构内容。本 Demo 不公开任何真实 Monash 交换项目数据。源码：<a href="https://github.com/Waldo0926/monash-abroad-tracker-demo">公开 Demo 仓库</a>。',
     filters:"筛选", clear:"清除", search:"搜索学校 / 国家地区…",
     facetRegion:"地区", facetTerms:"学期", facetDuration:"时长", facetCampus:"可申请校区",
@@ -259,7 +598,7 @@ const I18N={
     colChange:"变化", colMinimum:"最低要求", colCutoff:"上轮分数线", colPlaces:"名额",
     results:"筛选结果", green:"绿灯 · 好申", yellow:"黄灯 · 竞争", red:"红灯 · 激烈", closed:"已关闭",
     empty:"没有项目符合当前筛选条件，请清除一个或多个筛选项。",
-    meta:(shown,total)=>`${shown} / ${total} 个虚构交换项目 · 与虚构上一轮数据自动对比 · 不含生产数据`,
+    meta:(shown,total)=>`<b>${shown}</b> / ${total} 个虚构项目`,
     footer:'<a href="./data/current.json">虚构当前数据</a> · <a href="./data/comparison.json">虚构上一轮基准</a> · <a href="./data/changes.json">虚构逐日变化</a> · 私有正式 Tracker 的公开作品集 Demo。',
     open:"开放", statusClosed:"已关闭", Green:"绿灯", Yellow:"黄灯", Red:"红灯", Closed:"已关闭",
     chgNew:"新增", chgAvail:"竞争", chgPlaces:"名额", chgCutoff:"分数线", chgOpened:"转开放", chgClosed:"转关闭",
@@ -274,7 +613,10 @@ const I18N={
     panelSub:(changed,pool)=>`${pool} 个项目中有 ${changed} 个与上一轮相比有变化`,
     tileHint:"点一格筛选表格，再点一次取消。", tileActive:"表格已按该项筛选。",
     tCutDown:"分数线↓", tPlacesUp:"名额↑", tCompDown:"竞争↓", tOpened:"转开放", tNew:"新增",
-    tCutUp:"分数线↑", tPlacesDown:"名额↓", tCompUp:"竞争↑", tClosed:"转关闭", tAny:"有变化",
+    tCutUp:"分数线↑", tPlacesDown:"名额↓", tCompUp:"竞争↑", tClosed:"转关闭", tCutScale:"分数线~", tCutScaleSub:"WAM ⇄ GPA",
+    tNewSub:"上一轮没有", rowGood:"利好", rowBad:"更难", densityComfy:"宽松行距", densityCompact:"紧凑行距",
+    theme:"浅色 / 深色", fchipSearch:"搜索", fchipTile:"变动", removeFilter:"去掉这个条件",
+    cardMin:"最低要求", cardCutoff:"上轮分数线", cardPlaces:"名额",
     feedMore:n=>`展开全部（${n}）`, feedLess:"收起", feedEmpty:"当前筛选下没有变化。",
     evAdded:"新上线", fOpen:"状态", fAvail:"竞争", fPlaces:"名额", fCutoff:"分数线",
     feedSearch:"在表格中搜索这所学校"
@@ -319,16 +661,15 @@ function buildFacets(saved={}){
   for(const facet of FACETS){
     const allValues=[...new Set(programs.flatMap(p=>asList(p[facet.key])))].sort((a,b)=>a.localeCompare(b));
     const details=document.createElement("details");
-    details.className="facet";
     details.open=!!facet.open;
     const summary=document.createElement("summary");
-    summary.textContent=t(facet.labelKey);
+    summary.innerHTML=`<span>${esc(t(facet.labelKey))}<span class="badge" data-count="${facet.key}" hidden></span></span>`;
     details.appendChild(summary);
     const options=document.createElement("div");
-    options.className="facet-options";
+    options.className="opts";
     allValues.forEach(value=>{
       const label=document.createElement("label");
-      label.className="facet-option";
+      label.className="opt";
       label.dataset.facetOption=facet.key;
       label.dataset.value=value;
       const input=document.createElement("input");
@@ -338,10 +679,9 @@ function buildFacets(saved={}){
       input.checked=(saved[facet.key]||[]).includes(value);
       input.addEventListener("change",render);
       const text=document.createElement("span");
-      text.className="value-label";
       text.textContent=translatedValue(facet.key,value);
       const n=document.createElement("span");
-      n.className="count";
+      n.className="n";
       n.textContent="0";
       label.append(input,text,n);
       options.appendChild(label);
@@ -373,11 +713,14 @@ function updateFacetCounts(){
     const pool=programs.filter(p=>matchesProgram(p,facet.key));
     const counts=new Map();
     for(const p of pool) for(const value of asList(p[facet.key])) counts.set(value,(counts.get(value)||0)+1);
-    document.querySelectorAll(`.facet-option[data-facet-option="${facet.key}"]`).forEach(label=>{
+    const badge=document.querySelector(`[data-count="${facet.key}"]`);
+    const chosen=selectedValues(facet.key).length;
+    if(badge){badge.hidden=chosen===0;badge.textContent=chosen;}
+    document.querySelectorAll(`.opt[data-facet-option="${facet.key}"]`).forEach(label=>{
       const value=label.dataset.value;
       const count=counts.get(value)||0;
       const input=label.querySelector("input");
-      label.querySelector(".count").textContent=count;
+      label.querySelector(".n").textContent=count;
       input.disabled=count===0&&!input.checked;
       label.classList.toggle("unavailable",input.disabled);
     });
@@ -429,13 +772,13 @@ function categories(p){
   const chips=changeChips(p);
   for(const c of chips){
     if(c.key==="chgNew") cats.add("new");
-    else if(c.key==="chgCutoff"){ if(c.tone==="good") cats.add("cutDown"); else if(c.tone==="bad") cats.add("cutUp"); }
+    else if(c.key==="chgCutoff"){ if(c.tone==="good") cats.add("cutDown"); else if(c.tone==="bad") cats.add("cutUp"); else cats.add("cutScale"); }
     else if(c.key==="chgPlaces") cats.add(c.tone==="good"?"placesUp":"placesDown");
     else if(c.key==="chgAvail") cats.add(c.tone==="good"?"compDown":"compUp");
     else if(c.key==="chgOpened") cats.add("opened");
     else if(c.key==="chgClosed") cats.add("closed");
   }
-  if(chips.length) cats.add("any");
+  if(chips.length) cats.add("any");   // 不是格子，给汇总那句「n 个有变化」用
   return cats;
 }
 
@@ -464,6 +807,7 @@ function renderPanel(){
   const pool=programs.filter(p=>matchesProgram(p,null,true));
   const counts={};
   for(const tile of TILES) counts[tile.id]=0;
+  counts.any=0;
   for(const p of pool) for(const c of categories(p)) if(c in counts) counts[c]++;
   document.getElementById("panelTitle").textContent=t("panelTitle");
   document.getElementById("panelSub").textContent=I18N[lang].panelSub(counts.any,pool.length);
@@ -475,23 +819,31 @@ function renderPanel(){
   clearBtn.style.visibility=activeTile?"visible":"hidden";
   const host=document.getElementById("tiles");
   host.innerHTML="";
-  for(const tile of TILES){
+  // 行首标签说这一行是利好还是更难，格子本身就只剩数字和名目
+  TILES.forEach((tile,i)=>{
+    if(i===0||i===5){
+      const lab=document.createElement("span");
+      lab.className=`rowlab ${i===0?"good":"bad"}`;
+      lab.textContent=t(i===0?"rowGood":"rowBad");
+      host.appendChild(lab);
+    }
     const b=document.createElement("button");
     b.type="button";
-    b.className=`tile ${tile.tone}${activeTile===tile.id?" active":""}`;
+    b.className=`tile ${tile.tone==="neutral"&&tile.id==="new"?"new":tile.tone}`;
     b.disabled=counts[tile.id]===0&&activeTile!==tile.id;
     b.setAttribute("aria-pressed",activeTile===tile.id?"true":"false");
-    b.innerHTML=`<span class="n">${counts[tile.id]}</span><span class="l">${esc(t(tile.key))}</span>`;
+    const sub=tile.id==="new"?t("tNewSub"):tile.sub?t(tile.sub):"";
+    b.innerHTML=`<span class="v">${counts[tile.id]}</span><span class="t"><span class="k">${esc(t(tile.key))}</span><span class="s">${esc(sub)}</span></span>`;
     b.addEventListener("click",()=>{activeTile=activeTile===tile.id?null:tile.id;render();});
     host.appendChild(b);
-  }
+  });
   const names=new Set(pool.map(p=>p.university));
   const events=changeFeed.filter(e=>names.has(e.university)).sort((a,b)=>b.date.localeCompare(a.date));
   const shown=feedExpanded?events:events.slice(0,6);
   const ul=document.getElementById("feed");
   ul.innerHTML=shown.length?shown.map(e=>{
     const what=e.type==="added"?esc(t("evAdded")):`${esc(fieldLabel(e.field))}: ${esc(fieldValue(e.field,e.old))} → ${esc(fieldValue(e.field,e.new))}`;
-    return `<li><span class="date">${esc(e.date.slice(5))}</span><span><button type="button" class="uni" data-uni="${esc(e.university)}" title="${esc(t("feedSearch"))}">${esc(e.university)}</button> <span class="ev-${esc(e.tone||"neutral")}">${what}</span></span></li>`;
+    return `<li><time>${esc(e.date.slice(5))}</time><span class="what"><button type="button" class="uni" data-uni="${esc(e.university)}" title="${esc(t("feedSearch"))}">${esc(e.university)}</button> <span class="to ${esc(e.tone||"neutral")}">${what}</span></span></li>`;
   }).join(""):`<li class="feed-empty">${esc(t("feedEmpty"))}</li>`;
   ul.querySelectorAll(".uni").forEach(btn=>btn.addEventListener("click",()=>{
     document.getElementById("q").value=btn.dataset.uni;
@@ -499,7 +851,7 @@ function renderPanel(){
     render();
   }));
   const more=document.getElementById("feedMore");
-  more.style.display=events.length>6?"inline-block":"none";
+  more.style.display=events.length>6?"inline":"none";
   more.textContent=feedExpanded?t("feedLess"):I18N[lang].feedMore(events.length);
 }
 
@@ -511,57 +863,116 @@ function displayChangeEndpoint(chip,value){
 
 function renderChanges(p){
   const chips=changeChips(p);
-  if(!chips.length) return `<span title="${esc(t("noComparison"))}">—</span>`;
-  return `<div class="changes">${chips.map(chip=>{
+  if(!chips.length) return `<span class="dim" title="${esc(t("noComparison"))}">—</span>`;
+  return chips.map(chip=>{
     const text=`${t(chip.key)}${chip.arrow}`;
     const title=chip.key==="chgNew"?t("chgNew"):`${t("from")} ${displayChangeEndpoint(chip,chip.from)} ${t("to")} ${displayChangeEndpoint(chip,chip.to)}`;
-    return `<span class="change-chip ${chip.tone}" title="${esc(title)}">${esc(text)}</span>`;
-  }).join("")}</div>`;
+    return `<span class="chg ${chip.key==="chgNew"?"new":chip.tone}" title="${esc(title)}">${esc(text)}</span>`;
+  }).join("");
 }
 
+/** 勾/取消一个筛选值（侧栏的复选框就是真相，直接改它）。统计格、筛选标签的 × 都走这里。 */
+function toggleFacet(key,value,on){
+  const box=document.querySelector(`input[data-facet="${key}"][value="${CSS.escape(value)}"]`);
+  if(!box) return;
+  box.checked=on??!box.checked;
+  render();
+}
 function renderSummary(rows){
   const counts={Green:0,Yellow:0,Red:0,Closed:0};
   for(const p of rows) if(Object.prototype.hasOwnProperty.call(counts,p.exchange_availability)) counts[p.exchange_availability]++;
-  document.getElementById("sumTotal").textContent=`${rows.length}/${programs.length}`;
-  document.getElementById("sumGreen").textContent=counts.Green;
-  document.getElementById("sumYellow").textContent=counts.Yellow;
-  document.getElementById("sumRed").textContent=counts.Red;
-  document.getElementById("sumClosed").textContent=counts.Closed;
-  document.getElementById("sumTotalLabel").textContent=t("results");
-  document.getElementById("sumGreenLabel").textContent=t("green");
-  document.getElementById("sumYellowLabel").textContent=t("yellow");
-  document.getElementById("sumRedLabel").textContent=t("red");
-  document.getElementById("sumClosedLabel").textContent=t("closed");
+  const on=(k,v)=>selectedValues(k).includes(v);
+  const cells=[
+    {cls:"total",v:rows.length,k:t("results")},
+    {cls:"g",v:counts.Green,k:t("green"),facet:"exchange_availability",value:"Green"},
+    {cls:"y",v:counts.Yellow,k:t("yellow"),facet:"exchange_availability",value:"Yellow"},
+    {cls:"r",v:counts.Red,k:t("red"),facet:"exchange_availability",value:"Red"},
+    {cls:"c",v:rows.filter(p=>p.open_closed==="Closed").length,k:t("closed"),facet:"open_closed",value:"Closed"}
+  ];
+  document.getElementById("summary").innerHTML=cells.map(c=>c.facet
+    ?`<button type="button" class="stat ${c.cls}" data-facet="${c.facet}" data-value="${c.value}" aria-pressed="${on(c.facet,c.value)}"><span class="dot"></span><span class="v">${c.v}</span><span class="k">${esc(c.k)}</span></button>`
+    :`<div class="stat ${c.cls}"><span class="v">${c.v}</span><span class="k">${esc(c.k)}</span></div>`).join("");
+}
+document.getElementById("summary").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-facet]");
+  if(b) toggleFacet(b.dataset.facet,b.dataset.value);
+});
+
+/** 表格上方那排标签：现在生效的每个条件一个，带 × 可以单独去掉。 */
+function renderActiveFilters(){
+  const chips=[];
+  const q=document.getElementById("q").value.trim();
+  if(q) chips.push({label:q,kind:t("fchipSearch"),clear:()=>{document.getElementById("q").value="";render();}});
+  for(const f of FACETS) for(const v of selectedValues(f.key))
+    chips.push({label:translatedValue(f.key,v),kind:t(f.labelKey),clear:()=>toggleFacet(f.key,v,false)});
+  const tile=TILES.find(x=>x.id===activeTile);
+  if(tile) chips.push({label:t(tile.key),kind:t("fchipTile"),clear:()=>{activeTile=null;render();}});
+  const host=document.getElementById("active");
+  host.innerHTML=chips.map((c,i)=>`<span class="fchip"><i>${esc(c.kind)}</i><span>${esc(c.label)}</span><button type="button" data-chip="${i}" title="${esc(t("removeFilter"))}" aria-label="${esc(t("removeFilter"))}">×</button></span>`).join("");
+  host._chips=chips;
+  const fab=document.getElementById("fabCount");
+  fab.hidden=chips.length===0; fab.textContent=chips.length;
+}
+document.getElementById("active").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-chip]");
+  if(b) document.getElementById("active")._chips[+b.dataset.chip].clear();
+});
+
+/** 手机上的卡片，和表格同一批行、同一套单元格函数。 */
+function cardHtml(p){
+  const mismatch=(p.search_detail_mismatch||[]).length>0;
+  const chg=renderChanges(p);
+  return `<article class="pcard">
+    <div class="pcard-head">
+      <div><div class="name">${esc(p.university||"—")}${mismatch?` <span class="warn">⚠</span>`:""}</div>
+      <div class="sub">${esc(p.country||"—")} · ${esc(asList(p.region).join(", ")||"—")}</div></div>
+      <div class="qs"><span>QS</span><b>${renderQs(p)}</b></div>
+    </div>
+    <div class="pills"><span class="pill ${esc(p.open_closed||"")}">${esc(statusText(p.open_closed))}</span>${
+      p.exchange_availability?`<span class="pill av-${esc(p.exchange_availability)}">${esc(availabilityText(p.exchange_availability))}</span>`:""}</div>
+    <div class="facts">
+      <div><b>${esc(t("cardMin"))}</b><span class="num">${esc(p.minimum_result_required||"—")}</span></div>
+      <div><b>${esc(t("cardCutoff"))}</b><span class="num">${esc(p.previous_round_cutoff||"—")}</span></div>
+      <div><b>${esc(t("cardPlaces"))}</b><span class="num">${esc(p.anticipated_places||"—")}</span></div>
+    </div>
+    <div class="chg-line">${/class="dim"/.test(chg)?"":chg}</div>
+  </article>`;
 }
 
 function render(){
   let rows=programs.filter(p=>matchesProgram(p));
   rows.sort((a,b)=>sortValue(a,sortKey).localeCompare(sortValue(b,sortKey),undefined,{numeric:true})*sortDir);
-  document.getElementById("metaLine").textContent=I18N[lang].meta(rows.length,programs.length);
+  document.getElementById("metaLine").innerHTML=I18N[lang].meta(rows.length,programs.length);
   renderSummary(rows);
   renderPanel();
   updateFacetCounts();
+  renderActiveFilters();
+  document.querySelectorAll("th[data-key]").forEach(th=>{
+    th.classList.toggle("sorted",th.dataset.key===sortKey);
+    th.classList.toggle("asc",th.dataset.key===sortKey&&sortDir===1);
+  });
 
   const tbody=document.getElementById("rows");
   tbody.innerHTML="";
-  document.getElementById("empty").style.display=rows.length?"none":"block";
+  document.getElementById("empty").hidden=rows.length>0;
   rows.forEach(p=>{
     const tr=document.createElement("tr");
     const mismatch=(p.search_detail_mismatch||[]).length>0;
-    const warning=mismatch?`<span class="warn" title="${esc(t("mismatch"))}: ${esc((p.search_detail_mismatch||[]).join(", "))}">⚠</span>`:"";
+    const warning=mismatch?` <span class="warn" title="${esc(t("mismatch"))}: ${esc((p.search_detail_mismatch||[]).join(", "))}">⚠</span>`:"";
     tr.innerHTML=`
-      <td>${esc(p.university||"—")}${warning}</td>
+      <td class="stick">${esc(p.university||"—")}${warning}</td>
       <td>${esc(p.country||"—")}</td>
-      <td>${renderQs(p)}</td>
-      <td>${esc(asList(p.region).join(", ")||"—")}</td>
-      <td><span class="pill ${p.open_closed==="Open"?"open":"closed"}">${esc(statusText(p.open_closed))}</span></td>
-      <td><span class="dot ${esc(p.exchange_availability||"")}">${esc(availabilityText(p.exchange_availability))}</span></td>
-      <td>${renderChanges(p)}</td>
-      <td>${esc(p.minimum_result_required||"—")}</td>
-      <td>${esc(p.previous_round_cutoff||"—")}</td>
-      <td>${esc(p.anticipated_places||"—")}</td>`;
+      <td class="num tight">${renderQs(p)}</td>
+      <td class="small">${esc(asList(p.region).join(", ")||"—")}</td>
+      <td class="mid tight"><span class="pill ${esc(p.open_closed||"")}">${esc(statusText(p.open_closed))}</span></td>
+      <td class="mid tight">${p.exchange_availability?`<span class="pill av-${esc(p.exchange_availability)}">${esc(availabilityText(p.exchange_availability))}</span>`:""}</td>
+      <td class="chg-cell">${renderChanges(p)}</td>
+      <td class="num">${esc(p.minimum_result_required||"—")}</td>
+      <td class="num">${esc(p.previous_round_cutoff||"—")}</td>
+      <td class="num tight">${esc(p.anticipated_places||"—")}</td>`;
     tbody.appendChild(tr);
   });
+  document.getElementById("cards").innerHTML=rows.map(cardHtml).join("");
 }
 
 function applyLanguage(next){
@@ -570,15 +981,18 @@ function applyLanguage(next){
   try{localStorage.setItem("demo.lang",lang);}catch(e){}
   document.getElementById("signinLink").textContent=t("signinLink");
   document.documentElement.lang=lang==="zh"?"zh-CN":"en";
-  document.getElementById("langEn").classList.toggle("active",lang==="en");
-  document.getElementById("langZh").classList.toggle("active",lang==="zh");
-  document.getElementById("pageTitle").textContent=t("title");
+  document.getElementById("langEn").setAttribute("aria-pressed",String(lang==="en"));
+  document.getElementById("langZh").setAttribute("aria-pressed",String(lang==="zh"));
+  document.getElementById("fabLabel").textContent=t("filters");
+  document.getElementById("theme").title=t("theme");
+  document.querySelectorAll("#density button").forEach(b=>b.title=t(b.dataset.density==="compact"?"densityCompact":"densityComfy"));
+  document.getElementById("pageTitle").innerHTML=`<span class="long">Monash </span>${esc(t("title").replace(/^Monash /,""))}`;
   document.getElementById("pageSubtitle").textContent=t("subtitle");
   document.getElementById("banner").innerHTML=t("banner");
   document.getElementById("filtersTitle").textContent=t("filters");
   document.getElementById("clearFilters").textContent=t("clear");
   document.getElementById("q").placeholder=t("search");
-  document.getElementById("empty").textContent=t("empty");
+  document.getElementById("emptyText").textContent=t("empty");
   document.getElementById("footerText").innerHTML=t("footer");
   document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
   buildFacets(saved);
@@ -598,7 +1012,7 @@ document.getElementById("feedMore").addEventListener("click",()=>{feedExpanded=!
   const panel=document.getElementById("changePanel");
   let saved=null;
   try{saved=localStorage.getItem(PANEL_KEY);}catch(e){}
-  panel.open=saved===null?!window.matchMedia("(max-width:820px)").matches:saved==="1";
+  panel.open=saved===null?!window.matchMedia("(max-width:600px)").matches:saved==="1";
   panel.addEventListener("toggle",()=>{try{localStorage.setItem(PANEL_KEY,panel.open?"1":"0");}catch(e){}});
 })();
 (function initTooltip(){
@@ -619,6 +1033,37 @@ document.getElementById("feedMore").addEventListener("click",()=>{feedExpanded=!
     else if(pinned){pinned=null;tip.style.display="none";}
   });
   window.addEventListener("scroll",()=>{if(!pinned) tip.style.display="none";},{passive:true});
+})();
+/* 主题、行距、手机抽屉：和正式版同一套 */
+(function initTheme(){
+  let theme=null;
+  try{theme=localStorage.getItem("theme");}catch(e){}
+  if(theme==="light"||theme==="dark") document.documentElement.dataset.theme=theme;
+  document.getElementById("theme").addEventListener("click",()=>{
+    const dark=document.documentElement.dataset.theme?document.documentElement.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+    const next=dark?"light":"dark";
+    document.documentElement.dataset.theme=next;
+    try{localStorage.setItem("theme",next);}catch(e){}
+  });
+})();
+(function initDensity(){
+  let density="comfortable";
+  try{density=localStorage.getItem("density")||density;}catch(e){}
+  const apply=()=>{
+    document.body.dataset.density=density;
+    document.querySelectorAll("#density button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.density===density)));
+  };
+  apply();
+  document.getElementById("density").addEventListener("click",e=>{
+    const b=e.target.closest("button[data-density]"); if(!b) return;
+    density=b.dataset.density; try{localStorage.setItem("density",density);}catch(e){} apply();
+  });
+})();
+(function initDrawer(){
+  const open=on=>document.body.classList.toggle("filters-open",on);
+  document.getElementById("fab").addEventListener("click",()=>open(true));
+  document.querySelectorAll("[data-close-filters]").forEach(el=>el.addEventListener("click",()=>open(false)));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape") open(false);});
 })();
 document.getElementById("langEn").addEventListener("click",()=>applyLanguage("en"));
 document.getElementById("langZh").addEventListener("click",()=>applyLanguage("zh"));
