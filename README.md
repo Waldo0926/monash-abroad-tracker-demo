@@ -14,6 +14,8 @@ The private production system collects program-search data, normalises fields, d
 
 > **Synthetic-data notice:** every institution, country, URL, date, score, availability value, previous-round value and place count in this repository is fictional. The dataset is designed only to exercise the UI and change-detection presentation.
 
+![The demo viewer: filters on the left, the change summary against the previous round, and the program table with change chips and QS ranks. All data is fictional](docs/demo-desktop-en.png)
+
 ## What this demo shows
 
 - English / 简体中文 interface switching
